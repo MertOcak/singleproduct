@@ -22,12 +22,12 @@ try {
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-$stmt = $pdo->query('SELECT id FROM orders');
+/*$stmt = $pdo->query('SELECT id FROM orders');
 while ($row = $stmt->fetch())
 {
     echo $row['id'] . "\n";
 
-}
+}*/
 
 
 /*$stmt = $pdo->prepare('SELECT * FROM orders WHERE email = ? AND status=?');

@@ -1,5 +1,8 @@
 <?php
-include_once("../core/mcore.php");
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+include_once("../../core/mcore.php");
 include "../../layouts/header.php";
 ?>
 
@@ -14,7 +17,7 @@ include "../../layouts/header.php";
     </div>
 
     <!-- Content Row -->
-    <div class="row">
+    <div class="row d-none">
 
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
@@ -96,7 +99,58 @@ include "../../layouts/header.php";
 
     <!-- Content Row -->
 
-    <div class="row">
+
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Start date</th>
+                            <th>İşlemler</th>
+                        </tr>
+                        </thead>
+<!--                        <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Start date</th>
+                            <th>Salary</th>
+                        </tr>
+                        </tfoot>-->
+                        <tbody>
+
+                        <?php
+
+                        $stmt = $pdo->query('SELECT o.Id AS Id, o.CreatedAt AS date, c.FirstName AS FirstName, c.LastName AS LastName, p.Name AS pName FROM orders o INNER JOIN products p ON p.id = o.Product INNER JOIN customers c ON o.CustomerId = c.Id');
+                        while ($row = $stmt->fetch()) {
+                            echo "<tr><th>" . $row['Id'] . "</th><th>" . $row['FirstName'] . "</th><th>" . $row['LastName'] . "</th><th>" . $row['pName'] . "</th><th>" . $row['date'] . "</th><th><button class='btn btn-primary'><i class='fa fa-eye'></i></button><button class='btn btn-danger ml-1'><i class='fa fa-trash'></i></button></th></tr>";
+
+                        }
+
+                        ?>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Content Row -->
+
+    <div class="row d-none">
 
         <!-- Area Chart -->
         <div class="col-xl-8 col-lg-7">
@@ -167,7 +221,7 @@ include "../../layouts/header.php";
     </div>
 
     <!-- Content Row -->
-    <div class="row">
+    <div class="row d-none">
 
         <!-- Content Column -->
         <div class="col-lg-6 mb-4">
@@ -287,10 +341,6 @@ include "../../layouts/header.php";
 
 </div>
 <!-- /.container-fluid -->
-
-
-
-
 
 <?php
 include "../../layouts/footer.php";
