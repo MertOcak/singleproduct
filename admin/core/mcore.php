@@ -26,25 +26,32 @@ $stmt = $pdo->query('SELECT id FROM orders');
 while ($row = $stmt->fetch())
 {
     echo $row['id'] . "\n";
+
 }
 
-$stmt = $pdo->prepare('SELECT * FROM orders WHERE email = ? AND status=?');
+
+/*$stmt = $pdo->prepare('SELECT * FROM orders WHERE email = ? AND status=?');
 $stmt->execute([$email, $status]);
-$user = $stmt->fetch();
+$user = $stmt->fetch();*/
+
+
+
 // or
 /*$stmt = $pdo->prepare('SELECT * FROM users WHERE email = :email AND status=:status');
 $stmt->execute(['email' => $email, 'status' => $status]);
 $user = $stmt->fetch();*/
 
+
+
+
 /*$data = [
-    1 => 1000,
-    5 =>  300,
-    9 =>  200,
+    "Mert" => "Ocak",
+    "Bihter" =>  "Hepvidinli",
 ];
-$stmt = $pdo->prepare('UPDATE users SET bonus = bonus + ? WHERE id = ?');
-foreach ($data as $id => $bonus)
+$stmt = $pdo->prepare('INSERT INTO customers (FirstName, LastName) VALUES( ? , ? ) ');
+foreach ($data as $FirstName => $LastName)
 {
-    $stmt->execute([$bonus, $id]);
+    $stmt->execute([$FirstName, $LastName]);
 }*/
 
 // Updated
