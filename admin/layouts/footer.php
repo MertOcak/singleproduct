@@ -36,25 +36,25 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="../../layouts/login.html">Logout</a>
+                <a class="btn btn-primary" href="/admin/layouts/login.html">Logout</a>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="../../layouts/vendor/jquery/jquery.min.js"></script>
-<script src="../../layouts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/admin/layouts/vendor/jquery/jquery.min.js"></script>
+<script src="/admin/layouts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="../../layouts/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="/admin/layouts/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="../../layouts/js/sb-admin-2.min.js"></script>
+<script src="/admin/layouts/js/sb-admin-2.min.js"></script>
 
 <!-- Page level plugins -->
-<script src="../../layouts/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="../../layouts/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="/admin/layouts/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="/admin/layouts/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
@@ -66,11 +66,11 @@
 
 
 <!-- Page level plugins -->
-<script src="../../layouts/vendor/chart.js/Chart.min.js"></script>
+<script src="/admin/layouts/vendor/chart.js/Chart.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="../../layouts/js/demo/chart-area-demo.js"></script>
-<script src="../../layouts/js/demo/chart-pie-demo.js"></script>
+<script src="/admin/layouts/js/demo/chart-area-demo.js"></script>
+<script src="/admin/layouts/js/demo/chart-pie-demo.js"></script>
 
 
 <script>
@@ -200,6 +200,8 @@
         });
 
         $('.deleteAll').click(function () {
+
+        if(confirm("İşleminizden emin misiniz? Bu işlem geri alınamaz")) {
             var allVals = [];
             $('.deleteRecords:checked').each(function () {
                 allVals.push($(this).val());
@@ -210,8 +212,13 @@
                 id: allVals
                 /*id : [ 42,40]*/
             };
+
+            if(allVals == "") {
+                alert('Silinecek siparişleri seçmelisiniz');
+                return 0;
+            }
             $.ajax({
-                url: '../../core/mcore.php',
+                url: '/admin/core/mcore.php',
                 method: 'post',
                 data: data,
                 success: function (data) {
@@ -219,15 +226,35 @@
                     location.reload();
                 }
             })
+        }
         })
 
 
+/*
 
-        $('#dataTable tr').click(function (event) {
+      function check(){  $('#dataTable tr').click(function (event) {
             if (event.target.type !== 'checkbox') {
                 $(':checkbox', this).trigger('click');
             }
         });
+
+      };
+
+        check();
+*/
+
+     /* $('.paginate_button').click(function () {
+          check();
+      })*/
+
+   /*     $('#dataTable').on( 'draw.dt', function () {
+            check();
+        } );
+
+        $('#dataTable').on( 'search.dt', function () {
+            check();
+        } );*/
+
 
     });
 </script>

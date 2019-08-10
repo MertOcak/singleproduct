@@ -52,8 +52,13 @@
   -o-user-select: none;
 }
 
-.multipleDelete:hover {
+.multipleDelete:hover,
+#dataTable tr {
   cursor:pointer;
+}
+
+#dataTable tbody tr:hover {
+  background: #f2f2f25c !important;
 }
 
 /*.table th, .table td {

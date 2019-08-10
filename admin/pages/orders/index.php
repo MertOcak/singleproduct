@@ -83,7 +83,7 @@ include "../../layouts/header.php";
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
 
                                 <?php
-                                $monthlyIncomes = $pdo->query('select SUM(TotalPrice) AS TotalIncome from orders where CreatedAt  >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)');
+                                $monthlyIncomes = $pdo->query('select SUM(TotalPrice) AS TotalIncome from orders where CreatedAt  >= DATE_SUB(CURDATE(), INTERVAL 1 DAY)');
                                 $row = $monthlyIncomes->fetch(PDO::FETCH_ASSOC);
                                 echo $row['TotalIncome'] . ' ₺';
                                 ?>
@@ -186,7 +186,7 @@ include "../../layouts/header.php";
                     while ($row = $stmt->fetch()) {
                         $status = statusCheck($row['Status']);
                         $color = statusColorCheck($row['Status']);
-                        echo "<tr><th class='selectColumn'><input class='deleteRecords' name=\"checkbox[]\" type=\"checkbox\" value=\"" . $row['Id'] . "\"></th><th style='color:#ffffff' class='bg-" . $color . " statusArea'>" . $status . "</th><th>" . $row['Id'] . "</th><th>" . $row['FirstName'] . "</th><th>" . $row['LastName'] . "</th><th>" . $row['pName'] . "</th><th>" . $row['date'] . "</th><th><button class='btn btn-primary'><i class='fa fa-eye'></i></button><button class='btn btn-danger ml-1'><i class='fa fa-trash'></i></button></th></tr>";
+                        echo "<tr><th class='selectColumn'><input class='deleteRecords' name=\"checkbox[]\" type=\"checkbox\" value=\"" . $row['Id'] . "\"></th><th class='text-center'><button style='color:#ffffff;width:80%' class='btn btn-".$color." btn-icon-". $color ." statusArea'>" . $status . "</button></th><th>" . $row['Id'] . "</th><th>" . $row['FirstName'] . "</th><th>" . $row['LastName'] . "</th><th>" . $row['pName'] . "</th><th>" . $row['date'] . "</th><th><button class='btn btn-circle btn-primary'><i class='fa fa-eye'></i></button><button class='btn btn-circle btn-danger ml-1'><i class='fa fa-trash'></i></button></th></tr>";
 
                     }
 
