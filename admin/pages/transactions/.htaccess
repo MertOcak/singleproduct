@@ -1,0 +1,10 @@
+RewriteEngine On
+
+RewriteRule ^index\.php$ - [L]
+
+RewriteRule ^([^/]+)/([^/]+)/([^/]+)/?$ /admin/pages/transactions/index.php?module=$1&action=$2&id=$3 [L,QSA]
+
+RewriteRule ^([^/]+)/([^/]+)/?$ /admin/pages/transactions/index.php?module=$1&action=$2 [L,QSA]
+
+
+

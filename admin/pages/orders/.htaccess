@@ -4,3 +4,4 @@ RewriteRule ^index\.php$ - [L]
 
 RewriteRule ^([^/]+)/?$ /admin/pages/orders/index.php?status=$1 [L,QSA]
 
+

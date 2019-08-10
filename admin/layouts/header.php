@@ -71,13 +71,13 @@
             <div id="ordersManagement" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <!--                    <h6 class="collapse-header">Custom Components:</h6> --!>
-                    <a class="collapse-item" href="../orders">Tüm Siparişler</a>
-                    <a class="collapse-item" href="../orders/1">Yeni Siparişler</a>
-                    <a class="collapse-item" href="../orders/2">İncelenmiş Siparişler</a>
-                    <a class="collapse-item" href="../orders/3">Hazırlanan Siparişler</a>
-                    <a class="collapse-item" href="../orders/4">Kargolanan Siparişler</a>
-                    <a class="collapse-item" href="../orders/5">İptal Edilen Siparişler</a>
-                    <a class="collapse-item" href="../orders/6">Tamamlanan Siparişler</a>
+                    <a class="collapse-item" href="/admin/pages/orders">Tüm Siparişler</a>
+                    <a class="collapse-item" href="/admin/pages/orders/1">Yeni Siparişler</a>
+                    <a class="collapse-item" href="/admin/pages/orders/2">İncelenmiş Siparişler</a>
+                    <a class="collapse-item" href="/admin/pages/orders/3">Hazırlanan Siparişler</a>
+                    <a class="collapse-item" href="/admin/pages/orders/4">Kargolanan Siparişler</a>
+                    <a class="collapse-item" href="/admin/pages/orders/5">İptal Edilen Siparişler</a>
+                    <a class="collapse-item" href="/admin/pages/orders/6">Tamamlanan Siparişler</a>
                 </div>
             </div>
         </li>
@@ -93,7 +93,7 @@
             <div id="customers" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <!--             <h6 class="collapse-header">Custom Components:</h6> -->
-                    <a class="collapse-item" href="../customers">Müşterileri Listele</a>
+                    <a class="collapse-item" href="/admin/pages/customers">Müşterileri Listele</a>
                 </div>
             </div>
         </li>
