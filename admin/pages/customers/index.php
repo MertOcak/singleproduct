@@ -10,10 +10,16 @@ include "../../layouts/header.php";
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
+    <?php statusCheck(5); ?>
 
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Müşteriler</h1>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+    </div>
 
     <!-- Content Row -->
-    <div class="row">
+    <div class="row d-none">
 
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
@@ -21,18 +27,8 @@ include "../../layouts/header.php";
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Gelirler (Aylık)
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-
-                                <?php
-                                $monthlyIncomes = $pdo->query('select SUM(TotalPrice) AS TotalIncome from orders where CreatedAt  >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)');
-                                $row = $monthlyIncomes->fetch(PDO::FETCH_ASSOC);
-                                echo $row['TotalIncome'] . ' ₺';
-                                ?>
-
-
-                            </div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Gelirler (Aylık)</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">40,000 ₺</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -48,15 +44,8 @@ include "../../layouts/header.php";
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Gelirler (Yıllık)
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php
-                                $yearlyIncomes = $pdo->query('select SUM(TotalPrice) AS TotalIncome from orders where CreatedAt  >= DATE_SUB(CURDATE(), INTERVAL 365 DAY)');
-                                $row = $yearlyIncomes->fetch(PDO::FETCH_ASSOC);
-                                echo $row['TotalIncome'] . ' ₺';
-                                ?>
-                            </div>
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Gelirler (Yıllık)</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">215,000 ₺</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -79,8 +68,7 @@ include "../../layouts/header.php";
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
-                                             aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
@@ -99,16 +87,8 @@ include "../../layouts/header.php";
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">BUGÜN ALINAN
-                                SİPARİŞLER
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php
-                                $todaysOrders = $pdo->query('select COUNT(id) AS Count from orders where CreatedAt  >= DATE_SUB(CURDATE(), INTERVAL 1 DAY)');
-                                $row = $todaysOrders->fetch(PDO::FETCH_ASSOC);
-                                echo $row['Count'] ." Sipariş Aldınız";
-                                ?>
-                            </div>
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">BUGÜN ALINAN SİPARİŞLER</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -121,64 +101,54 @@ include "../../layouts/header.php";
 
     <!-- Content Row -->
 
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800"><!--Siparişler--></h1>
 
-    </div>
 
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Tüm Siparişler</h6>
-            <div style="position: absolute; top:10px;right:20px;" class="float-right">
-                <a id="raporAl" href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                            class="fas fa-download fa-sm text-white-50"></i> Rapor Al</a>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Müşteri Kodu</th>
+                            <th>Müşteri Ad</th>
+                            <th>Müşteri Soyad</th>
+                            <th>E-Posta Adresi</th>
+                            <th>Telefon Numarası</th>
+                            <th>Adres Bilgileri</th>
+                            <th>İşlemler</th>
+                        </tr>
+                        </thead>
+<!--                        <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Start date</th>
+                            <th>Salary</th>
+                        </tr>
+                        </tfoot>-->
+                        <tbody>
+
+                        <?php
+
+                        $stmt = $pdo->query('SELECT * FROM customers');
+                        while ($row = $stmt->fetch()) {
+                            echo "<tr><th>" . $row['id'] . "</th><th>" . $row['FirstName'] . "</th><th>" . $row['LastName'] . "</th><th>" . $row['Mail'] . "</th><th>" . $row['Phone'] . "</th><th>".$row['Address']."</th><th><button class='btn btn-primary'><i class='fa fa-eye'></i></button><button class='btn btn-danger ml-1'><i class='fa fa-trash'></i></button></th></tr>";
+
+                        }
+
+                        ?>
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                    <tr>
-                        <th>Durum</th>
-                        <th>Sipariş Numarası</th>
-                        <th>Müşteri Ad</th>
-                        <th>Müşteri Soyad</th>
-                        <th>Satılan Ürün</th>
-                        <th>Sipariş Zamanı</th>
-                        <th>İşlemler</th>
-                    </tr>
-                    </thead>
-                    <!--                        <tfoot>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                            </tfoot>-->
-                    <tbody>
-
-                    <?php
-
-                    $stmt = $pdo->query('SELECT o.Id AS Id, o.Status AS Status, o.CreatedAt AS date, c.FirstName AS FirstName, c.LastName AS LastName, p.Name AS pName FROM orders o INNER JOIN products p ON p.id = o.Product INNER JOIN customers c ON o.CustomerId = c.Id WHERE o.Active = 1');
-                    while ($row = $stmt->fetch()) {
-                        $status = statusCheck($row['Status']);
-                        $color = statusColorCheck($row['Status']);
-                        echo "<tr><th style='color:#ffffff' class='bg-" . $color . "'>" . $status . "</th><th>" . $row['Id'] . "</th><th>" . $row['FirstName'] . "</th><th>" . $row['LastName'] . "</th><th>" . $row['pName'] . "</th><th>" . $row['date'] . "</th><th><button class='btn btn-primary'><i class='fa fa-eye'></i></button><button class='btn btn-danger ml-1'><i class='fa fa-trash'></i></button></th></tr>";
-
-                    }
-
-                    ?>
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
 
 
     <!-- Content Row -->
@@ -192,12 +162,10 @@ include "../../layouts/header.php";
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
                     <div class="dropdown no-arrow">
-                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                             aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                             <div class="dropdown-header">Dropdown Header:</div>
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
@@ -222,12 +190,10 @@ include "../../layouts/header.php";
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
                     <div class="dropdown no-arrow">
-                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                             aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                             <div class="dropdown-header">Dropdown Header:</div>
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
@@ -271,28 +237,23 @@ include "../../layouts/header.php";
                 <div class="card-body">
                     <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20"
-                             aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40"
-                             aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60"
-                             aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80"
-                             aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
                     <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100"
-                             aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
             </div>
@@ -360,15 +321,10 @@ include "../../layouts/header.php";
                 </div>
                 <div class="card-body">
                     <div class="text-center">
-                      <!--  <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                             src="../../layouts/img/undraw_posting_photo.svg" alt="">-->
+                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
                     </div>
-                    <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow"
-                                                                                          href="https://undraw.co/">unDraw</a>,
-                        a constantly updated collection of beautiful svg images that you can use completely free and
-                        without attribution!</p>
-                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw
-                        &rarr;</a>
+                    <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
+                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
                 </div>
             </div>
 
@@ -378,11 +334,8 @@ include "../../layouts/header.php";
                     <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
                 </div>
                 <div class="card-body">
-                    <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and
-                        poor page performance. Custom CSS classes are used to create custom components and custom
-                        utility classes.</p>
-                    <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap
-                        framework, especially the utility classes.</p>
+                    <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
+                    <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
                 </div>
             </div>
 

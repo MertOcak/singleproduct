@@ -17,7 +17,8 @@
           rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../../layouts/css/sb-admin-2.min.css" rel="stylesheet">
+<!--    <link href="../../layouts/css/sb-admin-2.min.css" rel="stylesheet">
+-->    <link href="../../layouts/scss/sb-admin-2.css" rel="stylesheet">
 
 
     <!-- Custom styles for this page -->
@@ -69,7 +70,7 @@
             <div id="ordersManagement" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <!--                    <h6 class="collapse-header">Custom Components:</h6> --!>
-                    <a class="collapse-item" href="#">Tüm Siparişler</a>
+                    <a class="collapse-item" href="../orders">Tüm Siparişler</a>
                     <a class="collapse-item" href="#">Yeni Siparişler</a>
                     <a class="collapse-item" href="#">İncelenmiş Siparişler</a>
                     <a class="collapse-item" href="#">Hazırlanan Siparişler</a>
@@ -91,7 +92,7 @@
             <div id="customers" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <!--             <h6 class="collapse-header">Custom Components:</h6> -->
-                    <a class="collapse-item" href="#">Müşterileri Listele</a>
+                    <a class="collapse-item" href="../customers">Müşterileri Listele</a>
                 </div>
             </div>
         </li>
@@ -296,7 +297,10 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-bell fa-fw"></i>
                             <!-- Counter - Alerts -->
-                            <span class="badge badge-danger badge-counter">3+</span>
+
+                            <?php $newOrders= $pdo->query('SELECT o.Id AS Id, o.CreatedAt AS date, c.FirstName AS FirstName, c.LastName AS LastName, p.Name AS pName FROM orders o INNER JOIN products p ON p.id = o.Product INNER JOIN customers c ON o.CustomerId = c.Id WHERE o.Active = 1 AND o.Status = 1');
+ ?>
+                            <span class="badge badge-danger badge-counter"><?php echo $newOrders->rowCount(); ?></span>
                         </a>
                         <!-- Dropdown - Alerts -->
                         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -315,17 +319,28 @@
                                     <span class="font-weight-bold">A new monthly report is ready to download!</span>
                                 </div>
                             </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+
+                            <?php while ($row = $newOrders->fetch()) {
+
+                                $date = $row['date'];
+
+
+                                echo ' <a class="dropdown-item d-flex align-items-center" href="'.$row['Id'].'">
                                 <div class="mr-3">
                                     <div class="icon-circle bg-success">
                                         <i class="fas fa-donate text-white"></i>
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="small text-gray-500">December 7, 2019</div>
-                                    $290.29 has been deposited into your account!
+                                    <div class="small text-gray-500">'.$date.'</div>
+                                    <div class="small font-weight-bold"><b>'.$row['FirstName'].' </b>Yeni Bir Sipariş Verdi!</div>
+                                    <!--$290.29 has been deposited into your account!-->
                                 </div>
-                            </a>
+                            </a>';
+
+                            }
+                            ?>
+
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="mr-3">
                                     <div class="icon-circle bg-warning">
@@ -357,8 +372,8 @@
                             </h6>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60"
-                                         alt="">
+                                 <!--   <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60"
+                                         alt="">-->
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div class="font-weight-bold">
@@ -370,8 +385,8 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60"
-                                         alt="">
+                                 <!--   <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60"
+                                         alt="">-->
                                     <div class="status-indicator"></div>
                                 </div>
                                 <div>
@@ -383,8 +398,8 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60"
-                                         alt="">
+                                   <!-- <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60"
+                                         alt="">-->
                                     <div class="status-indicator bg-warning"></div>
                                 </div>
                                 <div>
@@ -396,8 +411,8 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                         alt="">
+                                  <!--  <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                         alt="">-->
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div>
@@ -418,8 +433,8 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Mert Ocak</span>
-                            <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-                        </a>
+<!--                            <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+-->                        </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
