@@ -15,13 +15,71 @@ include "../../layouts/header.php";
     <!-- Content Row -->
     <div class="row">
 
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">BUGÜN ALINAN
+                                SİPARİŞLER
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?php
+                                $todaysOrders = $pdo->query('select COUNT(id) AS Count from orders where CreatedAt  >= DATE_SUB(CURDATE(), INTERVAL 1 DAY)');
+                                $row = $todaysOrders->fetch(PDO::FETCH_ASSOC);
+                                echo $row['Count'] ." Sipariş";
+                                ?>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Gelirler (Aylık)
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">TÜM SİPARİŞLER</div>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                        <?php
+                                        $todaysOrders = $pdo->query('select COUNT(id) AS Count from orders where Active = 1');
+                                        $row = $todaysOrders->fetch(PDO::FETCH_ASSOC);
+                                        echo $row['Count'] ." Sipariş";
+                                        ?>
+                                    </div>
+                                </div>
+                   <!--             <div class="col">
+                                    <div class="progress progress-sm mr-2">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
+                                             aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weighborder-left-success text-uppercase mb-1">GELİRLER (Aylık)
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
 
@@ -48,7 +106,7 @@ include "../../layouts/header.php";
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Gelirler (Yıllık)
+                            <div class="text-xs font-weighborder-left-success text-uppercase mb-1">GELİRLER (Yıllık)
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 <?php
@@ -66,57 +124,9 @@ include "../../layouts/header.php";
             </div>
         </div>
 
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Stok Durumu</div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                </div>
-                                <div class="col">
-                                    <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
-                                             aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Pending Requests Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-danger shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">BUGÜN ALINAN
-                                SİPARİŞLER
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <?php
-                                $todaysOrders = $pdo->query('select COUNT(id) AS Count from orders where CreatedAt  >= DATE_SUB(CURDATE(), INTERVAL 1 DAY)');
-                                $row = $todaysOrders->fetch(PDO::FETCH_ASSOC);
-                                echo $row['Count'] ." Sipariş Aldınız";
-                                ?>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
     </div>
 
     <!-- Content Row -->
@@ -131,9 +141,17 @@ include "../../layouts/header.php";
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Tüm Siparişler</h6>
-            <div style="position: absolute; top:10px;right:20px;" class="float-right">
+            <div style="position: absolute; top:10px; right: 10px;" class="float-right">
                 <a id="raporAl" href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i> Rapor Al</a>
+                <a id="pdf" href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i
+                            class="fas fa-file-pdf fa-sm text-white-50"></i> Pdf</a>
+                <a id="csv" href="#" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i
+                            class="fas fa-file-csv fa-sm text-white-50"></i> Csv</a>
+                <a id="excel" href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
+                            class="fas fa-file-excel fa-sm text-white-50"></i> Excel</a>
+                <a id="copy" href="#" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"><i
+                            class="fas fa-copy fa-sm text-white-50"></i> Panoya Kopyala</a>
             </div>
         </div>
         <div class="card-body">
