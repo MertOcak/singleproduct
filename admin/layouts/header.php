@@ -71,12 +71,12 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <!--                    <h6 class="collapse-header">Custom Components:</h6> --!>
                     <a class="collapse-item" href="../orders">Tüm Siparişler</a>
-                    <a class="collapse-item" href="#">Yeni Siparişler</a>
-                    <a class="collapse-item" href="#">İncelenmiş Siparişler</a>
-                    <a class="collapse-item" href="#">Hazırlanan Siparişler</a>
-                    <a class="collapse-item" href="#">Kargolanan Siparişler</a>
-                    <a class="collapse-item" href="#">İptal Edilen Siparişler</a>
-                    <a class="collapse-item" href="#">Tamamlanan Siparişler</a>
+                    <a class="collapse-item" href="../orders/1">Yeni Siparişler</a>
+                    <a class="collapse-item" href="../orders/2">İncelenmiş Siparişler</a>
+                    <a class="collapse-item" href="../orders/3">Hazırlanan Siparişler</a>
+                    <a class="collapse-item" href="../orders/4">Kargolanan Siparişler</a>
+                    <a class="collapse-item" href="../orders/5">İptal Edilen Siparişler</a>
+                    <a class="collapse-item" href="../orders/6">Tamamlanan Siparişler</a>
                 </div>
             </div>
         </li>

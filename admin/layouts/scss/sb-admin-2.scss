@@ -39,6 +39,23 @@
   vertical-align: middle;
 }
 
+.selectColumn {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.statusArea {
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
+.multipleDelete:hover {
+  cursor:pointer;
+}
+
 /*.table th, .table td {
   !* padding: 0.75rem; *!
   padding: 0;

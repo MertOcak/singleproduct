@@ -22,6 +22,16 @@ try {
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
+if(isset($_POST['action'])){
+    switch ($_POST['action']) {
+        case "delete":
+            $sql = "DELETE FROM " . $_POST['tableName'] . " WHERE Id in ";
+            $sql .= "('" . implode("','", array_values($_POST['id'])) . "')";
+            $pdo->query($sql);
+            break;
+
+    }
+}
 
 function statusCheck($x)
 {

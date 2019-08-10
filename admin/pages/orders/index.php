@@ -11,7 +11,6 @@ include "../../layouts/header.php";
 <div class="container-fluid">
 
 
-
     <!-- Content Row -->
     <div class="row">
 
@@ -28,7 +27,7 @@ include "../../layouts/header.php";
                                 <?php
                                 $todaysOrders = $pdo->query('select COUNT(id) AS Count from orders where CreatedAt  >= DATE_SUB(CURDATE(), INTERVAL 1 DAY)');
                                 $row = $todaysOrders->fetch(PDO::FETCH_ASSOC);
-                                echo $row['Count'] ." Sipariş";
+                                echo $row['Count'] . " Sipariş";
                                 ?>
                             </div>
                         </div>
@@ -53,16 +52,16 @@ include "../../layouts/header.php";
                                         <?php
                                         $todaysOrders = $pdo->query('select COUNT(id) AS Count from orders where Active = 1');
                                         $row = $todaysOrders->fetch(PDO::FETCH_ASSOC);
-                                        echo $row['Count'] ." Sipariş";
+                                        echo $row['Count'] . " Sipariş";
                                         ?>
                                     </div>
                                 </div>
-                   <!--             <div class="col">
-                                    <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
-                                             aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>-->
+                                <!--             <div class="col">
+                                                 <div class="progress progress-sm mr-2">
+                                                     <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
+                                                          aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                 </div>
+                                             </div>-->
                             </div>
                         </div>
                         <div class="col-auto">
@@ -125,8 +124,6 @@ include "../../layouts/header.php";
         </div>
 
 
-
-
     </div>
 
     <!-- Content Row -->
@@ -159,6 +156,7 @@ include "../../layouts/header.php";
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
+                        <th class="selectColumn"><input class="checkAll" name="checkbox[]" type="checkbox"></th>
                         <th>Durum</th>
                         <th>Sipariş Numarası</th>
                         <th>Müşteri Ad</th>
@@ -181,12 +179,14 @@ include "../../layouts/header.php";
                     <tbody>
 
                     <?php
+                    // Shorthand If / Else tanımlaması
 
-                    $stmt = $pdo->query('SELECT o.Id AS Id, o.Status AS Status, o.CreatedAt AS date, c.FirstName AS FirstName, c.LastName AS LastName, p.Name AS pName FROM orders o INNER JOIN products p ON p.id = o.Product INNER JOIN customers c ON o.CustomerId = c.Id WHERE o.Active = 1');
+                    $status = isset($_GET['status']) ? "AND o.Status = ".$_GET['status'] : "";
+                    $stmt = $pdo->query('SELECT o.Id AS Id, o.Status AS Status, o.CreatedAt AS date, c.FirstName AS FirstName, c.LastName AS LastName, p.Name AS pName FROM orders o INNER JOIN products p ON p.id = o.Product INNER JOIN customers c ON o.CustomerId = c.Id WHERE o.Active = 1 '.$status);
                     while ($row = $stmt->fetch()) {
                         $status = statusCheck($row['Status']);
                         $color = statusColorCheck($row['Status']);
-                        echo "<tr><th style='color:#ffffff' class='bg-" . $color . "'>" . $status . "</th><th>" . $row['Id'] . "</th><th>" . $row['FirstName'] . "</th><th>" . $row['LastName'] . "</th><th>" . $row['pName'] . "</th><th>" . $row['date'] . "</th><th><button class='btn btn-primary'><i class='fa fa-eye'></i></button><button class='btn btn-danger ml-1'><i class='fa fa-trash'></i></button></th></tr>";
+                        echo "<tr><th class='selectColumn'><input class='deleteRecords' name=\"checkbox[]\" type=\"checkbox\" value=\"" . $row['Id'] . "\"></th><th style='color:#ffffff' class='bg-" . $color . " statusArea'>" . $status . "</th><th>" . $row['Id'] . "</th><th>" . $row['FirstName'] . "</th><th>" . $row['LastName'] . "</th><th>" . $row['pName'] . "</th><th>" . $row['date'] . "</th><th><button class='btn btn-primary'><i class='fa fa-eye'></i></button><button class='btn btn-danger ml-1'><i class='fa fa-trash'></i></button></th></tr>";
 
                     }
 
@@ -378,8 +378,8 @@ include "../../layouts/header.php";
                 </div>
                 <div class="card-body">
                     <div class="text-center">
-                      <!--  <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                             src="../../layouts/img/undraw_posting_photo.svg" alt="">-->
+                        <!--  <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                               src="../../layouts/img/undraw_posting_photo.svg" alt="">-->
                     </div>
                     <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow"
                                                                                           href="https://undraw.co/">unDraw</a>,

@@ -77,32 +77,38 @@
     // Call the dataTables jQuery plugin
     $(document).ready(function () {
 
-        $('#raporAl').click(function(){
+
+        $(".checkAll").click(function () {
+            $('input:checkbox').not(this).prop('checked', this.checked);
+        });
+
+
+        $('#raporAl').click(function () {
             $('.buttons-print').click();
         });
 
-        $('#pdf').click(function(){
+        $('#pdf').click(function () {
             $('.buttons-pdf').click();
         });
 
-        $('#csv').click(function(){
+        $('#csv').click(function () {
             $('.buttons-csv').click();
         });
 
-        $('#excel').click(function(){
+        $('#excel').click(function () {
             $('.buttons-excel').click();
         });
 
-        $('#copy').click(function(){
+        $('#copy').click(function () {
             $('.buttons-copy').click();
             alert('Başarıyla Kopyalandı.')
         });
 
-        $('#raporAl').click(function(){
+        $('#raporAl').click(function () {
             $('.buttons-print').click();
         });
 
-        $('.card').css('visibility','visible');
+        $('.card').css('visibility', 'visible');
 
         $('#dataTable').DataTable({
             dom: 'Blfrtip',
@@ -110,48 +116,55 @@
             buttons: [
                 {
                     extend: 'copy',
-                    title:'Rapor',
+                    title: 'Rapor',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4,5 ]
+                        columns: [1, 2, 3, 4, 5, 6]
                     }
                 },
                 {
                     extend: 'csv',
-                    title:'Rapor',
+                    title: 'Rapor',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4,5 ]
+                        columns: [1, 2, 3, 4, 5, 6]
                     }
                 },
                 {
                     extend: 'excel',
-                    title:'Rapor',
+                    title: 'Rapor',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4,5 ]
+                        columns: [1, 2, 3, 4, 5, 6]
                     }
                 },
                 {
                     extend: 'pdf',
-                    title:'Rapor',
+                    title: 'Rapor',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4,5 ]
+                        columns: [1, 2, 3, 4, 5, 6]
                     }
                 },
                 {
                     extend: 'print',
-                    title:'Rapor',
+                    title: 'Rapor',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4,5 ]
+                        columns: [1, 2, 3, 4, 5, 6]
                     }
                 },
                 'colvis'
 
             ],
 
-           /* buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ],*/
+            "columnDefs": [
+                {
+                    "targets": [0],
+                    "orderable": false,
+                },
+            ],
 
-            "order": [[1, "desc"]],
+            /* buttons: [
+                 'copy', 'csv', 'excel', 'pdf', 'print'
+             ],*/
+
+            "order": [[2, "desc"]],
             "language": {
                 "decimal": "",
                 "emptyTable": "Sipariş bulunamadı.",
@@ -178,6 +191,42 @@
             }
 
 
+        });
+        /*$('#dataTable_length label').insertBefore('<a class="multipleDelete d-inline-block text-white mr-2 btn btn-danger">Toplu Sil</a> ');*/
+        $('<a class="multipleDelete d-inline-block text-white mr-2 btn btn-primary checkAllText">Tümünü Seç</a><a class="multipleDelete deleteAll d-inline-block text-white mr-2 btn btn-danger">Toplu Sil</a>').insertBefore('#dataTable_length label');
+
+        $(".checkAllText").click(function () {
+            $(".checkAll").click();
+        });
+
+        $('.deleteAll').click(function () {
+            var allVals = [];
+            $('.deleteRecords:checked').each(function () {
+                allVals.push($(this).val());
+            });
+            var data = {
+                action: "delete",
+                tableName: "orders",
+                id: allVals
+                /*id : [ 42,40]*/
+            };
+            $.ajax({
+                url: '../../core/mcore.php',
+                method: 'post',
+                data: data,
+                success: function (data) {
+                    alert("Başarılı");
+                    location.reload();
+                }
+            })
+        })
+
+
+
+        $('#dataTable tr').click(function (event) {
+            if (event.target.type !== 'checkbox') {
+                $(':checkbox', this).trigger('click');
+            }
         });
 
     });
