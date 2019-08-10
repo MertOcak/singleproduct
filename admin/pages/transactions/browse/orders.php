@@ -7,7 +7,7 @@
 
     <?php
 
-    $sql = 'SELECT * FROM orders o INNER JOIN products p ON p.id = o.Product INNER JOIN customers c ON o.CustomerId = c.Id INNER JOIN paymentmethod pm ON o.PaymentId = pm.id INNER JOIN status s ON o.Status = s.id WHERE o.id =' . $_GET['id'];
+    $sql = 'SELECT *, o.id AS orderId FROM orders o INNER JOIN products p ON p.id = o.Product INNER JOIN customers c ON o.CustomerId = c.Id INNER JOIN paymentmethod pm ON o.PaymentId = pm.id INNER JOIN status s ON o.Status = s.id WHERE o.id =' . $_GET['id'];
 
 
     /*        $sql = "SELECT * FROM " . $_GET['module'] . " WHERE Id = " . $_GET['id'];*/
@@ -29,8 +29,10 @@
                 <div class="card-body">
                     <table class="table">
                         <tr>
-                            <td class="bg-gradient-dark text-white dividerBorder">Sipariş Numarası: <b> {{ order.id }}</b></td>
-                            <td class="bg-gradient-dark text-white dividerBorder">Sipariş Tarihi: <b> {{ order.CreatedAt }}</b></td>
+                            <td class="bg-gradient-dark text-white dividerBorder">Sipariş Numarası: <b> {{ order.orderId
+                                    }}</b></td>
+                            <td class="bg-gradient-dark text-white dividerBorder">Sipariş Tarihi: <b> {{ order.CreatedAt
+                                    }}</b></td>
                             <td class="bg-gradient-dark text-white ">Sipariş Durumu: <b> {{ order.Status }}</b></td>
                         </tr>
                     </table>
@@ -121,6 +123,16 @@
                         </tr>
                     </table>
 
+                    <div class="col-md-12">
+                        <a :href="'/admin/pages/transactions/orders/edit/' + order.orderId" class="btn btn-warning w-100 text-center text-white">Siparişi Düzenle</a>
+
+                    </div>
+
+                    <div class="col-md-12">
+                        <button onclick="window.history.go(-1); return false;" class="btn btn-success w-100 text-center">Geri
+                            Dön
+                        </button>
+                    </div>
 
                 </div>
             </div>
@@ -130,16 +142,16 @@
 
     <?php
 
-         /* if($row) {
-              foreach ($row as $column => $value) {
-                  echo "<div class='card shadow mb-2'>";
-                  echo "<div class='card-header'><label>" . $column . "</label></div>";
-                  echo "<div class='card-body'>".$value."</div>";
-                  echo "</div>";
-              }
-          } else {
-              echo "Kayıt Bulunamadı";
-          }*/
+    /* if($row) {
+         foreach ($row as $column => $value) {
+             echo "<div class='card shadow mb-2'>";
+             echo "<div class='card-header'><label>" . $column . "</label></div>";
+             echo "<div class='card-body'>".$value."</div>";
+             echo "</div>";
+         }
+     } else {
+         echo "Kayıt Bulunamadı";
+     }*/
 
     ?>
 
