@@ -83,7 +83,7 @@ include "../../layouts/header.php";
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
 
                                 <?php
-                                $monthlyIncomes = $pdo->query('select SUM(TotalPrice) AS TotalIncome from orders where CreatedAt  >= DATE_SUB(CURDATE(), INTERVAL 1 DAY)');
+                                $monthlyIncomes = $pdo->query('select SUM(TotalPrice) AS TotalIncome from orders where CreatedAt  >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)');
                                 $row = $monthlyIncomes->fetch(PDO::FETCH_ASSOC);
                                 echo $row['TotalIncome'] . ' ₺';
                                 ?>

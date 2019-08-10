@@ -46,6 +46,10 @@
 <script src="/admin/layouts/vendor/jquery/jquery.min.js"></script>
 <script src="/admin/layouts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+<!-- Vue JS -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+
 <!-- Core plugin JavaScript-->
 <script src="/admin/layouts/vendor/jquery-easing/jquery.easing.min.js"></script>
 
@@ -73,9 +77,25 @@
 <script src="/admin/layouts/js/demo/chart-pie-demo.js"></script>
 
 
+
+
 <script>
     // Call the dataTables jQuery plugin
     $(document).ready(function () {
+
+        if(typeof order != 'undefined'){
+
+            var orders = new Vue ({
+                el: '#orders',
+                data: order,
+                methods: {
+                    fullName: function(){
+                        return order.FirsName + " " + order.LastName;
+                    }
+                }
+            });
+        }
+
 
 
         $(".checkAll").click(function () {
@@ -227,8 +247,9 @@
                 }
             })
         }
-        })
+        });
 
+        $('#orders').show();
 
 /*
 

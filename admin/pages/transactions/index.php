@@ -12,22 +12,22 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/admin/layouts/header.php");
 
     <!-- Content Row -->
 
+    <!--    .htaccess & php router   -->
     <?php
 
-    echo $_GET['module'];
+    if (isset($_GET['module']) && isset($_GET['action']) && isset($_GET['id']) && is_numeric($_GET['id'])) {
 
-    if (isset($_GET['module']) && isset($_GET['action']) && isset($_GET['id'])) {
-
-        switch ($_GET['module']){
-            case "orders":
-               include("edit".ucfirst($_GET['module']).'.php');
+        include($_GET['action'] . "/" . $_GET['module'] . '.php');
 
 
-        }
+    } else if (isset($_GET['module']) && isset($_GET['action']) && ($_GET['action'] == "add")) {
+
+        include($_GET['action'] . "/" . $_GET['module'] . '.php');
 
 
+    } else {
+        include($_SERVER['DOCUMENT_ROOT'] . "/admin/pages/error/404.php");
     }
-
 
     ?>
 
