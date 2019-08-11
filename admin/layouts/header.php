@@ -57,6 +57,7 @@
         <hr class="sidebar-divider">
 
         <!-- Heading -->
+
         <div class="sidebar-heading">
             E-Ticaret Yönetimi
         </div>
@@ -326,7 +327,7 @@
                                 $date = $row['date'];
 
 
-                                echo ' <a class="dropdown-item d-flex align-items-center" href="'.$row['Id'].'">
+                                echo ' <a class="dropdown-item d-flex align-items-center" href="/admin/pages/transactions/orders/browse/'.$row['Id'].'">
                                 <div class="mr-3">
                                     <div class="icon-circle bg-success">
                                         <i class="fas fa-donate text-white"></i>

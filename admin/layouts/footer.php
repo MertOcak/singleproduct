@@ -77,25 +77,22 @@
 <script src="/admin/layouts/js/demo/chart-pie-demo.js"></script>
 
 
-
-
 <script>
     // Call the dataTables jQuery plugin
     $(document).ready(function () {
 
-        if(typeof order != 'undefined'){
+        if (typeof order != 'undefined') {
 
-            var orders = new Vue ({
+            var orders = new Vue({
                 el: '#orders',
                 data: order,
                 methods: {
-                    fullName: function(){
+                    fullName: function () {
                         return order.FirsName + " " + order.LastName;
                     }
                 }
             });
         }
-
 
 
         $(".checkAll").click(function () {
@@ -221,60 +218,66 @@
 
         $('.deleteAll').click(function () {
 
-        if(confirm("İşleminizden emin misiniz? Bu işlem geri alınamaz")) {
-            var allVals = [];
-            $('.deleteRecords:checked').each(function () {
-                allVals.push($(this).val());
-            });
-            var data = {
-                action: "delete",
-                tableName: "orders",
-                id: allVals
-                /*id : [ 42,40]*/
-            };
+            if (confirm("İşleminizden emin misiniz? Bu işlem geri alınamaz")) {
+                var allVals = [];
+                $('.deleteRecords:checked').each(function () {
+                    allVals.push($(this).val());
+                });
+                var data = {
+                    action: "delete",
+                    tableName: "orders",
+                    id: allVals
+                    /*id : [ 42,40]*/
+                };
 
-            if(allVals == "") {
-                alert('Silinecek siparişleri seçmelisiniz');
-                return 0;
-            }
-            $.ajax({
-                url: '/admin/core/mcore.php',
-                method: 'post',
-                data: data,
-                success: function (data) {
-                    alert("Başarılı");
-                    location.reload();
+                if (allVals == "") {
+                    alert('Silinecek siparişleri seçmelisiniz');
+                    return 0;
                 }
-            })
-        }
+                $.ajax({
+                    url: '/admin/core/mcore.php',
+                    method: 'post',
+                    data: data,
+                    success: function (data) {
+                        alert("Başarılı");
+                        location.reload();
+                    }
+                })
+            }
         });
 
         $('#orders').show();
 
-/*
 
-      function check(){  $('#dataTable tr').click(function (event) {
-            if (event.target.type !== 'checkbox') {
-                $(':checkbox', this).trigger('click');
-            }
-        });
+        if ($('#orderStatus').length > 0) {
+            $('#orderStatus option[value="' + order.statusId + '"]').attr("selected", "selected");
+            $('#allProducts option[value="' + order.Product + '"]').attr("selected", "selected");
 
-      };
+        }
+        /*
 
-        check();
-*/
+              function check(){  $('#dataTable tr').click(function (event) {
+                    if (event.target.type !== 'checkbox') {
+                        $(':checkbox', this).trigger('click');
+                    }
+                });
 
-     /* $('.paginate_button').click(function () {
-          check();
-      })*/
+              };
 
-   /*     $('#dataTable').on( 'draw.dt', function () {
-            check();
-        } );
+                check();
+        */
 
-        $('#dataTable').on( 'search.dt', function () {
-            check();
-        } );*/
+        /* $('.paginate_button').click(function () {
+             check();
+         })*/
+
+        /*     $('#dataTable').on( 'draw.dt', function () {
+                 check();
+             } );
+
+             $('#dataTable').on( 'search.dt', function () {
+                 check();
+             } );*/
 
 
     });

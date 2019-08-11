@@ -7,7 +7,7 @@
 
     <?php
 
-    $sql = 'SELECT *, o.id AS orderId FROM orders o INNER JOIN products p ON p.id = o.Product INNER JOIN customers c ON o.CustomerId = c.Id INNER JOIN paymentmethod pm ON o.PaymentId = pm.id INNER JOIN status s ON o.Status = s.id WHERE o.id =' . $_GET['id'];
+    $sql = 'SELECT *, o.id AS orderId FROM orders o INNER JOIN products p ON p.id = o.Product INNER JOIN customers c ON o.CustomerId = c.Id INNER JOIN paymentmethod pm ON o.PaymentId = pm.id INNER JOIN status s ON o.Status = s.id INNER JOIN notes n ON o.Note = n.Id  WHERE o.id =' . $_GET['id'];
 
 
     /*        $sql = "SELECT * FROM " . $_GET['module'] . " WHERE Id = " . $_GET['id'];*/
@@ -41,103 +41,110 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    Müşteri Bilgileri
-                </div>
-                <div class="card-body">
-                    <table class="table">
-                        <tr class="border border-bottom-light border-right-light">
-                            <td>Ad Soyad</td>
-                            <td><b> {{ order.FirstName }} {{order.LastName }}</b></td>
-                        </tr>
-                        <tr class="border border-bottom-light">
-                            <td>Mail</td>
-                            <td><b> {{order.Mail }}</b></td>
-                        </tr>
-                        <tr class="border border-bottom-light">
-                            <td>Telefon</td>
-                            <td><b> {{order.Phone }}</b></td>
-                        </tr>
-                        <tr class="border border-bottom-light">
-                            <td>Sipariş Adresi</td>
-                            <td><b> {{ order.Address }}</b></td>
-                        </tr>
-                    </table>
+    <form id="editOrder">
 
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        Müşteri Bilgileri
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <tr class="border border-bottom-light border-right-light">
+                                <td>Ad Soyad</td>
+                                <td><b> {{ order.FirstName }} {{order.LastName }}</b></td>
+                            </tr>
+                            <tr class="border border-bottom-light">
+                                <td>Mail</td>
+                                <td><b> {{order.Mail }}</b></td>
+                            </tr>
+                            <tr class="border border-bottom-light">
+                                <td>Telefon</td>
+                                <td><b> {{order.Phone }}</b></td>
+                            </tr>
+                            <tr class="border border-bottom-light">
+                                <td>Sipariş Adresi</td>
+                                <td><b> {{ order.Address }}</b></td>
+                            </tr>
+                        </table>
 
-                </div>
-            </div>
-
-
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    Sipariş Bilgileri
-                </div>
-                <div class="card-body">
-                    <table class="table">
-                        <tr class="border border-bottom-light border-right-light">
-                            <td>Durumu</td>
-                            <td><b> {{ order.StatusName }} </b></td>
-                        </tr>
-                        <tr class="border border-bottom-light border-right-light">
-                            <td>Ürün</td>
-                            <td><b> {{ order.Name }} </b></td>
-                        </tr>
-                        <tr class="border border-bottom-light">
-                            <td>Adet</td>
-                            <td><b> {{ order.Amount }}</b></td>
-                        </tr>
-                    </table>
-
-
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    Ödeme Bilgileri
-                </div>
-                <div class="card-body">
-                    <table class="table">
-                        <tr class="border border-bottom-light  bg-gradient-primary text-white">
-                            <td class="dividerBorder">Ödeme Şekli</td>
-                            <td class="text-center"><b> {{ order.PaymentMethodName }}</b></td>
-                        </tr>
-                        <tr class="border border-bottom-light border-right-light bg-gradient-primary text-white">
-                            <td class="dividerBorder">Ürün Fiyatı</td>
-                            <td class="text-center"><b> {{ order.ProductPrice }} ₺ </b></td>
-                        </tr>
-                        <tr class="border border-bottom-light bg-gradient-primary text-white">
-                            <td class="dividerBorder">Kargo Ücreti</td>
-                            <td class="text-center"><b> {{ order.ShippingFee }} ₺</b></td>
-                        </tr>
-                        <tr class="border border-bottom-light bg-gradient-danger text-white">
-                            <td class="dividerBorder">Toplam Ödenecek</td>
-                            <td class="text-center"><b> {{ order.TotalPrice }} ₺</b></td>
-                        </tr>
-                    </table>
-
-                    <div class="col-md-12">
-                        <a :href="'/admin/pages/transactions/orders/edit/' + order.orderId" class="btn btn-warning w-100 text-center text-white">Siparişi Düzenle</a>
 
                     </div>
+                </div>
 
-                    <div class="col-md-12">
-                        <button onclick="window.history.go(-1); return false;" class="btn btn-success w-100 text-center">Geri
-                            Dön
-                        </button>
+
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        Sipariş Bilgileri
                     </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <tr class="border border-bottom-light border-right-light">
+                                <td>Durumu</td>
+                                <td><b> {{ order.StatusName }} </b></td>
+                            </tr>
+                            <tr class="border border-bottom-light border-right-light">
+                                <td>Ürün</td>
+                                <td><b> {{ order.Name }} </b></td>
+                            </tr>
+                            <tr class="border border-bottom-light">
+                                <td>Adet</td>
+                                <td><b> {{ order.Amount }}</b></td>
+                            </tr>
+                            <tr class="border border-bottom-light">
+                                <td>Eklediğiniz Notlar</td>
+                                <td v-if="order.Note"><b> {{ order.Note }}</b></td>
+                            </tr>
+                        </table>
 
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        Ödeme Bilgileri
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <tr class="border border-bottom-light  bg-gradient-primary text-white">
+                                <td class="dividerBorder">Ödeme Şekli</td>
+                                <td class="text-center"><b> {{ order.PaymentMethodName }}</b></td>
+                            </tr>
+                            <tr class="border border-bottom-light border-right-light bg-gradient-primary text-white">
+                                <td class="dividerBorder">Ürün Fiyatı</td>
+                                <td class="text-center"><b> {{ order.ProductPrice }} ₺ </b></td>
+                            </tr>
+                            <tr class="border border-bottom-light bg-gradient-primary text-white">
+                                <td class="dividerBorder">Kargo Ücreti</td>
+                                <td class="text-center"><b> {{ order.ShippingFee }} ₺</b></td>
+                            </tr>
+                            <tr class="border border-bottom-light bg-gradient-danger text-white">
+                                <td class="dividerBorder">Toplam Ödenecek</td>
+                                <td class="text-center"><b> {{ order.TotalPrice }} ₺</b></td>
+                            </tr>
+                        </table>
+
+                        <div class="col-md-12">
+                            <a :href="'/admin/pages/transactions/orders/edit/' + order.orderId" class="btn btn-warning w-100 text-center text-white">Siparişi Düzenle</a>
+
+                        </div>
+
+                        <div class="col-md-12">
+                            <button onclick="window.history.go(-1); return false;" class="btn btn-success w-100 text-center">Geri
+                                Dön
+                            </button>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 
 
     <?php
