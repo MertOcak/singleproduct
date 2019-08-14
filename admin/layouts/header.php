@@ -35,6 +35,12 @@
             font-size: 13px !important;
             text-align: center;
         }
+        .bg-gradient-dark-2 {
+            background-color: #ffffff;
+            background-image: none !important;
+            background-size: cover;
+            color: #000 !important;
+        }
     </style>
 </head>
 
@@ -120,10 +126,10 @@
             <div id="products" class="collapse" aria-labelledby="headingUtilities"
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <!--                    <h6 class="collapse-header">Custom Utilities:</h6>
-                    -->
+                    <a class="collapse-item" href="/admin/pages/transactions/products/add">Yeni Ürün Ekle</a>
                     <a class="collapse-item" href="/admin/pages/products">Ürünleri Listele</a>
                 </div>
+
             </div>
         </li>
 

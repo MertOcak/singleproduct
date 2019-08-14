@@ -165,17 +165,7 @@
                         </tr>
                     </table>
 
-                    <div class="col-md-12">
-                        <a :href="'/admin/pages/transactions/orders/edit/' + order.orderId"
-                           class="btn btn-warning w-100 text-center text-white">Kaydet</a>
-                    </div>
 
-                    <div class="col-md-12">
-                        <button onclick="window.history.go(-1); return false;"
-                                class="btn btn-success w-100 text-center">Geri
-                            Dön
-                        </button>
-                    </div>
 
                 </div>
             </div>

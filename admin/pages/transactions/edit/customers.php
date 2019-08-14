@@ -25,19 +25,20 @@
 
     <div class="row">
         <div class="col-md-12 mb-2">
-            <div class="card">
-                <div class="card-body">
-                    <table class="table">
+            <div class="card bg-transparent border-0">
+                <div class="card-body p-0 ">
+                    <table class="table text-center">
                         <tr>
-                            <td class="bg-gradient-dark text-white dividerBorder">Müşteri Numarası: <b> {{ order.id
+                            <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder">Müşteri Düzenle</td>
+                            <td class="bg-gradient-dark-2 text-white dividerBorder">Müşteri Numarası: <b> {{ order.id
                                     }}</b></td>
-
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+
     <form action="" method="post">
         <input v-model="order.customerId" type="hidden" name="customerId">
         <input v-model="order.productId" type="hidden" name="productId">

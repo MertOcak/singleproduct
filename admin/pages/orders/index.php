@@ -171,16 +171,6 @@ include "../../layouts/header.php";
                         <th>İşlemler</th>
                     </tr>
                     </thead>
-                    <!--                        <tfoot>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                            </tfoot>-->
                     <tbody>
 
                     <?php
@@ -194,6 +184,7 @@ include "../../layouts/header.php";
                         echo "<tr style='font-size: 13px' class='text-center'><th class='selectColumn'><input class='deleteRecords' name=\"checkbox[]\" type=\"checkbox\" value=\"" . $row['Id'] . "\"></th><th style='width:140px' class='text-center'><button style='color:#ffffff;width:80%' class='btn btn-".$color." btn-icon-". $color ." statusArea'>" . $status . "</button></th><th>" . $row['Id'] . "<th>".$row['TotalPrice']." ₺</th><th>" . $row['FirstName'] . "</th><th>" . $row['LastName'] . "</th><th>".$row['Mail']."</th><th>".$row['Phone']."</th><th>" . $row['pName'] . "</th><th><i class='fa fa-map'></i></th><th>" . $row['date'] . "</th><th>".$row['ReferenceUrl']."</th><th><a href='/admin/pages/transactions/orders/browse/".$row['Id']."'><button class='btn btn-circle btn-primary'><i class='fa fa-eye'></i></button></a><button class='btn btn-circle btn-danger ml-1'><i class='fa fa-trash'></i></button></th></tr>";
 
                     }
+
 
                     ?>
 

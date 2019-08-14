@@ -25,11 +25,11 @@ try {
 if(isset($_POST['action'])){
     switch ($_POST['action']) {
         case "delete":
-            $sql = "DELETE FROM " . $_POST['tableName'] . " WHERE Id in ";
+           /* $sql = "DELETE FROM " . $_POST['tableName'] . " WHERE Id in ";*/
+            $sql = "UPDATE " . $_POST['tableName'] . " SET Active = 0 WHERE Id in ";
             $sql .= "('" . implode("','", array_values($_POST['id'])) . "')";
             $pdo->query($sql);
             break;
-
     }
 }
 
@@ -106,9 +106,14 @@ if( isset($_POST['FirstName']) && isset($_POST['LastName']) && isset($_POST['Add
 
 /*Products*/
 
-if( isset($_POST['Name']) && isset($_POST['Price']) && isset($_POST['Active']) && isset($_POST['Stock'])) {
+if( !isset($_POST['action']) && isset($_POST['Name']) && isset($_POST['Price']) && isset($_POST['Active']) && isset($_POST['Stock'])) {
     $sql = "UPDATE products SET Name = ?, Price = ?, Active = ?, Stock = ? WHERE id = ?";
     $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Price'],$_POST['Active'],$_POST['Stock'], $_GET['id'] ]);
+}
+
+if( isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']) && isset($_POST['Price']) && isset($_POST['Active']) && isset($_POST['Stock'])) {
+    $sql = "INSERT INTO products SET Name = ?, Price = ?, Active = ?, Stock = ?";
+    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Price'],$_POST['Active'],$_POST['Stock']]);
 }
 
 

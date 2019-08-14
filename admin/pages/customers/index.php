@@ -171,7 +171,7 @@ include "../../layouts/header.php";
                     <?php
                     // Shorthand If / Else tanımlaması
 
-                    $stmt = $pdo->query('SELECT * FROM customers');
+                    $stmt = $pdo->query('SELECT * FROM customers WHERE Active = 1');
                     while ($row = $stmt->fetch()) {
                         echo "<tr style='font-size: 13px' class='text-center'><th class='selectColumn'><input class='deleteRecords' name=\"checkbox[]\" type=\"checkbox\" value=\"".$row['id']."\"></th><th>".$row['id']."</th><th class='text-center'>".$row['FirstName']."</th><th>" . $row['LastName'] . "</th><th>" . $row['Mail'] . "</th><th>" . $row['Phone'] . "</th><th>".$row['Address']."</th><th><a href='/admin/pages/transactions/customers/edit/".$row['id']."'><button class='btn btn-circle btn-warning'><i class='fa fa-edit'></i></button></a><button class='btn btn-circle btn-danger ml-1'><i class='fa fa-trash'></i></button></th></tr>";
 

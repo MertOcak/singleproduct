@@ -87,7 +87,7 @@
                 data: order,
                 methods: {
                     fullName: function () {
-                        return order.FirsName + " " + order.LastName;
+                        return order.FirstName + " " + order.LastName;
                     }
                 }
             });

@@ -45,7 +45,7 @@ include "../../layouts/header.php";
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">TÜM SİPARİŞLER</div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">TÜM Ürünler</div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
@@ -137,7 +137,7 @@ include "../../layouts/header.php";
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Tüm Siparişler</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Tüm Ürünler <a href="/admin/pages/transactions/products/add"><input type="button" value="Yeni Ekle"></a></h6>
             <div style="position: absolute; top:10px; right: 10px;" class="float-right">
                 <a id="raporAl" href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i> Rapor Al</a>
@@ -173,7 +173,7 @@ include "../../layouts/header.php";
                     $stmt = $pdo->query('SELECT * FROM products p INNER JOIN status s ON p.Status = s.id');
                     while ($row = $stmt->fetch()) {
                         $activeStatus = ($row['Active'] === 1) ? 'Aktif' : 'Pasif';
-                        echo "<tr style='font-size: 13px' class='text-center'><th class='selectColumn'><input class='deleteRecords' name=\"checkbox[]\" type=\"checkbox\" value=\"".$row['id']."\"></th><th>".$row['id']."</th><th class='text-center'>".$row['Name']."</th><th>" . $row['Price'] . " ₺</th><th>" . $activeStatus . "</th><th>" . $row['Stock'] . " Birim</th><th><a href='/admin/pages/transactions/products/edit/".$row['id']."'><button class='btn btn-circle btn-warning'><i class='fa fa-edit'></i></button></a><button class='btn btn-circle btn-danger ml-1'><i class='fa fa-trash'></i></button></th></tr>";
+                        echo "<tr style='font-size: 13px' class='text-center'><th class='selectColumn'><input class='deleteRecords' name=\"checkbox[]\" type=\"checkbox\" value=\"".$row['Id']."\"></th><th>".$row['Id']."</th><th class='text-center'>".$row['Name']."</th><th>" . $row['Price'] . " ₺</th><th>" . $activeStatus . "</th><th>" . $row['Stock'] . " Birim</th><th><a href='/admin/pages/transactions/products/edit/".$row['id']."'><button class='btn btn-circle btn-warning'><i class='fa fa-edit'></i></button></a><button class='btn btn-circle btn-danger ml-1'><i class='fa fa-trash'></i></button></th></tr>";
 
                     }
 
@@ -398,7 +398,7 @@ include "../../layouts/header.php";
 <!-- /.container-fluid -->
 
 <script>
-    _page = "customers";
+    _page = "products";
 </script>
 
 <?php

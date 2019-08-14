@@ -7,12 +7,12 @@
 
     <?php
 
-    $sql = 'SELECT * FROM products  WHERE id =' . $_GET['id'];
+/*    $sql = 'SELECT * FROM products  WHERE id =' . $_GET['id'];*/
 
 
     /*        $sql = "SELECT * FROM " . $_GET['module'] . " WHERE Id = " . $_GET['id'];*/
-    $stmt = $pdo->query($sql);
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+/*    $stmt = $pdo->query($sql);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);*/
     /*while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         print_r($row);
     }*/
@@ -20,7 +20,9 @@
     ?>
 
     <script>
+/*
         var order = <?php  echo json_encode($row) ?>
+*/
     </script>
 
     <div class="row">
@@ -29,10 +31,7 @@
                 <div class="card-body p-0 ">
                     <table class="table text-center">
                         <tr>
-                            <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder">Ürün Düzenle</td>
-                            <td class="bg-gradient-dark-2 text-white dividerBorder">Ürün Numarası: <b> {{ order.Id
-                                    }}</b></td>
-
+                            <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder">Ürün Ekle</td>
                         </tr>
                     </table>
                 </div>
@@ -40,6 +39,7 @@
         </div>
     </div>
     <form action="" method="post">
+        <input name="action" value="add" type="hidden">
         <div class="row">
             <div class="col-md-12">
                 <form action="" method="post">
@@ -53,7 +53,6 @@
                                     <td>Ürün Adı</td>
                                     <td>
                                         <input name="Name"
-                                               v-model="order.Name"
                                                type="text"
                                                class="form-control w-40 d-inline-block"
                                                >
@@ -64,20 +63,21 @@
                                     <td>
                                         <input
                                                name="Price"
-                                               v-model="order.Price" type="text"
+                                               type="text"
                                                class="form-control w-40 d-inline-block">
                                     </td>
                                 </tr>
                                 <tr class="border border-bottom-light">
                                     <td>Ürün Aktiflik Durumu</td>
-                                    <td><select name="Active" v-model="order.Active"/>
-                                        <option v-for = "code in activeList" :value="code.id" >{{code.name}}</option>
+                                    <td><select name="Active"/>
+                                        <option value="1" >Aktif</option>
+                                        <option value="2" >Pasif</option>
                                         <select> <small class="ml-2"> <span style="color: green;">Aktif</span> = Sipariş formunda listelenir, <span style="color: red;">Pasif</span> = Sipariş formunda listelenmez</small>
                                  </td>
                                 </tr>
                                 <tr class="border border-bottom-light">
                                     <td>Stok Miktarı</td>
-                                    <td><input name="Stock" v-model="order.Stock" type="text" class="form-control"></td>
+                                    <td><input name="Stock" type="text" class="form-control"></td>
                                 </tr>
                                 <tr class="text-right">
                                     <input type="submit" value="Kaydet">

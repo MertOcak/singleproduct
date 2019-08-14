@@ -25,13 +25,33 @@
 
     <div class="row">
         <div class="col-md-12 mb-2">
+            <div class="card bg-transparent border-0">
+                <div class="card-body p-0 ">
+                    <table class="table text-center">
+                        <tr>
+                            <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder">Sipariş Detayları</td>
+                            <td class="bg-gradient-dark-2 text-white dividerBorder">Sipariş Numarası: <b> {{ order.orderId
+                                    }}</b></td>
+                            <td class="bg-gradient-dark-2 text-white dividerBorder">Sipariş Tarihi: <b> {{ order.CreatedAt
+                                    }}</b></td>
+                            <td class="bg-gradient-dark-2 text-white ">Sipariş Durumu: <b> {{ order.StatusName }}</b></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+ <!--   <div class="row">
+        <div class="col-md-12 mb-2">
             <div class="card">
                 <div class="card-header bg-white text-primary">
                     <b> SİPARİŞ NUMARASI: {{ order.orderId }}</b>
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
     <form id="editOrder">
 
@@ -59,6 +79,13 @@
                                 <td>Sipariş Adresi</td>
                                 <td><b> {{ order.Address }}</b></td>
                             </tr>
+                            <tr>
+                            <tr>
+                                <a :href="'/admin/pages/transactions/orders/edit/' + order.orderId">
+                                    <input type="button" value="Düzenle">
+                                </a>
+                            </tr>
+                            </tr>
                         </table>
 
 
@@ -77,6 +104,10 @@
                             <tr class="border border-bottom-light border-right-light">
                                 <td>Durumu</td>
                                 <td><b> {{ order.StatusName }} </b></td>
+                            </tr>
+                            <tr class="border border-bottom-light border-right-light">
+                                <td>Referans Site</td>
+                                <td><b> {{ order.ReferenceUrl }} </b></td>
                             </tr>
                             <tr class="border border-bottom-light border-right-light">
                                 <td>Ürün</td>
@@ -99,36 +130,17 @@
             <div class="col-md-6">
                 <div class="card">
                     <div style="background: #4e73df;" class="card-header text-white">
-                        Ödeme Bilgileri
+                        Sipariş Detayları
                     </div>
-                    <!--    <div class="card-body">
-                            <table class="table">
-                                <tr class="border border-bottom-light border-right-light">
-                                    <td>Durumu</td>
-                                    <td><b> {{ order.StatusName }} </b></td>
-                                </tr>
-                                <tr class="border border-bottom-light border-right-light">
-                                    <td>Ürün</td>
-                                    <td><b> {{ order.Name }} </b></td>
-                                </tr>
-                                <tr class="border border-bottom-light">
-                                    <td>Adet</td>
-                                    <td><b> {{ order.Amount }}</b></td>
-                                </tr>
-                                <tr class="border border-bottom-light">
-                                    <td>Eklediğiniz Notlar</td>
-                                    <td v-if="order.Note"><b> {{ order.Note }}</b></td>
-                                </tr>
-                            </table>
-
-
-                        </div>-->
-
                     <div class="card-body">
                         <table class="table">
                             <tr class="border">
                                 <td class="dividerBorder">Durumu</td>
                                 <td><b> {{ order.StatusName }} </b></td>
+                            </tr>
+                            <tr class="border border-bottom-light border-right-light">
+                                <td>Referans Site</td>
+                                <td><b> {{ order.ReferenceUrl }} </b></td>
                             </tr>
                             <tr class="border">
                                 <td class="dividerBorder">Ürün</td>
@@ -155,29 +167,20 @@
                                 <td class="dividerBorder">Kargo Ücreti</td>
                                 <td><b> {{ order.ShippingFee }} ₺</b></td>
                             </tr>
-                            <tr class="border border-bottom-light bg-gradient-danger text-white">
-                                <td class="dividerBorder">Toplam Ödenecek</td>
+                            <tr class="border border-bottom-light text-dark">
+                                <td class="dividerBorder font-weight-bold">Toplam Ödenecek</td>
                                 <td><b> {{ order.TotalPrice }} ₺</b></td>
                             </tr>
                             <tr class="border">
                                 <td>Eklediğiniz Notlar</td>
                                 <td class="dividerBorder"><b> {{ order.Note }}</b></td>
                             </tr>
+                            <tr>
+                                <a :href="'/admin/pages/transactions/orders/edit/' + order.orderId">
+                                    <input type="button" value="Düzenle">
+                                </a>
+                            </tr>
                         </table>
-
-                        <div class="col-md-12 mb-2">
-                            <a :href="'/admin/pages/transactions/orders/edit/' + order.orderId"
-                               class="btn btn-warning w-100 text-center text-white">Siparişi Düzenle</a>
-
-                        </div>
-
-                        <div class="col-md-12">
-                            <button onclick="window.history.go(-1); return false;"
-                                    class="btn btn-success w-100 text-center">Geri
-                                Dön
-                            </button>
-                        </div>
-
                     </div>
                 </div>
             </div>
