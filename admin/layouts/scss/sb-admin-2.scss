@@ -57,6 +57,14 @@
   cursor:pointer;
 }
 
+th a {
+  color: #858796;
+  &:hover {
+    color: red !important;
+    text-decoration: none;
+  }
+}
+
 #dataTable tbody tr:hover {
   background: #f2f2f25c !important;
 }
