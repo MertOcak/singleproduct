@@ -83,6 +83,37 @@ function statusColorCheck($x)
     }
 }
 
+
+/* Orders */
+
+if( isset($_POST['FirstName']) && isset($_POST['LastName']) && isset($_POST['Address']) && isset($_POST['Mail']) && isset($_POST['Phone']) && isset($_POST['FirstName']) && isset($_POST['Note']) && isset($_POST['Amount']) && isset($_POST['Product']) && isset($_POST['Status']) ) {
+    $sql = "UPDATE customers SET FirstName = ?, LastName = ?, Address = ?, Mail = ?, Phone = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['FirstName'], $_POST['LastName'],$_POST['Address'],$_POST['Mail'],$_POST['Phone'], $_POST['customerId'] ]);
+
+    $sql = "UPDATE notes SET Note = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['Note'] , $_GET['id']]);
+
+    $sql = "UPDATE orders SET Amount = ?, Status = ?, Product = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['Amount'], $_POST['Status'], $_POST['Product'], $_GET['id']]);
+}
+
+/*Customers*/
+
+if( isset($_POST['FirstName']) && isset($_POST['LastName']) && isset($_POST['Address']) && isset($_POST['Mail']) && isset($_POST['Phone'])) {
+    $sql = "UPDATE customers SET FirstName = ?, LastName = ?, Address = ?, Mail = ?, Phone = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['FirstName'], $_POST['LastName'],$_POST['Address'],$_POST['Mail'],$_POST['Phone'], $_GET['id'] ]);
+}
+
+/*Products*/
+
+if( isset($_POST['Name']) && isset($_POST['Price']) && isset($_POST['Active']) && isset($_POST['Stock'])) {
+    $sql = "UPDATE products SET Name = ?, Price = ?, Active = ?, Stock = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Price'],$_POST['Active'],$_POST['Stock'], $_GET['id'] ]);
+}
+
+
+
+
 /*$query = $db->prepare("INSERT INTO uyeler SET
 uye_kadi = :kadi,
 uye_sifre = :sifre,

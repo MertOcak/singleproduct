@@ -23,8 +23,19 @@
 
     <!-- Custom styles for this page -->
     <link href="/admin/layouts/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="/admin/layouts/vendor/jquery/jquery.min.js"></script>
 
+    <style>
+        .btn {
+            font-size: 12px !important;
+        }
 
+        table.table-bordered.dataTable th, table.table-bordered.dataTable td {
+            border-left-width: 0;
+            font-size: 13px !important;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -111,7 +122,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <!--                    <h6 class="collapse-header">Custom Utilities:</h6>
                     -->
-                    <a class="collapse-item" href="utilities-color.html">Ürünleri Düzenle</a>
+                    <a class="collapse-item" href="/admin/pages/products">Ürünleri Listele</a>
                 </div>
             </div>
         </li>

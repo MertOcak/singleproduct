@@ -7,7 +7,7 @@
 
     <?php
 
-    $sql = 'SELECT * FROM customers  WHERE id =' . $_GET['id'];
+    $sql = 'SELECT * FROM products  WHERE id =' . $_GET['id'];
 
 
     /*        $sql = "SELECT * FROM " . $_GET['module'] . " WHERE Id = " . $_GET['id'];*/
@@ -29,7 +29,7 @@
                 <div class="card-body">
                     <table class="table">
                         <tr>
-                            <td class="bg-gradient-dark text-white dividerBorder">Müşteri Numarası: <b> {{ order.id
+                            <td class="bg-gradient-dark text-white dividerBorder">Ürün Numarası: <b> {{ order.Id
                                     }}</b></td>
 
                         </tr>
@@ -39,44 +39,44 @@
         </div>
     </div>
     <form action="" method="post">
-        <input v-model="order.customerId" type="hidden" name="customerId">
-        <input v-model="order.productId" type="hidden" name="productId">
-
-
         <div class="row">
             <div class="col-md-12">
                 <form action="" method="post">
                     <div class="card">
                         <div class="card-header">
-                            Müşteri Bilgileri
+                            Ürün Bilgileri
                         </div>
                         <div class="card-body">
                             <table class="table">
                                 <tr class="border border-bottom-light border-right-light">
-                                    <td>Ad Soyad</td>
+                                    <td>Ürün Adı</td>
                                     <td>
-                                        <input style="width: calc(50% - 5px);float:left; margin-right: 10px;"
-                                               name="FirstName"
-                                               v-model="order.FirstName" type="text"
-                                               class="form-control w-40 d-inline-block">
-                                        <input name="LastName"
-                                               v-model="order.LastName"
+                                        <input name="Name"
+                                               v-model="order.Name"
                                                type="text"
                                                class="form-control w-40 d-inline-block"
-                                               style="width: calc(50% - 5px);float:left;">
+                                               >
+                                    </td>
+                                </tr>
+                                <tr class="border border-bottom-light border-right-light">
+                                    <td>Ürün Birim Fiyatı ( ₺ = Türk Lirası)</td>
+                                    <td>
+                                        <input
+                                               name="Price"
+                                               v-model="order.Price" type="text"
+                                               class="form-control w-40 d-inline-block">
                                     </td>
                                 </tr>
                                 <tr class="border border-bottom-light">
-                                    <td>Mail</td>
-                                    <td><input name="Mail" v-model="order.Mail" type="text" class="form-control"></td>
+                                    <td>Ürün Aktiflik Durumu</td>
+                                    <td><select name="Active" v-model="order.Active"/>
+                                        <option v-for = "code in activeList" :value="code.id" >{{code.name}}</option>
+                                        <select> <small class="ml-2"> <span style="color: green;">Aktif</span> = Sipariş formunda listelenir, <span style="color: red;">Pasif</span> = Sipariş formunda listelenmez</small>
+                                 </td>
                                 </tr>
                                 <tr class="border border-bottom-light">
-                                    <td>Telefon</td>
-                                    <td><input name="Phone" v-model="order.Phone" type="text" class="form-control"></td>
-                                </tr>
-                                <tr class="border border-bottom-light">
-                                    <td>Adres</td>
-                                    <td><textarea name="Address" class="form-control">{{ order.Address}}</textarea></td>
+                                    <td>Stok Miktarı</td>
+                                    <td><input name="Stock" v-model="order.Stock" type="text" class="form-control"></td>
                                 </tr>
                                 <tr class="text-right">
                                     <input type="submit" value="Kaydet">
@@ -94,3 +94,7 @@
         </div>
     </form>
 </div>
+
+<script>
+    activeList = [{ "id": "1", "name": "Aktif"},{ "id": "0", "name": "Pasif"}];
+</script>

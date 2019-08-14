@@ -7,7 +7,7 @@
 
     <?php
 
-    $sql = 'SELECT *, o.id AS orderId, s.id AS statusId, n.Note AS currentNote FROM orders o INNER JOIN products p ON p.id = o.Product INNER JOIN customers c ON o.CustomerId = c.Id INNER JOIN paymentmethod pm ON o.PaymentId = pm.id INNER JOIN status s ON o.Status = s.id INNER JOIN notes n ON o.Note = n.Id WHERE o.id =' . $_GET['id'];
+    $sql = 'SELECT *, o.id AS orderId, c.id AS customerId, p.id AS productId, s.id AS statusId, n.Note AS currentNote FROM orders o INNER JOIN products p ON p.id = o.Product INNER JOIN customers c ON o.CustomerId = c.Id INNER JOIN paymentmethod pm ON o.PaymentId = pm.id INNER JOIN status s ON o.Status = s.id INNER JOIN notes n ON o.id = n.Id WHERE o.id =' . $_GET['id'];
 
 
     /*        $sql = "SELECT * FROM " . $_GET['module'] . " WHERE Id = " . $_GET['id'];*/
@@ -27,19 +27,23 @@
         <div class="col-md-12 mb-2">
             <div class="card">
                 <div class="card-body">
-                    <table class="table">
+                    <table class="table text-center">
                         <tr>
                             <td class="bg-gradient-dark text-white dividerBorder">Sipariş Numarası: <b> {{ order.orderId
                                     }}</b></td>
                             <td class="bg-gradient-dark text-white dividerBorder">Sipariş Tarihi: <b> {{ order.CreatedAt
                                     }}</b></td>
-                            <td class="bg-gradient-dark text-white ">Sipariş Durumu: <b> {{ order.Status }}</b></td>
+                            <td class="bg-gradient-dark text-white ">Sipariş Durumu: <b> {{ order.StatusName }}</b></td>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+    <form action="" method="post">
+        <input  v-model="order.customerId" type="hidden" name="customerId">
+        <input  v-model="order.productId" type="hidden" name="productId">
+
 
     <div class="row">
         <div class="col-md-4">
@@ -51,7 +55,14 @@
                     <table class="table">
                         <tr class="border border-bottom-light border-right-light">
                             <td>Ad Soyad</td>
-                            <td><input name="FirstName" v-model="order.FirstName" type="text" class="form-control w-40 d-inline-block"><input name="LastName" v-model="order.LastName" type="text" class="form-control w-40 d-inline-block"></td>
+                            <td><input style="width: calc(50% - 5px);float:left; margin-right: 10px;" name="FirstName"
+                                       v-model="order.FirstName" type="text"
+                                       class="form-control w-40 d-inline-block"><input name="LastName"
+                                                                                       v-model="order.LastName"
+                                                                                       type="text"
+                                                                                       class="form-control w-40 d-inline-block"
+                                                                                       style="width: calc(50% - 5px);float:left;">
+                            </td>
                         </tr>
                         <tr class="border border-bottom-light">
                             <td>Mail</td>
@@ -59,11 +70,15 @@
                         </tr>
                         <tr class="border border-bottom-light">
                             <td>Telefon</td>
-                            <td><input name="Mail" v-model="order.Phone" type="text" class="form-control"></td>
+                            <td><input name="Phone" v-model="order.Phone" type="text" class="form-control"></td>
                         </tr>
                         <tr class="border border-bottom-light">
                             <td>Sipariş Adresi</td>
-                            <td><textarea name="Address"class="form-control">{{ order.Address}}</textarea></td>
+                            <td><textarea name="Address" class="form-control">{{ order.Address}}</textarea></td>
+                        </tr>
+                        <tr>
+                            <input type="submit" value="kaydet">
+
                         </tr>
                     </table>
 
@@ -94,23 +109,30 @@
                         <tr class="border border-bottom-light border-right-light">
                             <td>Ürün</td>
                             <td><select id="allProducts" name="Product" class="form-control">
-                                   <?php
+                                    <?php
 
-                                   $products = $pdo->query("SELECT * FROM products");
-                                   while($row = $products->fetch(PDO::FETCH_ASSOC)) {
-                                       echo "<option value='".$row['Id']."'>".$row['Name']."</option>";
-                                   }
+                                    $products = $pdo->query("SELECT * FROM products");
+                                    while ($row = $products->fetch(PDO::FETCH_ASSOC)) {
+                                        echo "<option value='" . $row['Id'] . "'>" . $row['Name'] . "</option>";
+                                    }
 
-                                   ?>
+                                    ?>
                                 </select></td>
                         </tr>
                         <tr class="border border-bottom-light">
                             <td>Adet</td>
-                            <td><input name="Amount" min="1" v-model="order.Amount" class="form-control" type="number"></td>
+                            <td><input name="Amount" min="1" v-model="order.Amount" class="form-control" type="number">
+                            </td>
                         </tr>
                         <tr class="border border-bottom-light">
                             <td>Eklediğiniz Notlar</td>
                             <td><textarea name="Note" class="form-control">{{ order.Note }}</textarea></td>
+                        </tr>
+                        <tr>
+                        <tr>
+                            <input type="submit" value="kaydet">
+
+                        </tr>
                         </tr>
                     </table>
 
@@ -144,12 +166,13 @@
                     </table>
 
                     <div class="col-md-12">
-                        <a :href="'/admin/pages/transactions/orders/edit/' + order.orderId" class="btn btn-warning w-100 text-center text-white">Siparişi Düzenle</a>
-
+                        <a :href="'/admin/pages/transactions/orders/edit/' + order.orderId"
+                           class="btn btn-warning w-100 text-center text-white">Kaydet</a>
                     </div>
 
                     <div class="col-md-12">
-                        <button onclick="window.history.go(-1); return false;" class="btn btn-success w-100 text-center">Geri
+                        <button onclick="window.history.go(-1); return false;"
+                                class="btn btn-success w-100 text-center">Geri
                             Dön
                         </button>
                     </div>
@@ -158,7 +181,7 @@
             </div>
         </div>
     </div>
-
+    </form>
 
     <?php
 

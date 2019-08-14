@@ -158,11 +158,16 @@ include "../../layouts/header.php";
                     <tr>
                         <th class="selectColumn"><input class="checkAll" name="checkbox[]" type="checkbox"></th>
                         <th>Durum</th>
-                        <th>Sipariş Numarası</th>
-                        <th>Müşteri Ad</th>
-                        <th>Müşteri Soyad</th>
-                        <th>Satılan Ürün</th>
+                        <th>Kod</th>
+                        <th>Tutar</th>
+                        <th>Ad</th>
+                        <th>Soyad</th>
+                        <th>E-Posta</th>
+                        <th>Telefon</th>
+                        <th>Ürün</th>
+                        <th>Adres</th>
                         <th>Sipariş Zamanı</th>
+                        <th>Referans Site</th>
                         <th>İşlemler</th>
                     </tr>
                     </thead>
@@ -182,11 +187,11 @@ include "../../layouts/header.php";
                     // Shorthand If / Else tanımlaması
 
                     $status = isset($_GET['status']) ? "AND o.Status = ".$_GET['status'] : "";
-                    $stmt = $pdo->query('SELECT o.Id AS Id, o.Status AS Status, o.CreatedAt AS date, c.FirstName AS FirstName, c.LastName AS LastName, p.Name AS pName FROM orders o INNER JOIN products p ON p.id = o.Product INNER JOIN customers c ON o.CustomerId = c.Id WHERE o.Active = 1 '.$status);
+                    $stmt = $pdo->query('SELECT *, o.Id AS Id, o.Status AS Status, o.CreatedAt AS date, c.FirstName AS FirstName, c.LastName AS LastName, p.Name AS pName FROM orders o INNER JOIN products p ON p.id = o.Product INNER JOIN customers c ON o.CustomerId = c.Id WHERE o.Active = 1 '.$status);
                     while ($row = $stmt->fetch()) {
                         $status = statusCheck($row['Status']);
                         $color = statusColorCheck($row['Status']);
-                        echo "<tr><th class='selectColumn'><input class='deleteRecords' name=\"checkbox[]\" type=\"checkbox\" value=\"" . $row['Id'] . "\"></th><th class='text-center'><button style='color:#ffffff;width:80%' class='btn btn-".$color." btn-icon-". $color ." statusArea'>" . $status . "</button></th><th>" . $row['Id'] . "</th><th>" . $row['FirstName'] . "</th><th>" . $row['LastName'] . "</th><th>" . $row['pName'] . "</th><th>" . $row['date'] . "</th><th><a href='/admin/pages/transactions/orders/browse/".$row['Id']."'><button class='btn btn-circle btn-primary'><i class='fa fa-eye'></i></button></a><button class='btn btn-circle btn-danger ml-1'><i class='fa fa-trash'></i></button></th></tr>";
+                        echo "<tr style='font-size: 13px' class='text-center'><th class='selectColumn'><input class='deleteRecords' name=\"checkbox[]\" type=\"checkbox\" value=\"" . $row['Id'] . "\"></th><th style='width:140px' class='text-center'><button style='color:#ffffff;width:80%' class='btn btn-".$color." btn-icon-". $color ." statusArea'>" . $status . "</button></th><th>" . $row['Id'] . "<th>".$row['TotalPrice']." ₺</th><th>" . $row['FirstName'] . "</th><th>" . $row['LastName'] . "</th><th>".$row['Mail']."</th><th>".$row['Phone']."</th><th>" . $row['pName'] . "</th><th><i class='fa fa-map'></i></th><th>" . $row['date'] . "</th><th>".$row['ReferenceUrl']."</th><th><a href='/admin/pages/transactions/orders/browse/".$row['Id']."'><button class='btn btn-circle btn-primary'><i class='fa fa-eye'></i></button></a><button class='btn btn-circle btn-danger ml-1'><i class='fa fa-trash'></i></button></th></tr>";
 
                     }
 
@@ -408,6 +413,12 @@ include "../../layouts/header.php";
     </div>
 
 </div>
+
+<script>
+
+    _page = "orders";
+
+</script>
 <!-- /.container-fluid -->
 
 <?php
