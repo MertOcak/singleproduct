@@ -208,4 +208,4 @@ $pdo->prepare($sql)->execute([$name, $id]);*/
 
 /*$stmt = $pdo->prepare("DELETE FROM goods WHERE category = ?");
 $stmt->execute([$cat]);
-$deleted = $stmt->rowCount();
+$deleted = $stmt->rowCount();*/
