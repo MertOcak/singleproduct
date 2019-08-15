@@ -205,7 +205,7 @@
                  'copy', 'csv', 'excel', 'pdf', 'print'
              ],*/
 
-            "order": [[2, "desc"]],
+            "order": [[1, "desc"]],
             "language": {
                 "decimal": "",
                 "emptyTable": "Sipariş bulunamadı.",

@@ -137,7 +137,7 @@ include "../../layouts/header.php";
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Tüm Siparişler</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Ödeme Yöntemleri <a href="/admin/pages/transactions/paymentmethod/add"><input type="button" value="Yeni Ekle"></a></h6>
             <div style="position: absolute; top:10px; right: 10px;" class="float-right">
                 <a id="raporAl" href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i> Rapor Al</a>
@@ -157,17 +157,9 @@ include "../../layouts/header.php";
                     <thead>
                     <tr>
                         <th class="selectColumn"><input class="checkAll" name="checkbox[]" type="checkbox"></th>
-                        <th>Sipariş Numarası</th>
+                        <th>ID</th>
+                        <th>Ödeme Yolu</th>
                         <th>Durum</th>
-                        <th>Tutar</th>
-                        <th>Ad</th>
-                        <th>Soyad</th>
-                        <th>E-Posta</th>
-                        <th>Telefon</th>
-                        <th>Ürün</th>
-                        <th>Adres</th>
-                        <th>Sipariş Zamanı</th>
-                        <th>Referans Site</th>
                         <th>İşlemler</th>
                     </tr>
                     </thead>
@@ -175,16 +167,12 @@ include "../../layouts/header.php";
 
                     <?php
                     // Shorthand If / Else tanımlaması
-
-                    $status = isset($_GET['status']) ? "AND o.Status = " . $_GET['status'] : "";
-                    $stmt = $pdo->query('SELECT *, o.Id AS Id, o.Status AS Status, o.CreatedAt AS date, c.FirstName AS FirstName, c.LastName AS LastName, p.Name AS pName FROM orders o INNER JOIN products p ON p.id = o.Product INNER JOIN customers c ON o.CustomerId = c.Id WHERE o.Active = 1 ' . $status);
+                    $stmt = $pdo->query('SELECT * FROM paymentmethod WHERE Active= 1');
                     while ($row = $stmt->fetch()) {
-                        $status = statusCheck($row['Status']);
-                        $color = statusColorCheck($row['Status']);
-                        echo "<tr style='font-size: 13px' class='text-center'><th class='selectColumn'><input class='deleteRecords' name=\"checkbox[]\" type=\"checkbox\" value=\"" . $row['Id'] . "\"></th><th style='width:120px'>" . $row['Id'] . "</th><th style='width:140px' class='text-center'><button style='color:#ffffff;width:80%' class='btn btn-" . $color . " btn-icon-" . $color . " statusArea'>" . $status . "</button></th><th>" . $row['TotalPrice'] . " ₺</th><th>" . $row['FirstName'] . "</th><th>" . $row['LastName'] . "</th><th><a title='Hızlı E-Posta Gönder' href='mailto:" . $row['Mail'] . "'><i style='color:red;' class='fa fa-envelope'></i> " . $row['Mail'] . "</a></th><th><a title='Telefon ile Ara' href='tel:090" . $row['Phone'] . "'><i style='color:red' class='fa fa-phone-alt'></i> " . $row['Phone'] . "</th></a><th>" . $row['pName'] . "</th><th><a title='Google Maps ile Görüntüle' target='blank' href='https://www.google.com/maps/place/" . $row['Address'] . "/'><i style='color:red' class='fa fa-map-pin'></i></a></th><th>" . $row['date'] . "</th><th>" . $row['ReferenceUrl'] . "</th><th><a href='/admin/pages/transactions/orders/browse/" . $row['Id'] . "'><button class='btn btn-circle btn-primary'><i class='fa fa-eye'></i></button></a><button class='btn btn-circle btn-danger ml-1'><i class='fa fa-trash'></i></button></th></tr>";
+                        $activeStatus = ($row['Status'] === 1) ? 'Aktif' : 'Pasif';
+                        echo "<tr style='font-size: 13px' class='text-center'><th class='selectColumn'><input class='deleteRecords' name=\"checkbox[]\" type=\"checkbox\" value=\"".$row['id']."\"></th><th>".$row['id']."</th><th class='text-center'>".$row['PaymentMethodName']."</th><th>" . $activeStatus. "</th><th><a href='/admin/pages/transactions/paymentmethod/edit/".$row['id']."'><button class='btn btn-circle btn-warning'><i class='fa fa-edit'></i></button></a><button class='btn btn-circle btn-danger ml-1'><i class='fa fa-trash'></i></button></th></tr>";
 
                     }
-
 
                     ?>
 
@@ -404,13 +392,11 @@ include "../../layouts/header.php";
     </div>
 
 </div>
+<!-- /.container-fluid -->
 
 <script>
-
-    _page = "orders";
-
+    _page = "paymentmethod";
 </script>
-<!-- /.container-fluid -->
 
 <?php
 include "../../layouts/footer.php";

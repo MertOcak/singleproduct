@@ -145,7 +145,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <!--                    <h6 class="collapse-header">Custom Utilities:</h6>
                     -->
-                    <a class="collapse-item" href="utilities-color.html">Ödeme Yolları Düzenle</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/paymentmethod/add">Ödeme Yöntemi Ekle</a>
+                    <a class="collapse-item" href="/admin/pages/paymentmethod">Ödeme Yöntemleri Listele</a>
                 </div>
             </div>
         </li>
@@ -160,9 +161,8 @@
             <div id="shippingFees" class="collapse" aria-labelledby="headingUtilities"
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <!--                    <h6 class="collapse-header">Custom Utilities:</h6>
-                    -->
-                    <a class="collapse-item" href="utilities-color.html">Kargo Ücreti Ayarla</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/settings/add">Ekstra Ücretler Ekle</a>
+                    <a class="collapse-item" href="/admin/pages/shippingfee">Ekstra Ücretleri Listele</a>
                 </div>
             </div>
         </li>

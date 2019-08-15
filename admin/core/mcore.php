@@ -117,6 +117,17 @@ if( isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']
 }
 
 
+/*Payment Method*/
+
+if( !isset($_POST['action']) && isset($_POST['PaymentMethodName']) && isset($_POST['Status'])) {
+    $sql = "UPDATE paymentmethod SET PaymentMethodName = ?, Status = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['PaymentMethodName'], $_POST['Status'], $_GET['id'] ]);
+}
+
+if( isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['PaymentMethodName']) && isset($_POST['Status']) ) {
+    $sql = "INSERT INTO paymentmethod SET PaymentMethodName = ?, Status = ?";
+    $pdo->prepare($sql)->execute([$_POST['PaymentMethodName'], $_POST['Status']]);
+}
 
 
 /*$query = $db->prepare("INSERT INTO uyeler SET
