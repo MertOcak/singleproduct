@@ -24,6 +24,9 @@
     <!-- Custom styles for this page -->
     <link href="/admin/layouts/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <script src="/admin/layouts/vendor/jquery/jquery.min.js"></script>
+    <script src="/admin/layouts/js/js.cookie.js"></script>
+    <script>
+    </script>
     <style>
         .btn {
             font-size: 12px !important;
@@ -43,13 +46,13 @@
     </style>
 </head>
 
-<body id="page-top">
+<body id="page-top" onLoad="checkCookie();">
 
 <!-- Page Wrapper -->
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion <?php if(isset($_COOKIE['menu-state']) && $_COOKIE['menu-state'] === "close") { echo 'toggled'; } ?>" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/layouts/index.html">
@@ -146,6 +149,24 @@
                     -->
                     <a class="collapse-item" href="/admin/pages/transactions/paymentmethod/add">Ödeme Yöntemi Ekle</a>
                     <a class="collapse-item" href="/admin/pages/paymentmethod">Ödeme Yöntemleri Listele</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#bankAccounts"
+               aria-expanded="true" aria-controls="bankAccounts">
+                <i class="fas fa-fw fa-cash-register"></i>
+                <span>Banka Hesapları</span>
+            </a>
+            <div id="bankAccounts" class="collapse" aria-labelledby="headingUtilities"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <!--                    <h6 class="collapse-header">Custom Utilities:</h6>
+                    -->
+                    <a class="collapse-item" href="/admin/pages/transactions/bankaccounts/add">Banka Hesabı Ekle</a>
+                    <a class="collapse-item" href="/admin/pages/bankaccounts">Banka Hesaplarını Listele</a>
                 </div>
             </div>
         </li>

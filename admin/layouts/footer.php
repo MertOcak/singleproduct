@@ -80,6 +80,21 @@
     // Call the dataTables jQuery plugin
     $(document).ready(function () {
 
+
+        $('#sidebarToggle').click(function() {
+            if(Cookies.get('menu-state') === 'open') {
+                Cookies.set('menu-state', 'close');
+            } else  if(Cookies.get('menu-state') === 'close') {
+                Cookies.set('menu-state', 'open');
+            } else {
+                Cookies.set('menu-state', 'open');
+            }
+
+        });
+
+
+
+
         $('<script/>',{type:'text/javascript', src:'/admin/layouts/js/jscolor.js'}).appendTo('head');
 
         if (typeof order != 'undefined') {

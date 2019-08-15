@@ -29,9 +29,8 @@
                 <div class="card-body p-0 ">
                     <table class="table text-center">
                         <tr>
-                            <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder">Ödeme Türü Düzenle</td>
-                            <td class="bg-gradient-dark-2 text-white dividerBorder">ID: <b> {{ order.id
-                                    }}</b></td>
+                            <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder">Ödeme Yöntemi Ekle</td>
+                            <td class="bg-gradient-dark-2 text-white dividerBorder">Bu Bölümden Ödeme Yöntemi Ekleyebilirsiniz</td>
                         </tr>
                     </table>
                 </div>

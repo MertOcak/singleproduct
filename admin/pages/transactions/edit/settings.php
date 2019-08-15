@@ -54,8 +54,8 @@
                                 <a class="nav-item nav-link active" id="theme-color-tab" data-toggle="tab" href="#theme-color" role="tab" aria-controls="theme-color" aria-selected="true">Tema Rengi</a>
 
                                 <!--Google Analytics-->
-                                <a class="nav-item nav-link" id="gogole-analytics-tab" data-toggle="tab" href="#gogole-analytics" role="tab" aria-controls="gogole-analytics" aria-selected="false">Google Analytics</a>
-                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+                                <a class="nav-item nav-link" id="google-analytics-tab" data-toggle="tab" href="#gogole-analytics" role="tab" aria-controls="gogole-analytics" aria-selected="false">Google Analytics</a>
+                                <a class="nav-item nav-link" id="seo-settings" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">SEO Ayarları</a>
                             </div>
                         </nav>
                         <div class="tab-content mt-2" id="nav-tabContent">
@@ -95,7 +95,7 @@
                             </div>
 
                             <!--Google Analytics-->
-                            <div class="tab-pane fade" id="gogole-analytics" role="tabpanel" aria-labelledby="gogole-analytics-tab">
+                            <div class="tab-pane fade" id="gogole-analytics" role="tabpanel" aria-labelledby="google-analytics-tab">
                                 <!--Content-->
 
                                 <div class="card-body">
@@ -121,7 +121,75 @@
 
 
                             </div>
-                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+
+                            <!--Seo Ayarları-->
+                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="seo-settings">
+                                <!--Content-->
+                                <div class="card-body">
+                                    <table class="table">
+                                        <tr class="border border-bottom-light border-right-light">
+                                            <td>Site Başlığı <code class="small">meta-title</code></td>
+                                            <td>
+                                                <input
+                                                        name="Title"
+                                                        v-model="order.Title" type="text"
+                                                        class="form-control w-40 d-inline-block">
+                                            </td>
+                                        </tr>
+                                        <tr class="border border-bottom-light border-right-light">
+                                            <td>Site Açıklaması <code class="small">meta-description</code></td>
+                                            <td>
+                                                <input
+                                                        name="Description"
+                                                        v-model="order.Description" type="text"
+                                                        class="form-control w-40 d-inline-block">
+                                            </td>
+                                        </tr>
+                                        <tr class="border border-bottom-light border-right-light">
+                                            <td>Anahtar Kelimeler <code class="small"ll>meta-keywords</code></td>
+                                            <td>
+                                                <input
+                                                        name="Keywords"
+                                                        v-model="order.Keywords" type="text"
+                                                        class="form-control w-40 d-inline-block">
+                                            </td>
+                                        </tr>
+                                        <tr class="border border-bottom-light border-right-light">
+                                            <td>Site Yazarı <code class="small">meta-author</code></td>
+                                            <td>
+                                                <input
+                                                        name="Author"
+                                                        v-model="order.Author" type="text"
+                                                        class="form-control w-40 d-inline-block">
+                                            </td>
+                                        </tr>
+                                        <tr class="border border-bottom-light border-right-light">
+                                            <td>Site Sahibi <code class="small">meta-owner</code></td>
+                                            <td>
+                                                <input
+                                                        name="Owner"
+                                                        v-model="order.Owner" type="text"
+                                                        class="form-control w-40 d-inline-block">
+                                            </td>
+                                        </tr>
+                                        <tr class="border border-bottom-light border-right-light">
+                                            <td>Telif Hakları <code class="small">meta-copyright</code></td>
+                                            <td>
+                                                <input
+                                                        name="Copyright"
+                                                        v-model="order.Copyright" type="text"
+                                                        class="form-control w-40 d-inline-block">
+                                            </td>
+                                        </tr>
+                                        <tr class="text-right">
+                                            <input type="submit" value="Kaydet">
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+
+                            </div>
                         </div>
 
 

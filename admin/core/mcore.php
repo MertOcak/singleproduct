@@ -141,6 +141,18 @@ if( isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']
     $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Price'], $_POST['Status']]);
 }
 
+/*Bank Accounts*/
+
+if( !isset($_POST['action']) && isset($_POST['Name']) && isset($_POST['Account']) && isset($_POST['Status'])) {
+    $sql = "UPDATE bankaccounts SET Name = ?, Account = ?, Status = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Account'], $_POST['Status'], $_GET['id'] ]);
+}
+
+if( isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']) && isset($_POST['Account'])  && isset($_POST['Status']) ) {
+    $sql = "INSERT INTO bankaccounts SET Name = ?, Account = ?, Status = ?";
+    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Account'], $_POST['Status']]);
+}
+
 
 
 /*$query = $db->prepare("INSERT INTO uyeler SET

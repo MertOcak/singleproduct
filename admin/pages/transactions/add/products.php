@@ -32,6 +32,8 @@
                     <table class="table text-center">
                         <tr>
                             <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder">Ürün Ekle</td>
+                            <td class="bg-gradient-dark-2 text-white dividerBorder">Bu Bölümden Ürün Ekleyebilirsiniz</td>
+
                         </tr>
                     </table>
                 </div>
