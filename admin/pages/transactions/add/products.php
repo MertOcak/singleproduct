@@ -59,7 +59,7 @@
                                     </td>
                                 </tr>
                                 <tr class="border border-bottom-light border-right-light">
-                                    <td>Ürün Birim Fiyatı ( ₺ = Türk Lirası)</td>
+                                    <td>Ürün Birim Fiyatı (₺)</td>
                                     <td>
                                         <input
                                                name="Price"
@@ -71,7 +71,7 @@
                                     <td>Ürün Aktiflik Durumu</td>
                                     <td><select name="Active"/>
                                         <option value="1" >Aktif</option>
-                                        <option value="2" >Pasif</option>
+                                        <option value="0" >Pasif</option>
                                         <select> <small class="ml-2"> <span style="color: green;">Aktif</span> = Sipariş formunda listelenir, <span style="color: red;">Pasif</span> = Sipariş formunda listelenmez</small>
                                  </td>
                                 </tr>

@@ -161,8 +161,8 @@
             <div id="shippingFees" class="collapse" aria-labelledby="headingUtilities"
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="/admin/pages/transactions/settings/add">Ekstra Ücretler Ekle</a>
-                    <a class="collapse-item" href="/admin/pages/shippingfee">Ekstra Ücretleri Listele</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/extras/add">Ekstra Ücretler Ekle</a>
+                    <a class="collapse-item" href="/admin/pages/extras">Ekstra Ücretleri Listele</a>
                 </div>
             </div>
         </li>

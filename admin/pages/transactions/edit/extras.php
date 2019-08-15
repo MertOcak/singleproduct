@@ -7,7 +7,7 @@
 
     <?php
 
-    $sql = 'SELECT * FROM paymentmethod  WHERE id =' . $_GET['id'];
+    $sql = 'SELECT * FROM extras  WHERE id =' . $_GET['id'];
 
 
     /*        $sql = "SELECT * FROM " . $_GET['module'] . " WHERE Id = " . $_GET['id'];*/
@@ -29,7 +29,7 @@
                 <div class="card-body p-0 ">
                     <table class="table text-center">
                         <tr>
-                            <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder">Ödeme Türü Düzenle</td>
+                            <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder">Ekstra Ücret Düzenle</td>
                             <td class="bg-gradient-dark-2 text-white dividerBorder">ID: <b> {{ order.id
                                     }}</b></td>
                         </tr>
@@ -40,26 +40,31 @@
     </div>
 
     <form action="" method="post">
-        <input v-model="order.customerId" type="hidden" name="customerId">
-        <input v-model="order.productId" type="hidden" name="productId">
-
-
         <div class="row">
             <div class="col-md-12">
                 <form action="" method="post">
                     <div class="card">
                         <div class="card-header">
-                            Ödeme Yöntemi Bilgileri
+                            Ekstra Ücret Bilgileri
                         </div>
                         <div class="card-body">
                             <table class="table">
                                 <tr class="border border-bottom-light border-right-light">
-                                    <td>Ödeme Yöntemi Adı</td>
+                                    <td>Ekstra Ücret Adı</td>
                                     <td>
                                         <input
-                                               name="PaymentMethodName"
-                                               v-model="order.PaymentMethodName" type="text"
+                                               name="Name"
+                                               v-model="order.Name" type="text"
                                                class="form-control w-40 d-inline-block">
+                                    </td>
+                                </tr>
+                                <tr class="border border-bottom-light border-right-light">
+                                    <td>Ekstra Ücret Fiyatı (₺)</td>
+                                    <td>
+                                        <input
+                                                name="Price"
+                                                v-model="order.Price" type="text"
+                                                class="form-control w-40 d-inline-block">
                                     </td>
                                 </tr>
                                 <tr class="border border-bottom-light">

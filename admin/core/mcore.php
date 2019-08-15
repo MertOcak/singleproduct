@@ -129,6 +129,19 @@ if( isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Paymen
     $pdo->prepare($sql)->execute([$_POST['PaymentMethodName'], $_POST['Status']]);
 }
 
+/*Extras*/
+
+if( !isset($_POST['action']) && isset($_POST['Name']) && isset($_POST['Price']) && isset($_POST['Status'])) {
+    $sql = "UPDATE extras SET Name = ?, Price = ?, Status = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Price'], $_POST['Status'], $_GET['id'] ]);
+}
+
+if( isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']) && isset($_POST['Price'])  && isset($_POST['Status']) ) {
+    $sql = "INSERT INTO extras SET Name = ?, Price = ? , Status = ?";
+    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Price'], $_POST['Status']]);
+}
+
+
 
 /*$query = $db->prepare("INSERT INTO uyeler SET
 uye_kadi = :kadi,

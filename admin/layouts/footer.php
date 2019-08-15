@@ -208,17 +208,17 @@
             "order": [[1, "desc"]],
             "language": {
                 "decimal": "",
-                "emptyTable": "Sipariş bulunamadı.",
-                "info": "_TOTAL_ sipariş görüntüleniyor",
+                "emptyTable": "Kayıt bulunamadı.",
+                "info": "_TOTAL_ kayıt görüntüleniyor",
                 "infoEmpty": "0 ile 0 arasında 0 sonuç",
-                "infoFiltered": "(toplam _MAX_ sipariş içerisinde arandı)",
+                "infoFiltered": "(toplam _MAX_ kayıt içerisinde arandı)",
                 "infoPostFix": "",
                 "thousands": ",",
                 "lengthMenu": "Bir Sayfada _MENU_ Sipariş ",
                 "loadingRecords": "Yükleniyor...",
                 "processing": "İşleniyor...",
                 "search": "Arama:",
-                "zeroRecords": "Arama kriterlerinizle eşleşen sipariş bulunamadı.",
+                "zeroRecords": "Arama kriterlerinizle eşleşen kayıt bulunamadı.",
                 "paginate": {
                     "first": "İlk",
                     "last": "Son",
@@ -272,38 +272,10 @@
 
         $('#orders').show();
 
-
         if ($('#orderStatus').length > 0) {
             $('#orderStatus option[value="' + order.statusId + '"]').attr("selected", "selected");
             $('#allProducts option[value="' + order.Product + '"]').attr("selected", "selected");
-
         }
-        /*
-
-              function check(){  $('#dataTable tr').click(function (event) {
-                    if (event.target.type !== 'checkbox') {
-                        $(':checkbox', this).trigger('click');
-                    }
-                });
-
-              };
-
-                check();
-        */
-
-        /* $('.paginate_button').click(function () {
-             check();
-         })*/
-
-        /*     $('#dataTable').on( 'draw.dt', function () {
-                 check();
-             } );
-
-             $('#dataTable').on( 'search.dt', function () {
-                 check();
-             } );*/
-
-
     });
 </script>
 
