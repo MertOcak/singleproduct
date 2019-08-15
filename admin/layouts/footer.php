@@ -80,6 +80,8 @@
     // Call the dataTables jQuery plugin
     $(document).ready(function () {
 
+        $('<script/>',{type:'text/javascript', src:'/admin/layouts/js/jscolor.js'}).appendTo('head');
+
         if (typeof order != 'undefined') {
 
             var orders = new Vue({

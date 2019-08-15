@@ -62,6 +62,25 @@
   color: #000000 !important;
 }
 
+.nav-tabs .nav-link:first-child {
+  border-left: none !important;
+}
+
+.nav-tabs .nav-link {
+  border-radius: 0 !important;
+  border: none !important;
+  &:hover {
+    border-radius: 0 !important;
+    border: none !important;
+  }
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  background-color: #4e73df;
+  color: #ffffff;
+  border-color: #dddfeb #dddfeb #fff;
+}
+
 th a {
   color: #858796;
   &:hover {

@@ -143,7 +143,7 @@ if( isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']
 
 
 
-/*$query = $db->prepare("INSERT INTO uyeler SET
+$query = $db->prepare("INSERT INTO uyeler SET
 uye_kadi = :kadi,
 uye_sifre = :sifre,
 uye_eposta = :eposta");
@@ -155,7 +155,7 @@ $insert = $query->execute(array(
 if ( $insert ){
     $last_id = $db->lastInsertId();
     print "insert işlemi başarılı!";
-}*/
+}
 
 /*$query = $db->prepare("INSERT INTO uyeler SET
 uye_kadi = ?,
@@ -208,4 +208,4 @@ $pdo->prepare($sql)->execute([$name, $id]);*/
 
 /*$stmt = $pdo->prepare("DELETE FROM goods WHERE category = ?");
 $stmt->execute([$cat]);
-$deleted = $stmt->rowCount();*/
+$deleted = $stmt->rowCount();
