@@ -42,53 +42,96 @@
     <form action="" method="post">
         <div class="row">
             <div class="col-md-12">
-                <form action="" method="post">
+                <!------->
                     <div class="card">
-                        <div class="card-header">
-                            Ürün Bilgileri
-                        </div>
-                        <div class="card-body">
-                            <table class="table">
-                                <tr class="border border-bottom-light border-right-light">
-                                    <td>Ürün Adı</td>
-                                    <td>
-                                        <input name="Name"
-                                               v-model="order.Name"
-                                               type="text"
-                                               class="form-control w-40 d-inline-block"
-                                               >
-                                    </td>
-                                </tr>
-                                <tr class="border border-bottom-light border-right-light">
-                                    <td>Ürün Birim Fiyatı ( ₺ = Türk Lirası)</td>
-                                    <td>
-                                        <input
-                                               name="Price"
-                                               v-model="order.Price" type="text"
-                                               class="form-control w-40 d-inline-block">
-                                    </td>
-                                </tr>
-                                <tr class="border border-bottom-light">
-                                    <td>Ürün Aktiflik Durumu</td>
-                                    <td><select name="Active" v-model="order.Active"/>
-                                        <option v-for = "code in activeList" :value="code.id" >{{code.name}}</option>
-                                        <select> <small class="ml-2"> <span style="color: green;">Aktif</span> = Sipariş formunda listelenir, <span style="color: red;">Pasif</span> = Sipariş formunda listelenmez</small>
-                                 </td>
-                                </tr>
-                                <tr class="border border-bottom-light">
-                                    <td>Stok Miktarı</td>
-                                    <td><input name="Stock" v-model="order.Stock" type="text" class="form-control"></td>
-                                </tr>
-                                <tr class="text-right">
-                                    <input type="submit" value="Kaydet">
-                                </tr>
-                            </table>
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <!--Tema Rengi-->
+                                <!--İlk Tab-->
+                                <a class="nav-item nav-link active" id="product-info-tab" data-toggle="tab" href="#product-info" role="tab" aria-controls="product-info" aria-selected="true">Ürün Bilgileri</a>
+                                <!--Google Analytics-->
+                                <a class="nav-item nav-link" id="product-images-tab" data-toggle="tab" href="#product-images" role="tab" aria-controls="product-images" aria-selected="false">Ürün Fotoğrafları</a>
+                            </div>
+                        </nav>
+                        <div class="tab-content mt-2" id="nav-tabContent">
+
+                            <!--Ürün Bilgileri-->
+
+                            <div class="tab-pane fade show active" id="product-info" role="tabpanel" aria-labelledby="product-info-tab">
+                                <!--Content-->
+                                <form action="" method="post">
+
+                                <div class="card-body">
+                                    <table class="table">
+                                        <tr class="border border-bottom-light border-right-light">
+                                            <td>Ürün Adı</td>
+                                            <td>
+                                                <input name="Name"
+                                                       v-model="order.Name"
+                                                       type="text"
+                                                       class="form-control w-40 d-inline-block"
+                                                >
+                                            </td>
+                                        </tr>
+                                        <tr class="border border-bottom-light border-right-light">
+                                            <td>Ürün Birim Fiyatı ( ₺ = Türk Lirası)</td>
+                                            <td>
+                                                <input
+                                                        name="Price"
+                                                        v-model="order.Price" type="text"
+                                                        class="form-control w-40 d-inline-block">
+                                            </td>
+                                        </tr>
+                                        <tr class="border border-bottom-light">
+                                            <td>Ürün Aktiflik Durumu</td>
+                                            <td><select name="Active" v-model="order.Active"/>
+                                                <option v-for = "code in activeList" :value="code.id" >{{code.name}}</option>
+                                                <select> <small class="ml-2"> <span style="color: green;">Aktif</span> = Sipariş formunda listelenir, <span style="color: red;">Pasif</span> = Sipariş formunda listelenmez</small>
+                                            </td>
+                                        </tr>
+                                        <tr class="border border-bottom-light">
+                                            <td>Stok Miktarı</td>
+                                            <td><input name="Stock" v-model="order.Stock" type="text" class="form-control"></td>
+                                        </tr>
+                                        <tr class="text-right">
+                                            <input type="submit" value="Kaydet">
+                                        </tr>
+                                    </table>
 
 
+                                </div>
+                                </form>
+                            </div>
+
+                            <!--Ürün Fotoğrafları-->
+                            <div class="tab-pane fade" id="product-images" role="tabpanel" aria-labelledby="product-images-tab">
+                                <!--Content-->
+
+                                <div class="card-body">
+                                    <table class="table">
+                                        <tr class="border border-bottom-light border-right-light">
+                                            <td>Ürün Adı</td>
+                                            <td>
+
+                                            </td>
+                                        </tr>
+                                        <tr class="text-right">
+                                            <input type="submit" value="Kaydet">
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+
+
+                            </div>
+
                         </div>
+
+
+
                     </div>
 
-                </form>
 
             </div>
 

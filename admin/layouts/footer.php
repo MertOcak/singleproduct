@@ -42,6 +42,11 @@
     </div>
 </div>
 
+<form action="/admin/pages/upload/upload.php"
+      class="dropzone"
+      id="uploadImage"></form>
+
+
 <!-- Bootstrap core JavaScript-->
 <script src="/admin/layouts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -69,22 +74,27 @@
 
 
 <!-- Page level plugins -->
-<script src="/admin/layouts/vendor/chart.js/Chart.min.js"></script>
-
+<!--<script src="/admin/layouts/vendor/chart.js/Chart.min.js"></script>
+-->
 <!-- Page level custom scripts -->
-<script src="/admin/layouts/js/demo/chart-area-demo.js"></script>
-<script src="/admin/layouts/js/demo/chart-pie-demo.js"></script>
+<!--<script src="/admin/layouts/js/demo/chart-area-demo.js"></script>
+<script src="/admin/layouts/js/demo/chart-pie-demo.js"></script>-->
+<script src="/admin/layouts/js/dropzone.js"></script>
 
 
 <script>
+    Dropzone.prototype.defaultOptions.acceptedFiles = ".jpg, .jpeg, .png, .gif";
+    Dropzone.prototype.defaultOptions.dictDefaultMessage = 'Fotoğraf Sürükle ya da Tıkla';
+
     // Call the dataTables jQuery plugin
     $(document).ready(function () {
 
 
-        $('#sidebarToggle').click(function() {
-            if(Cookies.get('menu-state') === 'open') {
+
+        $('#sidebarToggle').click(function () {
+            if (Cookies.get('menu-state') === 'open') {
                 Cookies.set('menu-state', 'close');
-            } else  if(Cookies.get('menu-state') === 'close') {
+            } else if (Cookies.get('menu-state') === 'close') {
                 Cookies.set('menu-state', 'open');
             } else {
                 Cookies.set('menu-state', 'open');
@@ -93,9 +103,7 @@
         });
 
 
-
-
-        $('<script/>',{type:'text/javascript', src:'/admin/layouts/js/jscolor.js'}).appendTo('head');
+        $('<script/>', {type: 'text/javascript', src: '/admin/layouts/js/jscolor.js'}).appendTo('head');
 
         if (typeof order != 'undefined') {
 
@@ -181,8 +189,7 @@
                     exportOptions: {
                         columns: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
                     },
-                    customize: function(win)
-                    {
+                    customize: function (win) {
 
                         var last = null;
                         var current = null;
@@ -195,12 +202,9 @@
                         style.type = 'text/css';
                         style.media = 'print';
 
-                        if (style.styleSheet)
-                        {
+                        if (style.styleSheet) {
                             style.styleSheet.cssText = css;
-                        }
-                        else
-                        {
+                        } else {
                             style.appendChild(win.document.createTextNode(css));
                         }
 

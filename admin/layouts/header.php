@@ -46,7 +46,7 @@
     </style>
 </head>
 
-<body id="page-top" onLoad="checkCookie();">
+<body id="page-top">
 
 <!-- Page Wrapper -->
 <div id="wrapper">
