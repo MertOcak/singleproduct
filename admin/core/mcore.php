@@ -155,6 +155,7 @@ if( isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']
 
 
 
+
 /*$query = $db->prepare("INSERT INTO uyeler SET
 uye_kadi = :kadi,
 uye_sifre = :sifre,

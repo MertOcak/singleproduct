@@ -268,12 +268,12 @@ var Dropzone = function (_Emitter) {
          * The `options.transformFile` function uses these options, so if the `transformFile` function
          * is overridden, these options don't do anything.
          */
-        resizeWidth: null,
+        resizeWidth: 500,
 
         /**
          * See `resizeWidth`.
          */
-        resizeHeight: null,
+        resizeHeight: 500,
 
         /**
          * The mime type of the resized image (before it gets uploaded to the server).
@@ -291,8 +291,7 @@ var Dropzone = function (_Emitter) {
          * How the images should be scaled down in case both, `resizeWidth` and `resizeHeight` are provided.
          * Can be either `contain` or `crop`.
          */
-        resizeMethod: 'contain',
-
+        resizeMethod: 'crop',
         /**
          * The base that is used to calculate the filesize. You can change this to
          * 1024 if you would rather display kibibytes, mebibytes, etc...
@@ -338,7 +337,7 @@ var Dropzone = function (_Emitter) {
          * [`accept`](https://developer.mozilla.org/en-US/docs/HTML/Element/input#attr-accept)
          * parameter on the hidden file input as well.
          */
-        acceptedFiles: null,
+        acceptedFiles: ".jpg, .jpeg, .png, .gif",
 
         /**
          * **Deprecated!**
@@ -421,12 +420,12 @@ var Dropzone = function (_Emitter) {
         /**
          * The text used before any files are dropped.
          */
-        dictDefaultMessage: "Drop files here to upload",
+        dictDefaultMessage: "Fotoğraf Boyutu 500 x 500 Olmalıdır. Fazla kısımlar silinir.",
 
         /**
          * The text that replaces the default message text it the browser is not supported.
          */
-        dictFallbackMessage: "Your browser does not support drag'n'drop file uploads.",
+        dictFallbackMessage: "Tarayıcınız sürükle ve bırak özelliğini desteklemiyor",
 
         /**
          * The text that will be added before the fallback form.
@@ -439,12 +438,12 @@ var Dropzone = function (_Emitter) {
          * If the filesize is too big.
          * `{{filesize}}` and `{{maxFilesize}}` will be replaced with the respective configuration values.
          */
-        dictFileTooBig: "File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB.",
+        dictFileTooBig: "Dosy çok büyük ({{filesize}}MiB). Max dosya boyutu: {{maxFilesize}}MiB.",
 
         /**
          * If the file doesn't match the file type.
          */
-        dictInvalidFileType: "You can't upload files of this type.",
+        dictInvalidFileType: "Bu tür dosyaları yükleyemezsiniz.",
 
         /**
          * If the server response was invalid.
@@ -455,22 +454,22 @@ var Dropzone = function (_Emitter) {
         /**
          * If `addRemoveLinks` is true, the text to be used for the cancel upload link.
          */
-        dictCancelUpload: "Cancel upload",
+        dictCancelUpload: "Vazgeç",
 
         /**
          * The text that is displayed if an upload was manually canceled
          */
-        dictUploadCanceled: "Upload canceled.",
+        dictUploadCanceled: "Vazgeçildi",
 
         /**
          * If `addRemoveLinks` is true, the text to be used for confirmation when cancelling upload.
          */
-        dictCancelUploadConfirmation: "Are you sure you want to cancel this upload?",
+        dictCancelUploadConfirmation: "Emin misiniz?",
 
         /**
          * If `addRemoveLinks` is true, the text to be used to remove a file.
          */
-        dictRemoveFile: "Remove file",
+        dictRemoveFile: "Kaldır",
 
         /**
          * If this is not null, then the user will be prompted before removing a file.
@@ -492,7 +491,16 @@ var Dropzone = function (_Emitter) {
          * Called when dropzone initialized
          * You can add event listeners here
          */
-        init: function init() {},
+        init: function init() {
+          this.on("complete", function (file) {
+            if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+              setTimeout(function () {
+                window.location.href = "upload";
+
+              },1200);
+            }
+          });
+        },
 
 
         /**

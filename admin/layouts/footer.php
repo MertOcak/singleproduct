@@ -42,9 +42,7 @@
     </div>
 </div>
 
-<form action="/admin/pages/upload/upload.php"
-      class="dropzone"
-      id="uploadImage"></form>
+
 
 
 <!-- Bootstrap core JavaScript-->
@@ -83,13 +81,25 @@
 
 
 <script>
-    Dropzone.prototype.defaultOptions.acceptedFiles = ".jpg, .jpeg, .png, .gif";
-    Dropzone.prototype.defaultOptions.dictDefaultMessage = 'Fotoğraf Sürükle ya da Tıkla';
+
 
     // Call the dataTables jQuery plugin
     $(document).ready(function () {
 
+    <?php if(isset($_GET['upload'])) {
 
+        echo '$(\'#product-images-tab\').click();';
+
+       echo ' $(\'.tab-pane\').removeClass(\'show active\');';
+        echo '$(\'#product-images\').addClass(\'show active\');';
+
+
+        } ?>
+
+
+    setTimeout(function () {
+        $('#uploadImage').dropzone();
+    },1000)
 
         $('#sidebarToggle').click(function () {
             if (Cookies.get('menu-state') === 'open') {
@@ -99,7 +109,6 @@
             } else {
                 Cookies.set('menu-state', 'open');
             }
-
         });
 
 

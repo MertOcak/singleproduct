@@ -7,7 +7,7 @@
 
     <?php
 
-    $sql = 'SELECT * FROM products  WHERE id =' . $_GET['id'];
+    $sql = 'SELECT * FROM products WHERE id =' . $_GET['id'];
 
 
     /*        $sql = "SELECT * FROM " . $_GET['module'] . " WHERE Id = " . $_GET['id'];*/
@@ -16,6 +16,12 @@
     /*while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         print_r($row);
     }*/
+
+    $sql = 'SELECT * FROM photos WHERE id =' . $_GET['id'];
+
+
+    /*        $sql = "SELECT * FROM " . $_GET['module'] . " WHERE Id = " . $_GET['id'];*/
+    $photos = $pdo->query($sql);
 
     ?>
 
@@ -39,7 +45,6 @@
             </div>
         </div>
     </div>
-    <form action="" method="post">
         <div class="row">
             <div class="col-md-12">
                 <!------->
@@ -48,19 +53,18 @@
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <!--Tema Rengi-->
                                 <!--İlk Tab-->
-                                <a class="nav-item nav-link active" id="product-info-tab" data-toggle="tab" href="#product-info" role="tab" aria-controls="product-info" aria-selected="true">Ürün Bilgileri</a>
                                 <!--Google Analytics-->
+                                <a class="nav-item nav-link active" id="product-info-tab" data-toggle="tab" href="#product-info" role="tab" aria-controls="product-info" aria-selected="true">Ürün Bilgileri</a>
                                 <a class="nav-item nav-link" id="product-images-tab" data-toggle="tab" href="#product-images" role="tab" aria-controls="product-images" aria-selected="false">Ürün Fotoğrafları</a>
+
                             </div>
                         </nav>
                         <div class="tab-content mt-2" id="nav-tabContent">
 
                             <!--Ürün Bilgileri-->
-
                             <div class="tab-pane fade show active" id="product-info" role="tabpanel" aria-labelledby="product-info-tab">
                                 <!--Content-->
                                 <form action="" method="post">
-
                                 <div class="card-body">
                                     <table class="table">
                                         <tr class="border border-bottom-light border-right-light">
@@ -103,6 +107,7 @@
                                 </form>
                             </div>
 
+
                             <!--Ürün Fotoğrafları-->
                             <div class="tab-pane fade" id="product-images" role="tabpanel" aria-labelledby="product-images-tab">
                                 <!--Content-->
@@ -110,22 +115,32 @@
                                 <div class="card-body">
                                     <table class="table">
                                         <tr class="border border-bottom-light border-right-light">
-                                            <td>Ürün Adı</td>
-                                            <td>
 
+                                            <td>
+                                                <form method="post" action="/admin/pages/upload/upload.php"
+                                                      class="dropzone"
+                                                      id="uploadImage">
+                                                    <input name="productPhotoId" v-model="order.Id" type="hidden" >
+                                                </form>
                                             </td>
-                                        </tr>
-                                        <tr class="text-right">
-                                            <input type="submit" value="Kaydet">
                                         </tr>
                                     </table>
 
+                                    <tr class="border border-bottom-light border-right-light">
 
+
+                                        <?php
+                                        foreach ($photos as $photo) {
+                                            print "<img width='100' style='margin-right:20px' src='".$photo["Path"]."'>";
+                                        }
+                                        ?>
+
+
+                                    </tr>
                                 </div>
 
 
                             </div>
-
                         </div>
 
 
@@ -136,7 +151,6 @@
             </div>
 
         </div>
-    </form>
 </div>
 
 <script>

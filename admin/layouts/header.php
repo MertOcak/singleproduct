@@ -25,25 +25,7 @@
     <link href="/admin/layouts/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <script src="/admin/layouts/vendor/jquery/jquery.min.js"></script>
     <script src="/admin/layouts/js/js.cookie.js"></script>
-    <script>
-    </script>
-    <style>
-        .btn {
-            font-size: 12px !important;
-        }
-
-        table.table-bordered.dataTable th, table.table-bordered.dataTable td {
-            border-left-width: 0;
-            font-size: 13px !important;
-            text-align: center;
-        }
-        .bg-gradient-dark-2 {
-            background-color: #ffffff;
-            background-image: none !important;
-            background-size: cover;
-            color: #000 !important;
-        }
-    </style>
+    <script src="/admin/layouts/js/dropzone.js"></script>
 </head>
 
 <body id="page-top">
