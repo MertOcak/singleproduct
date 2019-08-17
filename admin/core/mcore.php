@@ -153,6 +153,17 @@ if( isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']
     $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Account'], $_POST['Status']]);
 }
 
+/*Settings*/
+
+if( !isset($_POST['action']) && isset($_POST['ThemeColor']) && isset($_POST['TextColor'])) {
+    $sql = "UPDATE settings SET ThemeColor = ?, TextColor = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['ThemeColor'], $_POST['TextColor'], $_GET['id'] ]);
+}
+
+/*if( isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']) && isset($_POST['Account'])  && isset($_POST['Status']) ) {
+    $sql = "INSERT INTO bankaccounts SET Name = ?, Account = ?, Status = ?";
+    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Account'], $_POST['Status']]);
+}*/
 
 
 

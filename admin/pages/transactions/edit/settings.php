@@ -37,7 +37,6 @@
         </div>
     </div>
 
-    <form action="" method="post">
         <div class="row">
             <div class="col-md-12">
                 <form action="" method="post">
@@ -274,7 +273,6 @@
             </div>
 
         </div>
-    </form>
 </div>
 
 <script>
