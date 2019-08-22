@@ -1,0 +1,874 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700|Source+Sans+Pro:300,400,600,700&display=swap&subset=latin-ext");
+body, html {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.main-wrapper {
+  max-width: 1400px;
+  margin: auto;
+}
+
+.btn-tekurunplus {
+  display: inline-block;
+  width: 152px;
+  height: 57px;
+  padding-top: 10px;
+  text-align: center;
+  font-family: "Source Sans Pro", sans-serif;
+  text-transform: uppercase;
+  background: #64393e;
+  color: #ffffff;
+  border-radius: 7px;
+  font-size: 23px;
+}
+.btn-tekurunplus:hover {
+  cursor: pointer;
+}
+
+.btn-tekurunplus-outline {
+  display: inline-block;
+  width: 165px;
+  height: 57px;
+  padding-top: 8px;
+  text-align: center;
+  font-family: "Source Sans Pro", sans-serif;
+  border: 3px solid #64393e;
+  color: #64393e;
+  border-radius: 7px;
+  font-size: 23px;
+}
+.btn-tekurunplus-outline:hover {
+  cursor: pointer;
+}
+
+.btn-big {
+  width: 230px;
+  height: 56px;
+  top: 0px;
+  position: relative;
+}
+
+#buy-now {
+  display: inline-block;
+  margin-top: 12px;
+}
+
+#logo {
+  z-index: 3;
+  position: relative;
+}
+#logo .brand-name {
+  font-family: "Poppins", sans-serif;
+  font-weight: medium;
+  font-size: 40px;
+  color: #64393e;
+}
+#logo .description {
+  margin-left: 1px;
+  margin-top: -20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-size: 19.9px;
+  color: #000000;
+}
+
+#menu {
+  width: calc(100% - 162px);
+  text-align: right;
+  display: inline-block;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #64393e;
+  font-size: 23px;
+}
+#menu a {
+  margin-top: 22px;
+  display: inline-block;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #64393e;
+  font-size: 23px;
+  margin-right: 27px;
+  margin-left: 27px;
+}
+#menu a:first-of-type {
+  margin-left: 0;
+}
+
+#banner .brand-banner {
+  margin-top: 127px;
+  font-family: "Poppins", sans-serif;
+  font-size: 76px;
+  color: #64393e;
+  margin-left: -2px;
+}
+#banner .desc-banner {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  margin-top: -26px;
+  color: #000000;
+  font-size: 65px;
+}
+#banner .alt-banner {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  margin-top: -10px;
+  color: #000000;
+  font-size: 44.5px;
+  margin-bottom: 10px;
+}
+
+.divider {
+  min-height: 186px;
+  background: #64393e;
+}
+.divider.first {
+  z-index: 2;
+  position: relative;
+}
+.divider.regular {
+  margin-top: 60px;
+}
+.divider.order_ {
+  margin-top: 0px;
+  z-index: 2;
+  position: relative;
+}
+.divider h1 {
+  padding-top: 35px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 44px;
+  font-weight: bold;
+  color: #ffffff;
+}
+.divider h2 {
+  padding-top: 0px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 39px;
+  font-weight: 200;
+  color: #ffffff;
+}
+
+#content-1 {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+#content-1 h1 {
+  font-size: 48.5px;
+  color: #64393e;
+  padding-top: 36px;
+  z-index: 2;
+  position: relative;
+}
+#content-1 h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 38px;
+  padding-top: 0px;
+  font-weight: 200;
+  color: #000000;
+  z-index: 2;
+  position: relative;
+}
+#content-1 .product-image img {
+  margin-top: -35px;
+  z-index: 1;
+  position: relative;
+  max-width: 670px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+#content-1 .text {
+  font-size: 20px;
+  line-height: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+#content-1 .text span {
+  font-weight: bold !important;
+}
+
+#content-2 {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+#content-2 h1 {
+  font-size: 48.5px;
+  color: #64393e;
+  padding-top: 36px;
+  z-index: 2;
+  position: relative;
+}
+#content-2 h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 38px;
+  padding-top: 0px;
+  font-weight: 200;
+  color: #000000;
+  z-index: 2;
+  position: relative;
+}
+#content-2 .product-image img {
+  margin-top: -35px;
+  z-index: 1;
+  position: relative;
+  max-width: 670px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+#content-2 .text {
+  font-size: 20px;
+  line-height: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+#content-2 .text span {
+  font-weight: bold !important;
+}
+
+#content-3 {
+  text-align: center;
+}
+#content-3 h1 {
+  font-size: 48.5px;
+  color: #64393e;
+  padding-top: 36px;
+  z-index: 2;
+  position: relative;
+}
+#content-3 h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 38px;
+  padding-top: 0px;
+  font-weight: 200;
+  color: #000000;
+  z-index: 2;
+  position: relative;
+  margin-bottom: 60px;
+}
+#content-3 .product-image {
+  margin-top: -35px;
+  z-index: 1;
+  position: relative;
+  width: 100%;
+}
+#content-3 .price {
+  font-size: 40px;
+  font-weight: 200;
+  color: #64393e;
+  background: #f2f2f2;
+  border-radius: 42px;
+  width: calc(33.3% - 40px);
+  margin-right: 20px;
+  float: left;
+  height: 655px;
+  cursor: pointer;
+}
+#content-3 .price .down {
+  margin-top: -27px;
+}
+#content-3 .price .amount {
+  font-weight: bold;
+}
+#content-3 .price .pricePhoto {
+  margin-top: 40px;
+  height: 340px;
+  background: #efebeb;
+}
+#content-3 .price .pricePhoto.two img {
+  min-width: 228px;
+}
+#content-3 .price .pricePhoto.three img {
+  min-width: 314px;
+}
+#content-3 .price .pricePhoto img {
+  max-width: 139px;
+  margin: auto;
+  margin-top: 30px;
+}
+#content-3 .price .priceTag {
+  font-size: 63px;
+  font-weight: bold;
+}
+#content-3 .price .priceBuy {
+  width: 217px;
+  font-weight: bold;
+  margin-top: 30px !important;
+}
+#content-3 .price:first-of-type {
+  margin-left: 40px;
+}
+#content-3 .price span {
+  margin-top: -40px;
+  font-size: 80px;
+  font-weight: 400;
+  display: block;
+}
+
+#content-4 {
+  text-align: center;
+}
+#content-4 h1 {
+  font-size: 48.5px;
+  color: #64393e;
+  padding-top: 36px;
+  z-index: 2;
+  position: relative;
+}
+#content-4 h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 38px;
+  padding-top: 0px;
+  font-weight: 200;
+  color: #000000;
+  z-index: 2;
+  position: relative;
+}
+#content-4 .video {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  z-index: 1;
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+}
+
+.formImage {
+  background-image: url("../img/tekurunAsset 8.png");
+  background-size: contain;
+  background-position: bottom center;
+  display: block;
+  background-repeat: no-repeat;
+}
+
+.order {
+  max-width: 1400px;
+  margin: auto;
+  text-align: left;
+  padding-left: 0px;
+}
+.order h1 {
+  padding-top: 50px;
+  font-size: 50px;
+  font-weight: bold;
+}
+.order h2 {
+  font-size: 35px;
+  font-weight: 200;
+}
+.order .pImg {
+  top: -35px;
+}
+
+.arrow-wrapper {
+  display: none;
+  position: relative;
+  max-width: 1400px;
+  margin: auto;
+}
+.arrow-wrapper .arrow {
+  position: absolute;
+  text-align: right;
+  margin-top: -5px;
+  right: 0;
+  top: -10px;
+  z-index: 1;
+  overflow: hidden !important;
+}
+.arrow-wrapper .arrow .arrowImage {
+  width: 350px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#orderForm .form-group, #orderForm .form-row {
+  margin-bottom: 30px !important;
+}
+#orderForm .form-group:first-of-type, #orderForm .form-row:first-of-type {
+  margin-top: 30px;
+}
+#orderForm label {
+  font-size: 16.5px;
+  font-weight: 400;
+  color: #64393e;
+  margin-bottom: -34px;
+}
+#orderForm input {
+  border: 3px solid #64393e;
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+  font-weight: 100;
+  height: 53px;
+}
+#orderForm select {
+  border: 3px solid #64393e;
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+  font-weight: 100;
+  padding: 0;
+  height: 53px;
+}
+#orderForm input, #orderForm select, #orderForm textarea {
+  outline: 0;
+  box-shadow: none;
+  resize: none;
+}
+#orderForm input:focus, #orderForm select:focus, #orderForm textarea:focus {
+  outline: 0;
+  box-shadow: none;
+}
+#orderForm input[type=checkbox] {
+  width: 27px;
+  height: 27px;
+}
+#orderForm input[type=submit] {
+  width: 100%;
+  max-width: 320px;
+  height: 65px;
+  text-align: center;
+  font-size: 19px;
+  color: #ffffff;
+  background: #64393e;
+  border-radius: 12px;
+}
+#orderForm .form-check-label {
+  /* font-family: 'Poppins', sans-serif;
+   font-size: 17px;
+   font-weight: 100;
+   color: $textColor;
+   margin-bottom: 50px;*/
+  font-weight: 400;
+}
+#orderForm .form-check-label span {
+  font-weight: normal;
+  text-decoration: underline;
+}
+#orderForm textarea {
+  border: 3px solid #64393e;
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+  font-weight: 100;
+  padding-left: 10px;
+  padding-top: 10px;
+  height: 202px !important;
+}
+
+#footer {
+  max-width: 1400px;
+  margin: auto;
+}
+#footer .footer-links {
+  padding-top: 50px;
+}
+#footer .footer-links a {
+  font-size: 20px;
+  color: #ffffff;
+  height: 20px;
+}
+#footer .footer-links ul {
+  list-style-type: none;
+  margin-bottom: 0;
+  padding: 0;
+}
+#footer .footer-links li:before {
+  content: "";
+  /* Insert content that looks like bullets */
+  padding-right: 0px;
+  color: #ffffff;
+  /* Or a color you prefer */
+}
+#footer .footer-links .url {
+  font-size: 21px;
+  font-weight: 200;
+  color: #ffffff;
+  margin-top: 5px;
+  background: #000;
+}
+
+#hamburger {
+  display: none;
+  z-index: 3;
+}
+#hamburger div {
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 6px 0;
+}
+
+#hamburger-menu {
+  position: fixed;
+  /* Sit on top of the page content */
+  display: none;
+  /* Hidden by default */
+  width: 100%;
+  /* Full width (cover the whole page) */
+  height: 100%;
+  /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  /* Black background with opacity */
+  z-index: 2;
+  /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer;
+  /* Add a pointer on hover */
+}
+#hamburger-menu .links {
+  margin-top: 102px;
+  position: relative;
+}
+#hamburger-menu .links a {
+  background: #64393e;
+  border: 1px solid #64393e;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+  display: block;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #ffffff;
+  font-size: 23px;
+}
+
+body {
+  /* Hide the browser's default checkbox */
+  /* Create a custom checkbox */
+  /* On mouse-over, add a grey background color */
+  /* When the checkbox is checked, add a blue background */
+  /* Create the checkmark/indicator (hidden when not checked) */
+  /* Show the checkmark when checked */
+  /* Style the checkmark/indicator */
+}
+body .container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+body .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+body .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+body .container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+body .container input:checked ~ .checkmark {
+  background-color: #64393e;
+}
+body .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+body .container input:checked ~ .checkmark:after {
+  display: block;
+}
+body .container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+@media (min-width: 0) and (max-width: 480px) {
+  .logo-wrapper {
+    padding-left: 0;
+  }
+
+  .bannerImageHolder {
+    margin-top: 10px;
+  }
+
+  #buy-now {
+    display: none;
+  }
+
+  #hamburger {
+    right: 0 !important;
+  }
+}
+@media (min-width: 1240px) {
+  #hamburger-menu {
+    display: none !important;
+  }
+}
+@media (max-width: 1399px) {
+  .main-wrapper {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  .divider {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+@media (min-width: 0) and (max-width: 1240px) {
+  .price {
+    font-size: 40px;
+    font-weight: 200;
+    color: #64393e;
+    background: #f2f2f2;
+    border-radius: 42px;
+    width: calc(70%) !important;
+    margin: auto !important;
+    float: none !important;
+    height: 655px;
+    cursor: pointer;
+    margin-bottom: 90px !important;
+  }
+  .price .down {
+    margin-top: -27px;
+  }
+  .price .amount {
+    font-weight: bold;
+  }
+  .price .pricePhoto {
+    margin-top: 40px;
+    height: 340px;
+    background: #efebeb;
+  }
+  .price .pricePhoto.two img {
+    min-width: 178px !important;
+  }
+  .price .pricePhoto.three img {
+    min-width: 264px !important;
+  }
+  .price .pricePhoto img {
+    max-width: 139px;
+    margin: auto;
+    margin-top: 30px;
+  }
+  .price .priceTag {
+    font-size: 63px;
+    font-weight: bold;
+  }
+  .price .priceBuy {
+    width: 217px;
+    font-weight: bold;
+    margin-top: 30px !important;
+  }
+  .price span {
+    margin-top: -40px;
+    font-size: 80px;
+    font-weight: 400;
+    display: block;
+  }
+
+  #hamburger {
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    right: 212px;
+    top: 20px;
+  }
+
+  #menu {
+    display: none;
+  }
+}
+@media (min-width: 0) and (max-width: 992px) {
+  #payment-image div {
+    width: 100%;
+  }
+  #payment-image img {
+    margin: auto;
+  }
+
+  input[type=submit] {
+    max-width: 100% !important;
+  }
+
+  .arrow-wrapper .arrow .arrowImage {
+    max-width: 483px;
+  }
+
+  .arrow-wrapper {
+    margin-bottom: 50px;
+  }
+
+  .order {
+    text-align: center;
+  }
+  .order h1 {
+    padding-top: 35px;
+  }
+  .order h2 {
+    font-size: 26px;
+  }
+
+  .divider {
+    min-height: 144px;
+  }
+  .divider h1 {
+    font-size: 28px;
+  }
+  .divider h2 {
+    font-size: 23px;
+  }
+
+  #orderForm .form-group, #orderForm .form-row {
+    margin: 0 !important;
+    margin-top: 10px !important;
+  }
+
+  .tal {
+    padding-left: 5px;
+  }
+
+  textarea {
+    max-width: 97%;
+    margin: auto;
+  }
+
+  #banner .brand-banner {
+    margin-top: 10px !important;
+  }
+
+  #banner .desc-banner {
+    margin-top: 20px;
+  }
+
+  #banner-top .alt-banner {
+    font-size: 30px !important;
+    text-align: center !important;
+    padding-top: 30px;
+    margin-bottom: -20px !important;
+    width: 100%;
+  }
+
+  .btn-tekurunplus-outline {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .btn-big {
+    width: 100% !important;
+    margin-bottom: 10px;
+  }
+
+  .buttons {
+    margin-bottom: 20px;
+  }
+
+  #footer .footer-links a {
+    font-size: 15px;
+  }
+  #footer .security {
+    margin: 0;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  #footer .url {
+    margin-top: 30px !important;
+    display: block;
+    background: #000;
+    font-size: 13px !important;
+  }
+  #footer ul {
+    text-align: center;
+    padding-left: 0 !important;
+  }
+  #footer ul li:before {
+    content: " " !important;
+    /* Insert content that looks like bullets */
+    padding-right: 0 !important;
+    color: #ffffff;
+    /* Or a color you prefer */
+  }
+
+  .bannerImageHolder {
+    text-align: center !important;
+  }
+
+  .text {
+    font-size: 15px !important;
+    line-height: 20px !important;
+  }
+
+  input, select, textarea {
+    font-weight: normal !important;
+  }
+
+  #content-1 h1, #content-2 h1, #content-3 h1, #content-4 h1, #content-5 h1 {
+    font-size: 40px !important;
+  }
+  #content-1 h2, #content-2 h2, #content-3 h2, #content-4 h2, #content-5 h2 {
+    font-size: 25px !important;
+  }
+
+  #content-2 .product-image {
+    left: 0;
+  }
+
+  #orderForm .form-check-label span {
+    margin-left: 5px !important;
+  }
+
+  #content-4 {
+    text-align: center;
+  }
+  #content-4 h1 {
+    font-size: 48.5px;
+    color: #64393e;
+    padding-top: 36px;
+    z-index: 2;
+    position: relative;
+  }
+  #content-4 h2 {
+    font-family: "Poppins", sans-serif;
+    font-size: 38px;
+    padding-top: 0px;
+    font-weight: 200;
+    color: #000000;
+    z-index: 2;
+    position: relative;
+  }
+  #content-4 .video {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    z-index: 1;
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .order h1 {
+    font-size: 50px;
+    padding-top: 15px;
+  }
+
+  .formProductImage {
+    z-index: 1;
+    position: relative;
+    border-bottom: 5px solid #64393e;
+    padding-bottom: 10px;
+  }
+}
+
+/*# sourceMappingURL=tekurunplus.css.map */

@@ -64,7 +64,7 @@
                             <!--Ürün Bilgileri-->
                             <div class="tab-pane fade show active" id="product-info" role="tabpanel" aria-labelledby="product-info-tab">
                                 <!--Content-->
-                                <form action="" method="post">
+                                <form id="editProducts" action="" method="post">
                                 <div class="card-body">
                                     <table class="table">
                                         <tr class="border border-bottom-light border-right-light">

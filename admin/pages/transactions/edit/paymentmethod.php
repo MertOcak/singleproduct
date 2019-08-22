@@ -39,14 +39,13 @@
         </div>
     </div>
 
-    <form action="" method="post">
+    <form id="editPaymentMethods" action="" method="post">
         <input v-model="order.customerId" type="hidden" name="customerId">
         <input v-model="order.productId" type="hidden" name="productId">
 
 
         <div class="row">
             <div class="col-md-12">
-                <form action="" method="post">
                     <div class="card">
                         <div class="card-header">
                             Ödeme Yöntemi Bilgileri
@@ -77,8 +76,6 @@
 
                         </div>
                     </div>
-
-                </form>
 
             </div>
 

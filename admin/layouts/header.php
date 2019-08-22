@@ -2,30 +2,26 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>SB Admin 2 - Dashboard</title>
-
     <!-- Custom fonts for this template-->
     <link href="/admin/layouts/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
-
     <!-- Custom styles for this template-->
-<!--    <link href="/admin/layouts/css/sb-admin-2.min.css" rel="stylesheet">
--->    <link href="/admin/layouts/scss/sb-admin-2.css" rel="stylesheet">
-
-
+    <!--    <link href="/admin/layouts/css/sb-admin-2.min.css" rel="stylesheet">
+    -->
+    <link href="/admin/layouts/scss/sb-admin-2.css" rel="stylesheet">
     <!-- Custom styles for this page -->
     <link href="/admin/layouts/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <script src="/admin/layouts/vendor/jquery/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/admin/layouts/vendor/jquery/jquery.min.js"></script>
     <script src="/admin/layouts/js/js.cookie.js"></script>
     <script src="/admin/layouts/js/dropzone.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet"></link>
 </head>
 
 <body id="page-top">
@@ -34,7 +30,9 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion <?php if(isset($_COOKIE['menu-state']) && $_COOKIE['menu-state'] === "close") { echo 'toggled'; } ?>" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion <?php if (isset($_COOKIE['menu-state']) && $_COOKIE['menu-state'] === "close") {
+        echo 'toggled';
+    } ?>" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/layouts/index.html">
@@ -275,7 +273,8 @@
                 <!-- Topbar Search -->
                 <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Hızlı Ara | Sipariş numarası"
+                        <input type="text" class="form-control bg-light border-0 small"
+                               placeholder="Hızlı Ara | Sipariş numarası"
                                aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="button">
@@ -319,8 +318,8 @@
                             <i class="fas fa-bell fa-fw"></i>
                             <!-- Counter - Alerts -->
 
-                            <?php $newOrders= $pdo->query('SELECT o.Id AS Id, o.CreatedAt AS date, c.FirstName AS FirstName, c.LastName AS LastName, p.Name AS pName FROM orders o INNER JOIN products p ON p.id = o.Product INNER JOIN customers c ON o.CustomerId = c.Id WHERE o.Active = 1 AND o.Status = 1');
- ?>
+                            <?php $newOrders = $pdo->query('SELECT o.Id AS Id, o.CreatedAt AS date, c.FirstName AS FirstName, c.LastName AS LastName, p.Name AS pName FROM orders o INNER JOIN products p ON p.id = o.Product INNER JOIN customers c ON o.CustomerId = c.Id WHERE o.Active = 1 AND o.Status = 1');
+                            ?>
                             <span class="badge badge-danger badge-counter"><?php echo $newOrders->rowCount(); ?></span>
                         </a>
                         <!-- Dropdown - Alerts -->
@@ -346,15 +345,15 @@
                                 $date = $row['date'];
 
 
-                                echo ' <a class="dropdown-item d-flex align-items-center" href="/admin/pages/transactions/orders/browse/'.$row['Id'].'">
+                                echo ' <a class="dropdown-item d-flex align-items-center" href="/admin/pages/transactions/orders/browse/' . $row['Id'] . '">
                                 <div class="mr-3">
                                     <div class="icon-circle bg-success">
                                         <i class="fas fa-donate text-white"></i>
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="small text-gray-500">'.$date.'</div>
-                                    <div class="small font-weight-bold"><b>'.$row['FirstName'].' </b>Yeni Bir Sipariş Verdi!</div>
+                                    <div class="small text-gray-500">' . $date . '</div>
+                                    <div class="small font-weight-bold"><b>' . $row['FirstName'] . ' </b>Yeni Bir Sipariş Verdi!</div>
                                     <!--$290.29 has been deposited into your account!-->
                                 </div>
                             </a>';
@@ -393,8 +392,8 @@
                             </h6>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                 <!--   <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60"
-                                         alt="">-->
+                                    <!--   <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60"
+                                            alt="">-->
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div class="font-weight-bold">
@@ -406,8 +405,8 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                 <!--   <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60"
-                                         alt="">-->
+                                    <!--   <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60"
+                                            alt="">-->
                                     <div class="status-indicator"></div>
                                 </div>
                                 <div>
@@ -419,8 +418,8 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                   <!-- <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60"
-                                         alt="">-->
+                                    <!-- <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60"
+                                          alt="">-->
                                     <div class="status-indicator bg-warning"></div>
                                 </div>
                                 <div>
@@ -432,8 +431,8 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                  <!--  <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                         alt="">-->
+                                    <!--  <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                           alt="">-->
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div>
@@ -454,8 +453,8 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Mert Ocak</span>
-<!--                            <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
--->                        </a>
+                            <!--                            <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                            -->                        </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">

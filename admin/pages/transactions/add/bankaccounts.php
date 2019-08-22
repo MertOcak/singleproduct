@@ -38,11 +38,10 @@
         </div>
     </div>
 
-    <form action="" method="post">
+    <form id="addBankAccounts" action="" method="post">
         <input name="action" value="add" type="hidden">
         <div class="row">
             <div class="col-md-12">
-                <form action="" method="post">
                     <div class="card">
                         <div class="card-header">
                             Bank Hesabı Bilgileri
@@ -82,9 +81,6 @@
 
                         </div>
                     </div>
-
-                </form>
-
             </div>
 
         </div>

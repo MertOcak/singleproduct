@@ -43,8 +43,6 @@
 </div>
 
 
-
-
 <!-- Bootstrap core JavaScript-->
 <script src="/admin/layouts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -69,8 +67,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.min.js"></script>
-
-
+<script src="/admin/layouts/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <!-- Page level plugins -->
 <!--<script src="/admin/layouts/vendor/chart.js/Chart.min.js"></script>
 -->
@@ -82,24 +80,26 @@
 
 <script>
 
-
-    // Call the dataTables jQuery plugin
     $(document).ready(function () {
 
-    <?php if(isset($_GET['upload'])) {
+
+        $('#orders').show();
+
+        $('.card').css('visibility', 'visible');
+
+        <?php if (isset($_GET['upload'])) {
 
         echo '$(\'#product-images-tab\').click();';
 
-       echo ' $(\'.tab-pane\').removeClass(\'show active\');';
+        echo ' $(\'.tab-pane\').removeClass(\'show active\');';
         echo '$(\'#product-images\').addClass(\'show active\');';
 
 
-        } ?>
+    } ?>
 
-
-    setTimeout(function () {
-        $('#uploadImage').dropzone();
-    },1000)
+        setTimeout(function () {
+            $('#uploadImage').dropzone();
+        }, 1000)
 
         $('#sidebarToggle').click(function () {
             if (Cookies.get('menu-state') === 'open') {
@@ -111,27 +111,285 @@
             }
         });
 
-
         $('<script/>', {type: 'text/javascript', src: '/admin/layouts/js/jscolor.js'}).appendTo('head');
 
-        if (typeof order != 'undefined') {
-
-            var orders = new Vue({
-                el: '#orders',
-                data: order,
-                methods: {
-                    fullName: function () {
-                        return order.FirstName + " " + order.LastName;
+        if($("#addProducts").length) {
+            $("#addProducts").validate({
+                rules: {
+                    Name: "required",
+                    Price: {
+                        required: true,
+                        number: true
+                    },
+                    Stock: {
+                        required: true,
+                        number: true
+                    },
+                },
+                messages: {
+                    Name: "",
+                    Price: {
+                        required: "",
+                        number:""
+                    },
+                    Stock: {
+                        required: "",
+                        number: ""
                     }
+                },
+                errorPlacement: function(error,element) {
+                    return true;
                 }
             });
         }
 
 
+        if ($('#orders').length) {
+            if (typeof order != 'undefined') {
+
+                var orders = new Vue({
+                    el: '#orders',
+                    data: order,
+                    methods: {
+                        fullName: function () {
+                            return order.FirstName + " " + order.LastName;
+                        }
+                    },
+                    mounted() {
+
+                        /* $.validator.setDefaults({
+                             submitHandler: function () {
+                                 $(this).submit();
+                             }
+                         });*/
+                        // validate signup form on keyup and submit
+
+                        if($("#addBankAccounts").length) {
+                            $("#addBankAccounts").validate({
+                                rules: {
+                                    Name: "required",
+                                    Account: "required"
+                                },
+                                messages: {
+                                    Name: "",
+                                    Account: ""
+                                },
+                                errorPlacement: function(error,element) {
+                                    return true;
+                                }
+                            });
+                        }
+                        if($("#addExtras").length) {
+                            $("#addExtras").validate({
+                                rules: {
+                                    Name: "required",
+                                    Price: {
+                                        required: true,
+                                        number: true,
+                                    }
+                                },
+                                messages: {
+                                    Name: "",
+                                    Price: {
+                                        required: "",
+                                        number: "",
+                                    }
+                                },
+                                errorPlacement: function(error,element) {
+                                    return true;
+                                }
+                            });
+                        }
+                        if($("#editExtras").length) {
+                            $("#editExtras").validate({
+                                rules: {
+                                    Name: "required",
+                                    Price: {
+                                        required: true,
+                                        number: true,
+                                    }
+                                },
+                                messages: {
+                                    Name: "",
+                                    Price: {
+                                        required: "",
+                                        number:""
+                                    }
+                                },
+                                errorPlacement: function(error,element) {
+                                    return true;
+                                }
+                            });
+                        }
+                        if($("#editBankAccounts").length) {
+                            $("#editBankAccounts").validate({
+                                rules: {
+                                    Name: "required",
+                                    Account: "required"
+                                },
+                                messages: {
+                                    Name: "",
+                                    Account: ""
+                                },
+                                errorPlacement: function(error,element) {
+                                    return true;
+                                }
+                            });
+                        }
+
+
+                        if($("#addPaymentMethods").length) {
+                            $("#addPaymentMethods").validate({
+                                rules: {
+                                    PaymentMethodName: "required"
+                                },
+                                messages: {
+                                    Name: ""
+                                },
+                                errorPlacement: function(error,element) {
+                                    return true;
+                                }
+                            });
+                        }
+
+
+                        if($("#editPaymentMethods").length) {
+                            $("#editPaymentMethods").validate({
+                                rules: {
+                                    PaymentMethodName: "required"
+                                },
+                                messages: {
+                                    Name: ""
+                                },
+                                errorPlacement: function(error,element) {
+                                    return true;
+                                }
+                            });
+                        }
+
+
+                        if ($("#ordersEdit").length) {
+                            $("#ordersEdit").validate({
+                                rules: {
+                                    FirstName: "required",
+                                    LastName: "required",
+                                    Mail: {
+                                        required: true,
+                                        email: true
+                                    },
+                                    Phone: "required",
+                                    Address: "required",
+                                    Amount: "required",
+                                    /* username: {
+                                         required: true,
+                                         minlength: 2
+                                     },
+                                     password: {
+                                         required: true,
+                                         minlength: 5
+                                     },
+                                     confirm_password: {
+                                         required: true,
+                                         minlength: 5,
+                                         equalTo: "#password"
+                                     },
+                                     email: {
+                                         required: true,
+                                         email: true
+                                     },
+                                     topic: {
+                                         required: "#newsletter:checked",
+                                         minlength: 2
+                                     },
+                                     agree: "required"*/
+                                },
+                                messages: {
+                                    FirstName: "Ad zorunludur",
+                                    LastName: "Soyad zorunludur",
+                                    Mail: {
+                                        required: "",
+                                        email: ""
+                                    },
+                                    Phone: "Telefon zorunludur",
+                                    Address: "Adres zorunludur",
+                                    Amount: "Adet zorunludur",
+                                },
+                                errorPlacement: function (error, element) {
+                                    return true;
+                                }
+                            });
+                        }
+
+                        if ($("#customersEdit").length) {
+                            $("#customersEdit").validate({
+                                rules: {
+                                    FirstName: "required",
+                                    LastName: "required",
+                                    Mail: {
+                                        required: true,
+                                        email: true
+                                    },
+                                    Phone: "required",
+                                    Address: "required",
+                                },
+                                messages: {
+                                    FirstName: "",
+                                    LastName: "",
+                                    Mail: {
+                                        required: "",
+                                        email: ""
+                                    },
+                                    Phone: "",
+                                    Address: "",
+                                },
+                                errorPlacement: function (error, element) {
+                                    return true;
+                                }
+                            });
+                        }
+
+                        if($("#editProducts").length) {
+                            $("#editProducts").validate({
+                                rules: {
+                                    Name: "required",
+                                    Price: {
+                                        required: true,
+                                        number: true
+                                    },
+                                    Stock: {
+                                        required: true,
+                                        number: true
+                                    },
+                                },
+                                messages: {
+                                    Name: "",
+                                    Price: {
+                                        required: "",
+                                        number:""
+                                    },
+                                    Stock: {
+                                        required: "",
+                                        number: ""
+                                    }
+                                },
+                                errorPlacement: function(error,element) {
+                                    return true;
+                                }
+                            });
+                        }
+
+
+
+
+
+                    }
+                });
+            }
+        }
+
         $(".checkAll").click(function () {
             $('input:checkbox').not(this).prop('checked', this.checked);
         });
-
 
         $('#raporAl').click(function () {
             $('.buttons-print').click();
@@ -158,7 +416,6 @@
             $('.buttons-print').click();
         });
 
-        $('.card').css('visibility', 'visible');
 
         $('#dataTable').DataTable({
             dom: 'Blfrtip',
@@ -300,12 +557,12 @@
             }
         });
 
-        $('#orders').show();
-
         if ($('#orderStatus').length > 0) {
             $('#orderStatus option[value="' + order.statusId + '"]').attr("selected", "selected");
             $('#allProducts option[value="' + order.Product + '"]').attr("selected", "selected");
         }
+
+
     });
 </script>
 

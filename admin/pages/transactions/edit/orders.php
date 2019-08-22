@@ -40,7 +40,7 @@
             </div>
         </div>
     </div>
-    <form action="" method="post">
+    <form id="ordersEdit" action="" method="post">
         <input  v-model="order.customerId" type="hidden" name="customerId">
         <input  v-model="order.productId" type="hidden" name="productId">
 
@@ -189,3 +189,4 @@
     ?>
 
 </div>
+

@@ -40,7 +40,7 @@
             </div>
         </div>
     </div>
-    <form action="" method="post">
+    <form id="addProducts" action="" method="post">
         <input name="action" value="add" type="hidden">
         <div class="row">
             <div class="col-md-12">

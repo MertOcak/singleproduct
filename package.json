@@ -1,0 +1,19 @@
+{
+  "name": "nutiva_yeni_html",
+  "version": "1.0.0",
+  "description": "Tek Ürün Satış Yazılımı Front-End",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Mert",
+    "Ocak"
+  ],
+  "author": "Mert Ocak",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery-validation": "^1.19.1"
+  }
+}
