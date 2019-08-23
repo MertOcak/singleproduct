@@ -104,7 +104,7 @@ if (isset($_POST['FirstName']) && isset($_POST['LastName']) && isset($_POST['Add
     $sql = "UPDATE customers SET FirstName = ?, LastName = ?, Address = ?, Mail = ?, Phone = ? WHERE id = ?";
     $pdo->prepare($sql)->execute([$_POST['FirstName'], $_POST['LastName'], $_POST['Address'], $_POST['Mail'], $_POST['Phone'], $_GET['id']]);
 
-    header("location: /admin/pages/transactions/customers/browse/" . $_GET['id']);
+    header("location: /admin/pages/customers/");
 }
 
 /*Products*/
@@ -113,7 +113,7 @@ if (!isset($_POST['action']) && isset($_POST['Name']) && isset($_POST['Price']) 
     $sql = "UPDATE products SET Name = ?, Price = ?, Active = ?, Stock = ? WHERE id = ?";
     $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Price'], $_POST['Active'], $_POST['Stock'], $_GET['id']]);
 
-    header("location: /admin/pages/transactions/products/browse/" . $_GET['id']);
+    header("location: /admin/pages/products/");
 }
 
 if (isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']) && isset($_POST['Price']) && isset($_POST['Active']) && isset($_POST['Stock'])) {
@@ -129,7 +129,7 @@ if (isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']
 if (!isset($_POST['action']) && isset($_POST['PaymentMethodName']) && isset($_POST['Status'])) {
     $sql = "UPDATE paymentmethod SET PaymentMethodName = ?, Status = ? WHERE id = ?";
     $pdo->prepare($sql)->execute([$_POST['PaymentMethodName'], $_POST['Status'], $_GET['id']]);
-    header("location: /admin/pages/transactions/paymentmethod/browse/" . $_GET['id']);
+    header("location: /admin/pages/paymentmethod/");
 
 }
 
@@ -145,7 +145,7 @@ if (isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Paymen
 if (!isset($_POST['action']) && isset($_POST['Name']) && isset($_POST['Price']) && isset($_POST['Status'])) {
     $sql = "UPDATE extras SET Name = ?, Price = ?, Status = ? WHERE id = ?";
     $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Price'], $_POST['Status'], $_GET['id']]);
-    header("location: /admin/pages/transactions/extras/browse/" . $_GET['id']);
+    header("location: /admin/pages/extras/");
 
 }
 
@@ -161,7 +161,7 @@ if (isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']
 if (!isset($_POST['action']) && isset($_POST['Name']) && isset($_POST['Account']) && isset($_POST['Status'])) {
     $sql = "UPDATE bankaccounts SET Name = ?, Account = ?, Status = ? WHERE id = ?";
     $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Account'], $_POST['Status'], $_GET['id']]);
-    header("location: /admin/pages/transactions/bankaccounts/browse/" . $_GET['id']);
+    header("location: /admin/pages/bankaccounts/");
 
 }
 
@@ -169,18 +169,33 @@ if (isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']
     $sql = "INSERT INTO bankaccounts SET Name = ?, Account = ?, Status = ?";
     $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Account'], $_POST['Status']]);
     header("location: /admin/pages/bankaccounts");
-
 }
 
 /*Settings*/
 
-if (!isset($_POST['action']) && isset($_POST['ThemeColor']) && isset($_POST['TextColor'])) {
-    $sql = "UPDATE settings SET ThemeColor = ?, TextColor = ? WHERE id = ?";
-    $pdo->prepare($sql)->execute([$_POST['ThemeColor'], $_POST['TextColor'], $_GET['id']]);
-
+if (!isset($_POST['action']) && isset($_POST['ThemeColor']) && isset($_POST['TextColor']) && isset($_POST['Maintenance'])) {
+    $sql = "UPDATE settings SET ThemeColor = ?, TextColor = ?, GoogleAnalytics = ?, Title = ?, Description = ?, Keywords = ?, Author = ?, Owner = ?, Copyright = ?, LiveChat = ?, Js = ?, Maintenance = ?   WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['ThemeColor'], $_POST['TextColor'], $_POST['GoogleAnalytics'], $_POST['Title'], $_POST['Description'], $_POST['Keywords'], $_POST['Author'], $_POST['Owner'], $_POST['Copyright'], $_POST['LiveChat'], $_POST['Js'], $_POST['Maintenance'], $_GET['id']]);
     header("location: /admin/pages/transactions/settings/edit/1");
-
 }
+
+
+/*V-Poses*/
+
+/*PayTR*/
+if (!isset($_POST['action']) && isset($_POST['MerchantId']) && isset($_POST['MerchantKey']) && isset($_POST['MerchantSalt']) && isset($_POST['Status'])) {
+    $sql = "UPDATE vposes SET MerchantId = ?, MerchantKey = ?, MerchantSalt = ?, Status = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['MerchantId'], $_POST['MerchantKey'], $_POST['MerchantSalt'], $_POST['Status'], $_GET['id']]);
+    header("location: /admin/pages/transactions/vposes/edit/".$_GET['id']);
+}
+
+/*Iyzico*/
+if (!isset($_POST['action']) && isset($_POST['ApiKey']) && isset($_POST['SecretKey']) && isset($_POST['BaseUrl']) && isset($_POST['Status'])) {
+    $sql = "UPDATE vposes SET ApiKey = ?, SecretKey = ?, BaseUrl = ?, Status = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['ApiKey'], $_POST['SecretKey'], $_POST['BaseUrl'], $_POST['Status'], $_GET['id']]);
+    header("location: /admin/pages/transactions/vposes/edit/".$_GET['id']);
+}
+
 
 /*if( isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']) && isset($_POST['Account'])  && isset($_POST['Status']) ) {
     $sql = "INSERT INTO bankaccounts SET Name = ?, Account = ?, Status = ?";

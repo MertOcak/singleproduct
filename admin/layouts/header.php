@@ -239,8 +239,8 @@
                     <h6 class="collapse-header">Eklentiler:</h6>
 
                     <a class="collapse-item" href="#">Google Anlaytics Kodu</a>
-                    <a class="collapse-item" href="#">Iyzico Modülü Ekle</a>
-                    <a class="collapse-item" href="#">PayTR Modülü Ekle</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/vposes/edit/1">Iyzico Modülü Ekle</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/vposes/edit/2">PayTR Modülü Ekle</a>
                 </div>
             </div>
         </li>
