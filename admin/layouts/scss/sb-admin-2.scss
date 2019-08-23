@@ -53,6 +53,10 @@
   -o-user-select: none;
 }
 
+.v-none {
+  visibility: hidden;
+}
+
 .disableSelection {
   user-select: none;
   -moz-user-select: none;

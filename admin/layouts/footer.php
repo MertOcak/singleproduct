@@ -116,6 +116,23 @@
             }
         });
 
+        $('#statistics-toggle').click(function () {
+            if (Cookies.get('statistics-state') === 'visible') {
+                Cookies.set('statistics-state', 'hidden');
+            } else if (Cookies.get('statistics-state') === 'hidden') {
+                Cookies.set('statistics-state', 'visible');
+            } else {
+                Cookies.set('statistics-state', 'visible');
+            }
+            $('.statistics').toggle('50');
+
+            if($(this).html() === "İstatistikleri Göster") {
+                $(this).html("İstatistikleri Gizle")
+            } else {
+                $(this).html("İstatistikleri Göster")
+            }
+        });
+
         $('<script/>', {type: 'text/javascript', src: '/admin/layouts/js/jscolor.js'}).appendTo('head');
 
         if ($("#addProducts").length) {
@@ -631,6 +648,10 @@
                 case "Success";
                     echo "activateTab('admin-password');";
                     echo "alert('Kullanıcı adı ve şifreniz başarıyla değiştirildi.');";
+                    break;
+
+                case "Password";
+                    echo "activateTab('admin-password');";
                     break;
 
             }

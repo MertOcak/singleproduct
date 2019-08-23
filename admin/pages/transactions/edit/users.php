@@ -162,7 +162,7 @@
                                         <tr class="border border-bottom-light border-right-light">
                                             <td></td>
                                             <td>
-                                                <input id="show-password" type="checkbox"> <label style="top:2px" class="disableSelection" for="show-password">Şifreleri Göster</label>
+                                                <input id="show-password" type="checkbox"> <label style="top:2px;cursor:pointer" class="disableSelection" for="show-password">Şifreleri Göster</label>
                                             </td>
                                         </tr>
                                         <tr class="text-right">

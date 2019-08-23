@@ -10,10 +10,16 @@ include "../../layouts/header.php";
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
+    <div class="row col-12">
+        <button id="statistics-toggle" class="btn btn-primary text-white mb-2">İstatistikleri <?php if (isset($_COOKIE['statistics-state']) && $_COOKIE['statistics-state'] === "hidden") {
+                echo 'Göster';
+            } else { echo 'Gizle';} ?></button>
 
+    </div>
     <!-- Content Row -->
-    <div class="row">
-
+    <div class="row statistics"  <?php if (isset($_COOKIE['statistics-state']) && $_COOKIE['statistics-state'] === "hidden") {
+        echo 'style="display:none;"';
+    } ?>>
         <!-- Pending Requests Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
