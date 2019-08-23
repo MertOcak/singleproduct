@@ -174,8 +174,8 @@ if (isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']
 /*Settings*/
 
 if (!isset($_POST['action']) && isset($_POST['ThemeColor']) && isset($_POST['TextColor']) && isset($_POST['Maintenance'])) {
-    $sql = "UPDATE settings SET ThemeColor = ?, TextColor = ?, GoogleAnalytics = ?, Title = ?, Description = ?, Keywords = ?, Author = ?, Owner = ?, Copyright = ?, LiveChat = ?, Js = ?, Maintenance = ?   WHERE id = ?";
-    $pdo->prepare($sql)->execute([$_POST['ThemeColor'], $_POST['TextColor'], $_POST['GoogleAnalytics'], $_POST['Title'], $_POST['Description'], $_POST['Keywords'], $_POST['Author'], $_POST['Owner'], $_POST['Copyright'], $_POST['LiveChat'], $_POST['Js'], $_POST['Maintenance'], $_GET['id']]);
+    $sql = "UPDATE settings SET ThemeColor = ?, TextColor = ?, GoogleAnalytics = ?, Title = ?, Description = ?, Keywords = ?, Author = ?, Owner = ?, Copyright = ?, LiveChat = ?, Js = ?, Maintenance = ?, SiteTitle = ?, Whatsapp = ?   WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['ThemeColor'], $_POST['TextColor'], $_POST['GoogleAnalytics'], $_POST['Title'], $_POST['Description'], $_POST['Keywords'], $_POST['Author'], $_POST['Owner'], $_POST['Copyright'], $_POST['LiveChat'], $_POST['Js'], $_POST['Maintenance'], $_POST['SiteTitle'], $_POST['Whatsapp'], $_GET['id']]);
     header("location: /admin/pages/transactions/settings/edit/1");
 }
 
@@ -194,6 +194,37 @@ if (!isset($_POST['action']) && isset($_POST['ApiKey']) && isset($_POST['SecretK
     $sql = "UPDATE vposes SET ApiKey = ?, SecretKey = ?, BaseUrl = ?, Status = ? WHERE id = ?";
     $pdo->prepare($sql)->execute([$_POST['ApiKey'], $_POST['SecretKey'], $_POST['BaseUrl'], $_POST['Status'], $_GET['id']]);
     header("location: /admin/pages/transactions/vposes/edit/".$_GET['id']);
+}
+
+
+/*Admin Profile*/
+
+/*Profile Update*/
+if (!isset($_POST['action']) && isset($_POST['FirstName']) && isset($_POST['LastName']) && isset($_POST['Mail']) && isset($_POST['Phone'])) {
+    $sql = "UPDATE users SET FirstName = ?, LastName = ?, Mail = ?, Phone = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['FirstName'], $_POST['LastName'], $_POST['Mail'], $_POST['Phone'], $_GET['id']]);
+    header("location: /admin/pages/transactions/users/edit/1");
+
+}
+
+/*Password Update*/
+
+$fetchPassword= $pdo->query("SELECT Password FROM users WHERE id=1")->fetch();
+$oldPassword = $fetchPassword['Password'];
+
+if(isset($_POST['NewPassword']) && isset($_POST['OldPassword'])  && ($oldPassword === $_POST['OldPassword']) ) {
+
+if (!isset($_POST['action']) && isset($_POST['NewPassword']) && isset($_POST['UserName'])) {
+    $sql = "UPDATE users SET Password = ?, UserName = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['NewPassword'], $_POST['UserName'], $_GET['id']]);
+    header("location: /admin/pages/transactions/users/edit/1/Success");
+
+}
+
+} else if(isset($_POST['changePassword'])  && $oldPassword !== $_POST['OldPassword'] ) {
+    $_POST = array();
+    header("location: /admin/pages/transactions/users/edit/1/Failed");
+
 }
 
 

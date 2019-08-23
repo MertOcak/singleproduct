@@ -52,6 +52,15 @@
   -webkit-user-select: none;
   -o-user-select: none;
 }
+
+.disableSelection {
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
 .dz-processing {
   display: none;
 }

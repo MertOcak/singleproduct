@@ -5,7 +5,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright 2019 &copy; Tek Ürün 2  </span>
+            <span>Copyright <?php echo date("Y"); ?> &copy; <b>Tek Ürün 2</b>  </span>
         </div>
     </div>
 </footer>
@@ -83,6 +83,11 @@
     $(document).ready(function () {
 
 
+        function activateTab(tab) {
+            $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+        };
+
+
         $('#orders').show();
 
         $('.card').css('visibility', 'visible');
@@ -113,7 +118,7 @@
 
         $('<script/>', {type: 'text/javascript', src: '/admin/layouts/js/jscolor.js'}).appendTo('head');
 
-        if($("#addProducts").length) {
+        if ($("#addProducts").length) {
             $("#addProducts").validate({
                 rules: {
                     Name: "required",
@@ -130,14 +135,14 @@
                     Name: "",
                     Price: {
                         required: "",
-                        number:""
+                        number: ""
                     },
                     Stock: {
                         required: "",
                         number: ""
                     }
                 },
-                errorPlacement: function(error,element) {
+                errorPlacement: function (error, element) {
                     return true;
                 }
             });
@@ -164,7 +169,7 @@
                          });*/
                         // validate signup form on keyup and submit
 
-                        if($("#addBankAccounts").length) {
+                        if ($("#addBankAccounts").length) {
                             $("#addBankAccounts").validate({
                                 rules: {
                                     Name: "required",
@@ -174,12 +179,12 @@
                                     Name: "",
                                     Account: ""
                                 },
-                                errorPlacement: function(error,element) {
+                                errorPlacement: function (error, element) {
                                     return true;
                                 }
                             });
                         }
-                        if($("#addExtras").length) {
+                        if ($("#addExtras").length) {
                             $("#addExtras").validate({
                                 rules: {
                                     Name: "required",
@@ -195,12 +200,12 @@
                                         number: "",
                                     }
                                 },
-                                errorPlacement: function(error,element) {
+                                errorPlacement: function (error, element) {
                                     return true;
                                 }
                             });
                         }
-                        if($("#editExtras").length) {
+                        if ($("#editExtras").length) {
                             $("#editExtras").validate({
                                 rules: {
                                     Name: "required",
@@ -213,15 +218,15 @@
                                     Name: "",
                                     Price: {
                                         required: "",
-                                        number:""
+                                        number: ""
                                     }
                                 },
-                                errorPlacement: function(error,element) {
+                                errorPlacement: function (error, element) {
                                     return true;
                                 }
                             });
                         }
-                        if($("#editBankAccounts").length) {
+                        if ($("#editBankAccounts").length) {
                             $("#editBankAccounts").validate({
                                 rules: {
                                     Name: "required",
@@ -231,14 +236,14 @@
                                     Name: "",
                                     Account: ""
                                 },
-                                errorPlacement: function(error,element) {
+                                errorPlacement: function (error, element) {
                                     return true;
                                 }
                             });
                         }
 
 
-                        if($("#addPaymentMethods").length) {
+                        if ($("#addPaymentMethods").length) {
                             $("#addPaymentMethods").validate({
                                 rules: {
                                     PaymentMethodName: "required"
@@ -246,14 +251,14 @@
                                 messages: {
                                     Name: ""
                                 },
-                                errorPlacement: function(error,element) {
+                                errorPlacement: function (error, element) {
                                     return true;
                                 }
                             });
                         }
 
 
-                        if($("#editPaymentMethods").length) {
+                        if ($("#editPaymentMethods").length) {
                             $("#editPaymentMethods").validate({
                                 rules: {
                                     PaymentMethodName: "required"
@@ -261,7 +266,7 @@
                                 messages: {
                                     Name: ""
                                 },
-                                errorPlacement: function(error,element) {
+                                errorPlacement: function (error, element) {
                                     return true;
                                 }
                             });
@@ -348,7 +353,7 @@
                             });
                         }
 
-                        if($("#editProducts").length) {
+                        if ($("#editProducts").length) {
                             $("#editProducts").validate({
                                 rules: {
                                     Name: "required",
@@ -365,21 +370,18 @@
                                     Name: "",
                                     Price: {
                                         required: "",
-                                        number:""
+                                        number: ""
                                     },
                                     Stock: {
                                         required: "",
                                         number: ""
                                     }
                                 },
-                                errorPlacement: function(error,element) {
+                                errorPlacement: function (error, element) {
                                     return true;
                                 }
                             });
                         }
-
-
-
 
 
                     }
@@ -562,6 +564,78 @@
             $('#allProducts option[value="' + order.Product + '"]').attr("selected", "selected");
         }
 
+
+        <?php
+
+        if (isset($_GET['upload'])) {
+            switch ($_GET['upload']) {
+                case "GoogleAnalytics";
+                    echo "activateTab('google-analytics');";
+                    break;
+
+                case "SeoSettings";
+                    echo "activateTab('seo-settings');";
+                    break;
+
+                case "LiveChat";
+                    echo "activateTab('live-chat');";
+                    break;
+
+                case "Whatsapp";
+                    echo "activateTab('whatsapp');";
+                    break;
+
+                case "JsCode";
+                    echo "activateTab('js-codes');";
+                    break;
+
+                case "Maintenance";
+                    echo "activateTab('maintenance-mode');";
+                    break;
+
+                case "Failed";
+                    echo "activateTab('admin-password');";
+                    echo "alert('Eski şifrenizi hatalı girdiniz.');";
+                    break;
+
+                case "Success";
+                    echo "activateTab('admin-password');";
+                    echo "alert('Kullanıcı adı ve şifreniz başarıyla değiştirildi.');";
+                    break;
+
+            }
+        }
+        ?>
+
+        function checkPasswordMatch() {
+            var password = $("input[name=NewPassword]").val();
+            var confirmPassword = $("input[name=NewPasswordRepeat]").val();
+
+            if (password != confirmPassword || (password == "") || (confirmPassword == "") ) {
+                $("input[name=NewPassword], input[name=NewPasswordRepeat]").attr('style','background:red; color: white');
+                return 0;
+            }
+            else {
+                $("input[name=NewPassword], input[name=NewPasswordRepeat]").attr('style','background:green; color: white');
+                return 1;
+            }
+        }
+
+        $('#show-password').click(function(){
+            $(this).is(':checked') ? $('input[name=NewPassword],input[name=NewPasswordRepeat]').attr('type', 'text') : $('input[name=NewPassword],input[name=NewPasswordRepeat]').attr('type', 'password');
+        });
+
+        check = 0;
+        if($('input[name=NewPassword]').length){
+            $("input[name=NewPasswordRepeat]").keyup(checkPasswordMatch);
+            $('#editPassword').submit(function(){
+                check = checkPasswordMatch();
+                if( check !== 1 ) {
+                    alert('Yeni şifreleriniz eşleşmiyor!');
+                    return false;
+                }
+            })
+        }
 
     });
 </script>

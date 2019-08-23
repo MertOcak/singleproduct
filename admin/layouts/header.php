@@ -102,7 +102,7 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#products"
                aria-expanded="true" aria-controls="products">
-                <i class="fas fa-fw fa-barcode"></i>
+                <i class="fas fa-fw fa-box"></i>
                 <span>Ürünler</span>
             </a>
             <div id="products" class="collapse" aria-labelledby="headingUtilities"
@@ -168,6 +168,24 @@
         </li>
 
 
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#vposes"
+               aria-expanded="true" aria-controls="vposes">
+                <i class="fas fa-fw fa-vote-yea"></i>
+                <span>Sanal Poslar</span>
+            </a>
+            <div id="vposes" class="collapse" aria-labelledby="headingUtilities"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="/admin/pages/transactions/vposes/edit/1">Iyzico Modülü Ekle</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/vposes/edit/2">PayTR Modülü Ekle</a>
+                </div>
+            </div>
+        </li>
+
+
+
         <!-- Divider -->
         <hr class="sidebar-divider">
 
@@ -180,17 +198,11 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#sayfalar"
                aria-expanded="true" aria-controls="sayfalar">
-                <i class="fas fa-fw fa-folder"></i>
+                <i class="fas fa-fw fa-layer-group"></i>
                 <span>İçerik Yönetimi</span>
             </a>
             <div id="sayfalar" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-
-                    <h6 class="collapse-header">Renk Ayarları:</h6>
-
-
-                    <a class="collapse-item" href="/admin/pages/transactions/settings/edit/1">Tema Rengi</a>
-
 
                     <h6 class="collapse-header">Üst Kısım Alanları:</h6>
 
@@ -221,26 +233,67 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Genel Ayarlar
+            SİTE AYARLARI
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#general"
+               aria-expanded="true" aria-controls="general">
+                <i class="fas fa-fw fa-ellipsis-h"></i>
+                <span>Genel Ayarlar</span>
+            </a>
+            <div id="general" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+
+                    <h6 class="collapse-header">Tema Ayarları:</h6>
+
+
+                    <a class="collapse-item" href="/admin/pages/transactions/settings/edit/1">Tema Rengi</a>
+
+
+                    <h6 class="collapse-header">Seo Ayarları:</h6>
+
+                    <a class="collapse-item" href="/admin/pages/transactions/settings/edit/1/GoogleAnalytics">Google Analytics</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/settings/edit/1/SeoSettings">Meta Etiketleri</a>
+
+
+                    <h6 class="collapse-header">Eklenti Ayarları:</h6>
+
+                    <a class="collapse-item" href="/admin/pages/transactions/settings/edit/1/LiveChat">Canlı Destek</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/settings/edit/1/Whatsapp">Whatsapp</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/settings/edit/1/JsCode">JS Kodu</a>
+
+                    <h6 class="collapse-header">Bakım Modu Ayarları:</h6>
+
+                    <a class="collapse-item" href="/admin/pages/transactions/settings/edit/1/Maintenance">Bakım Modu</a>
+
+                </div>
+            </div>
+        </li>
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            GİZLİLİK VE GÜVENLİK
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#generalSettings"
                aria-expanded="true" aria-controls="generalSettings">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Site Ayarları  </span>
+                <i class="fas fa-fw fa-shield-alt"></i>
+                <span>Güvenlik Ayarları</span>
             </a>
             <div id="generalSettings" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Gizlilik ve Güvenlik:</h6>
+                    <h6 class="collapse-header">PROFİL AYARLARI</h6>
 
-                    <a class="collapse-item" href="#">Yönetici Bilgileri</a>
-                    <h6 class="collapse-header">Eklentiler:</h6>
+                    <a class="collapse-item" href="/admin/pages/transactions/users/edit/1">Yönetici Profili Düzenle</a>
 
-                    <a class="collapse-item" href="#">Google Anlaytics Kodu</a>
-                    <a class="collapse-item" href="/admin/pages/transactions/vposes/edit/1">Iyzico Modülü Ekle</a>
-                    <a class="collapse-item" href="/admin/pages/transactions/vposes/edit/2">PayTR Modülü Ekle</a>
                 </div>
             </div>
         </li>
