@@ -28,7 +28,7 @@
                 <div class="card-body p-0 ">
                     <table class="table text-center">
                         <tr>
-                            <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder">Genel Ayarları</td>
+                            <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder">Genel Ayarlar</td>
                             <td class="bg-gradient-dark-2 text-white dividerBorder"><small>Genel Ayarlarınızı Bu Bölümden Yapabilirsiniz</small></td>
                         </tr>
                     </table>

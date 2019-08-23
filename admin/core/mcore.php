@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -22,10 +22,10 @@ try {
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-if(isset($_POST['action'])){
+if (isset($_POST['action'])) {
     switch ($_POST['action']) {
         case "delete":
-           /* $sql = "DELETE FROM " . $_POST['tableName'] . " WHERE Id in ";*/
+            /* $sql = "DELETE FROM " . $_POST['tableName'] . " WHERE Id in ";*/
             $sql = "UPDATE " . $_POST['tableName'] . " SET Active = 0 WHERE Id in ";
             $sql .= "('" . implode("','", array_values($_POST['id'])) . "')";
             $pdo->query($sql);
@@ -83,88 +83,109 @@ function statusColorCheck($x)
     }
 }
 
-
 /* Orders */
 
-if( isset($_POST['FirstName']) && isset($_POST['LastName']) && isset($_POST['Address']) && isset($_POST['Mail']) && isset($_POST['Phone']) && isset($_POST['FirstName']) && isset($_POST['Note']) && isset($_POST['Amount']) && isset($_POST['Product']) && isset($_POST['Status']) ) {
+if (isset($_POST['FirstName']) && isset($_POST['LastName']) && isset($_POST['Address']) && isset($_POST['Mail']) && isset($_POST['Phone']) && isset($_POST['FirstName']) && isset($_POST['Note']) && isset($_POST['Amount']) && isset($_POST['Product']) && isset($_POST['Status'])) {
     $sql = "UPDATE customers SET FirstName = ?, LastName = ?, Address = ?, Mail = ?, Phone = ? WHERE id = ?";
-    $pdo->prepare($sql)->execute([$_POST['FirstName'], $_POST['LastName'],$_POST['Address'],$_POST['Mail'],$_POST['Phone'], $_POST['customerId'] ]);
+    $pdo->prepare($sql)->execute([$_POST['FirstName'], $_POST['LastName'], $_POST['Address'], $_POST['Mail'], $_POST['Phone'], $_POST['customerId']]);
 
     $sql = "UPDATE notes SET Note = ? WHERE id = ?";
-    $pdo->prepare($sql)->execute([$_POST['Note'] , $_GET['id']]);
+    $pdo->prepare($sql)->execute([$_POST['Note'], $_GET['id']]);
 
     $sql = "UPDATE orders SET Amount = ?, Status = ?, Product = ? WHERE id = ?";
     $pdo->prepare($sql)->execute([$_POST['Amount'], $_POST['Status'], $_POST['Product'], $_GET['id']]);
+
+    header("location: /admin/pages/transactions/orders/browse/" . $_GET['id']);
 }
 
 /*Customers*/
 
-if( isset($_POST['FirstName']) && isset($_POST['LastName']) && isset($_POST['Address']) && isset($_POST['Mail']) && isset($_POST['Phone'])) {
+if (isset($_POST['FirstName']) && isset($_POST['LastName']) && isset($_POST['Address']) && isset($_POST['Mail']) && isset($_POST['Phone']) && !isset($_POST['Note'])) {
     $sql = "UPDATE customers SET FirstName = ?, LastName = ?, Address = ?, Mail = ?, Phone = ? WHERE id = ?";
-    $pdo->prepare($sql)->execute([$_POST['FirstName'], $_POST['LastName'],$_POST['Address'],$_POST['Mail'],$_POST['Phone'], $_GET['id'] ]);
+    $pdo->prepare($sql)->execute([$_POST['FirstName'], $_POST['LastName'], $_POST['Address'], $_POST['Mail'], $_POST['Phone'], $_GET['id']]);
+
+    header("location: /admin/pages/transactions/customers/browse/" . $_GET['id']);
 }
 
 /*Products*/
 
-if( !isset($_POST['action']) && isset($_POST['Name']) && isset($_POST['Price']) && isset($_POST['Active']) && isset($_POST['Stock'])) {
+if (!isset($_POST['action']) && isset($_POST['Name']) && isset($_POST['Price']) && isset($_POST['Active']) && isset($_POST['Stock'])) {
     $sql = "UPDATE products SET Name = ?, Price = ?, Active = ?, Stock = ? WHERE id = ?";
-    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Price'],$_POST['Active'],$_POST['Stock'], $_GET['id'] ]);
+    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Price'], $_POST['Active'], $_POST['Stock'], $_GET['id']]);
+
+    header("location: /admin/pages/transactions/products/browse/" . $_GET['id']);
 }
 
-if( isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']) && isset($_POST['Price']) && isset($_POST['Active']) && isset($_POST['Stock'])) {
+if (isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']) && isset($_POST['Price']) && isset($_POST['Active']) && isset($_POST['Stock'])) {
     $sql = "INSERT INTO products SET Name = ?, Price = ?, Active = ?, Stock = ?";
-    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Price'],$_POST['Active'],$_POST['Stock']]);
+    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Price'], $_POST['Active'], $_POST['Stock']]);
+    header("location: /admin/pages/products/");
+
 }
 
 
 /*Payment Method*/
 
-if( !isset($_POST['action']) && isset($_POST['PaymentMethodName']) && isset($_POST['Status'])) {
+if (!isset($_POST['action']) && isset($_POST['PaymentMethodName']) && isset($_POST['Status'])) {
     $sql = "UPDATE paymentmethod SET PaymentMethodName = ?, Status = ? WHERE id = ?";
-    $pdo->prepare($sql)->execute([$_POST['PaymentMethodName'], $_POST['Status'], $_GET['id'] ]);
+    $pdo->prepare($sql)->execute([$_POST['PaymentMethodName'], $_POST['Status'], $_GET['id']]);
+    header("location: /admin/pages/transactions/paymentmethod/browse/" . $_GET['id']);
+
 }
 
-if( isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['PaymentMethodName']) && isset($_POST['Status']) ) {
+if (isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['PaymentMethodName']) && isset($_POST['Status'])) {
     $sql = "INSERT INTO paymentmethod SET PaymentMethodName = ?, Status = ?";
     $pdo->prepare($sql)->execute([$_POST['PaymentMethodName'], $_POST['Status']]);
+    header("location: /admin/pages/paymentmethod/");
+
 }
 
 /*Extras*/
 
-if( !isset($_POST['action']) && isset($_POST['Name']) && isset($_POST['Price']) && isset($_POST['Status'])) {
+if (!isset($_POST['action']) && isset($_POST['Name']) && isset($_POST['Price']) && isset($_POST['Status'])) {
     $sql = "UPDATE extras SET Name = ?, Price = ?, Status = ? WHERE id = ?";
-    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Price'], $_POST['Status'], $_GET['id'] ]);
+    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Price'], $_POST['Status'], $_GET['id']]);
+    header("location: /admin/pages/transactions/extras/browse/" . $_GET['id']);
+
 }
 
-if( isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']) && isset($_POST['Price'])  && isset($_POST['Status']) ) {
+if (isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']) && isset($_POST['Price']) && isset($_POST['Status'])) {
     $sql = "INSERT INTO extras SET Name = ?, Price = ? , Status = ?";
     $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Price'], $_POST['Status']]);
+    header("location: /admin/pages/extras/");
+
 }
 
 /*Bank Accounts*/
 
-if( !isset($_POST['action']) && isset($_POST['Name']) && isset($_POST['Account']) && isset($_POST['Status'])) {
+if (!isset($_POST['action']) && isset($_POST['Name']) && isset($_POST['Account']) && isset($_POST['Status'])) {
     $sql = "UPDATE bankaccounts SET Name = ?, Account = ?, Status = ? WHERE id = ?";
-    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Account'], $_POST['Status'], $_GET['id'] ]);
+    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Account'], $_POST['Status'], $_GET['id']]);
+    header("location: /admin/pages/transactions/bankaccounts/browse/" . $_GET['id']);
+
 }
 
-if( isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']) && isset($_POST['Account'])  && isset($_POST['Status']) ) {
+if (isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']) && isset($_POST['Account']) && isset($_POST['Status'])) {
     $sql = "INSERT INTO bankaccounts SET Name = ?, Account = ?, Status = ?";
     $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Account'], $_POST['Status']]);
+    header("location: /admin/pages/bankaccounts");
+
 }
 
 /*Settings*/
 
-if( !isset($_POST['action']) && isset($_POST['ThemeColor']) && isset($_POST['TextColor'])) {
+if (!isset($_POST['action']) && isset($_POST['ThemeColor']) && isset($_POST['TextColor'])) {
     $sql = "UPDATE settings SET ThemeColor = ?, TextColor = ? WHERE id = ?";
-    $pdo->prepare($sql)->execute([$_POST['ThemeColor'], $_POST['TextColor'], $_GET['id'] ]);
+    $pdo->prepare($sql)->execute([$_POST['ThemeColor'], $_POST['TextColor'], $_GET['id']]);
+
+    header("location: /admin/pages/transactions/settings/edit/1");
+
 }
 
 /*if( isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']) && isset($_POST['Account'])  && isset($_POST['Status']) ) {
     $sql = "INSERT INTO bankaccounts SET Name = ?, Account = ?, Status = ?";
     $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Account'], $_POST['Status']]);
 }*/
-
 
 
 /*$query = $db->prepare("INSERT INTO uyeler SET

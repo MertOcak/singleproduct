@@ -170,7 +170,7 @@ include "../../layouts/header.php";
                     <?php
                     // Shorthand If / Else tanımlaması
 
-                    $stmt = $pdo->query('SELECT * FROM products p INNER JOIN status s ON p.Status = s.id');
+                    $stmt = $pdo->query('SELECT * FROM products p INNER JOIN status s ON p.Status = s.id WHERE p.Active = 1');
                     while ($row = $stmt->fetch()) {
                         $activeStatus = ($row['Active'] === 1) ? 'Aktif' : 'Pasif';
                         echo "<tr style='font-size: 13px' class='text-center'><th class='selectColumn'><input class='deleteRecords' name=\"checkbox[]\" type=\"checkbox\" value=\"".$row['Id']."\"></th><th>".$row['Id']."</th><th class='text-center'>".$row['Name']."</th><th>" . $row['Price'] . " ₺</th><th>" . $activeStatus . "</th><th>" . $row['Stock'] . " Birim</th><th><a href='/admin/pages/transactions/products/edit/".$row['Id']."/'><button class='btn btn-circle btn-warning'><i class='fa fa-edit'></i></button></a><button class='btn btn-circle btn-danger ml-1'><i class='fa fa-trash'></i></button></th></tr>";
