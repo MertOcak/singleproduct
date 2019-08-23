@@ -170,7 +170,7 @@ include "../../layouts/header.php";
                     $stmt = $pdo->query('SELECT * FROM paymentmethod WHERE Active= 1');
                     while ($row = $stmt->fetch()) {
                         $activeStatus = ($row['Status'] === 1) ? 'Aktif' : 'Pasif';
-                        echo "<tr style='font-size: 13px' class='text-center'><th class='selectColumn'><input class='deleteRecords' name=\"checkbox[]\" type=\"checkbox\" value=\"".$row['id']."\"></th><th>".$row['id']."</th><th class='text-center'>".$row['PaymentMethodName']."</th><th>" . $activeStatus. "</th><th><a href='/admin/pages/transactions/paymentmethod/edit/".$row['id']."'><button class='btn btn-circle btn-warning'><i class='fa fa-edit'></i></button></a><button class='btn btn-circle btn-danger ml-1'><i class='fa fa-trash'></i></button></th></tr>";
+                        echo "<tr style='font-size: 13px' class='text-center'><th class='selectColumn'><input class='deleteRecords' name=\"checkbox[]\" type=\"checkbox\" value=\"".$row['id']."\"></th><th>".$row['id']."</th><th class='text-center'>".$row['PaymentMethodName']."</th><th>" . $activeStatus. "</th><th><a href='/admin/pages/transactions/paymentmethod/edit/".$row['id']."'><button class='btn btn-circle btn-warning'><i class='fa fa-edit'></i></button></a><button data-id='".$row['id']."' class='btn btn-circle btn-danger ml-1 deleteThis'><i class='fa fa-trash'></i></button></th></tr>";
 
                     }
 

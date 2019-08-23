@@ -559,6 +559,36 @@
             }
         });
 
+        $('.deleteThis').click(function () {
+
+            if (confirm("İşleminizden emin misiniz? Bu işlem geri alınamaz")) {
+                var allVals = [];
+
+                    allVals.push($(this).attr('data-id'));
+
+                var data = {
+                    action: "delete",
+                    tableName: _page,
+                    id: allVals
+                    /*id : [ 42,40]*/
+                };
+
+                if (allVals == "") {
+                    alert('Silinecek siparişleri seçmelisiniz');
+                    return 0;
+                }
+                $.ajax({
+                    url: '/admin/core/mcore.php',
+                    method: 'post',
+                    data: data,
+                    success: function (data) {
+                        alert("Başarılı");
+                        location.reload();
+                    }
+                })
+            }
+        });
+
         if ($('#orderStatus').length > 0) {
             $('#orderStatus option[value="' + order.statusId + '"]').attr("selected", "selected");
             $('#allProducts option[value="' + order.Product + '"]').attr("selected", "selected");
