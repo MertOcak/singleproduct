@@ -165,12 +165,12 @@ include "../../layouts/header.php";
                         <th class="selectColumn"><input class="checkAll" name="checkbox[]" type="checkbox"></th>
                         <th>Sipariş Numarası</th>
                         <th>Durum</th>
+                        <th>Ürün</th>
                         <th>Tutar</th>
                         <th>Ad</th>
                         <th>Soyad</th>
                         <th>E-Posta</th>
                         <th>Telefon</th>
-                        <th>Ürün</th>
                         <th>Adres</th>
                         <th>Sipariş Zamanı</th>
                         <th>Referans Site</th>
@@ -187,7 +187,7 @@ include "../../layouts/header.php";
                     while ($row = $stmt->fetch()) {
                         $status = statusCheck($row['Status']);
                         $color = statusColorCheck($row['Status']);
-                        echo "<tr style='font-size: 13px' class='text-center'><th class='selectColumn'><input class='deleteRecords' name=\"checkbox[]\" type=\"checkbox\" value=\"" . $row['Id'] . "\"></th><th style='width:120px'>" . $row['Id'] . "</th><th style='width:140px' class='text-center'><button style='color:#ffffff;width:80%' class='btn btn-" . $color . " btn-icon-" . $color . " statusArea'>" . $status . "</button></th><th>" . $row['TotalPrice'] . " ₺</th><th>" . $row['FirstName'] . "</th><th>" . $row['LastName'] . "</th><th><a title='Hızlı E-Posta Gönder' href='mailto:" . $row['Mail'] . "'><i style='color:red;' class='fa fa-envelope'></i> " . $row['Mail'] . "</a></th><th><a title='Telefon ile Ara' href='tel:090" . $row['Phone'] . "'><i style='color:red' class='fa fa-phone-alt'></i> " . $row['Phone'] . "</th></a><th>" . $row['pName'] . "</th><th><a title='Google Maps ile Görüntüle' target='blank' href='https://www.google.com/maps/place/" . $row['Address'] . "/'><i style='color:red' class='fa fa-map-pin'></i></a></th><th>" . $row['date'] . "</th><th>" . $row['ReferenceUrl'] . "</th><th><a href='/admin/pages/transactions/orders/browse/" . $row['Id'] . "'><button class='btn btn-circle btn-primary'><i class='fa fa-eye'></i></button></a><button data-id='".$row['Id']."' class='btn btn-circle btn-danger ml-1 deleteThis'><i class='fa fa-trash'></i></button></th></tr>";
+                        echo "<tr style='font-size: 13px' class='text-center'><th class='selectColumn'><input class='deleteRecords' name=\"checkbox[]\" type=\"checkbox\" value=\"" . $row['Id'] . "\"></th><th style='width:120px'>" . $row['Id'] . "</th><th style='width:140px' class='text-center'><button style='color:#ffffff;width:80%' class='btn btn-" . $color . " btn-icon-" . $color . " statusArea'>" . $status . "</button></th><th class='text-left'>".$row['Amount']." x " . $row['pName'] . "</th><th>" . $row['TotalPrice'] . " ₺</th><th>" . $row['FirstName'] . "</th><th>" . $row['LastName'] . "</th><th><a title='Hızlı E-Posta Gönder' href='mailto:" . $row['Mail'] . "'><i style='color:red;' class='fa fa-envelope'></i> " . $row['Mail'] . "</a></th><th><a title='Telefon ile Ara' href='tel:090" . $row['Phone'] . "'><i style='color:red' class='fa fa-phone-alt'></i> " . $row['Phone'] . "</th></a><th><a title='Google Maps ile Görüntüle' target='blank' href='https://www.google.com/maps/place/" . $row['Address'] . "/'><i style='color:red' class='fa fa-map-pin'></i></a></th><th>" . $row['date'] . "</th><th>" . $row['ReferenceUrl'] . "</th><th><a href='/admin/pages/transactions/orders/browse/" . $row['Id'] . "'><button class='btn btn-circle btn-primary'><i class='fa fa-eye'></i></button></a><button data-id='".$row['Id']."' class='btn btn-circle btn-danger ml-1 deleteThis'><i class='fa fa-trash'></i></button></th></tr>";
 
                     }
 

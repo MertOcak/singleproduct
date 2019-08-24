@@ -46,7 +46,7 @@
 
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-12 col-xl-6">
             <div class="card">
                 <div class="card-header">
                     Müşteri Bilgileri
@@ -88,7 +88,7 @@
 
 
         </div>
-        <div class="col-md-4">
+        <div class="col-12 col-xl-6">
             <div class="card">
                 <div class="card-header">
                     Sipariş Bilgileri
@@ -111,7 +111,7 @@
                             <td><select id="allProducts" name="Product" class="form-control">
                                     <?php
 
-                                    $products = $pdo->query("SELECT * FROM products");
+                                    $products = $pdo->query("SELECT * FROM products WHERE Active = 1");
                                     while ($row = $products->fetch(PDO::FETCH_ASSOC)) {
                                         echo "<option value='" . $row['Id'] . "'>" . $row['Name'] . "</option>";
                                     }
@@ -140,7 +140,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-12 col-xl-12 mt-4 mb-4">
             <div class="card">
                 <div class="card-header">
                     Ödeme Bilgileri

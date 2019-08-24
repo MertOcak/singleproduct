@@ -72,6 +72,7 @@
                              aria-labelledby="admin-profile-tab">
                             <!--Content-->
                             <form id="editProfile" action="" method="post">
+                                <input name="AdminArea" type="hidden" value="1">
                                 <div class="card-body">
                                     <table class="table">
                                         <tr class="border border-bottom-light border-right-light">

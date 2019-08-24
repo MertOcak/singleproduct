@@ -199,7 +199,7 @@ if (!isset($_POST['action']) && isset($_POST['ApiKey']) && isset($_POST['SecretK
 /*Admin Profile*/
 
 /*Profile Update*/
-if (!isset($_POST['action']) && isset($_POST['FirstName']) && isset($_POST['LastName']) && isset($_POST['Mail']) && isset($_POST['Phone'])) {
+if (!isset($_POST['action']) && isset($_POST['AdminArea']) && isset($_POST['FirstName']) && isset($_POST['LastName']) && isset($_POST['Mail']) && isset($_POST['Phone'])) {
     $sql = "UPDATE users SET FirstName = ?, LastName = ?, Mail = ?, Phone = ? WHERE id = ?";
     $pdo->prepare($sql)->execute([$_POST['FirstName'], $_POST['LastName'], $_POST['Mail'], $_POST['Phone'], $_GET['id']]);
     header("location: /admin/pages/transactions/users/edit/1");
