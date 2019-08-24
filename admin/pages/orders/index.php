@@ -9,7 +9,7 @@ include "../../layouts/header.php";
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
+<!--Statistics-->
     <div class="row col-12">
         <button id="statistics-toggle" class="btn btn-primary text-white mb-2">İstatistikleri <?php if (isset($_COOKIE['statistics-state']) && $_COOKIE['statistics-state'] === "hidden") {
                 echo 'Göster';
@@ -131,7 +131,7 @@ include "../../layouts/header.php";
 
 
     </div>
-
+    <!-- /Statistics-->
     <!-- Content Row -->
 
     <!-- Page Heading -->

@@ -77,7 +77,6 @@
 <script src="/admin/layouts/js/demo/chart-pie-demo.js"></script>-->
 <script src="/admin/layouts/js/dropzone.js"></script>
 
-
 <script>
 
     $(document).ready(function () {
@@ -116,6 +115,7 @@
             }
         });
 
+
         $('#statistics-toggle').click(function () {
             if (Cookies.get('statistics-state') === 'visible') {
                 Cookies.set('statistics-state', 'hidden');
@@ -126,7 +126,8 @@
             }
             $('.statistics').toggle('50');
 
-            if($(this).html() === "İstatistikleri Göster") {
+            if ($(this).html() == "İstatistikleri Göster" || $(this).html() == "\n" +
+                "            İstatistikleri Göster") {
                 $(this).html("İstatistikleri Gizle")
             } else {
                 $(this).html("İstatistikleri Göster")
@@ -581,7 +582,7 @@
             if (confirm("İşleminizden emin misiniz? Bu işlem geri alınamaz")) {
                 var allVals = [];
 
-                    allVals.push($(this).attr('data-id'));
+                allVals.push($(this).attr('data-id'));
 
                 var data = {
                     action: "delete",
@@ -654,6 +655,10 @@
                     echo "activateTab('admin-password');";
                     break;
 
+                case "Banners";
+                    echo "activateTab('banner-resim');";
+                    break;
+
             }
         }
         ?>
@@ -662,26 +667,25 @@
             var password = $("input[name=NewPassword]").val();
             var confirmPassword = $("input[name=NewPasswordRepeat]").val();
 
-            if (password != confirmPassword || (password == "") || (confirmPassword == "") ) {
-                $("input[name=NewPassword], input[name=NewPasswordRepeat]").attr('style','background:red; color: white');
+            if (password != confirmPassword || (password == "") || (confirmPassword == "")) {
+                $("input[name=NewPassword], input[name=NewPasswordRepeat]").attr('style', 'background:red; color: white');
                 return 0;
-            }
-            else {
-                $("input[name=NewPassword], input[name=NewPasswordRepeat]").attr('style','background:green; color: white');
+            } else {
+                $("input[name=NewPassword], input[name=NewPasswordRepeat]").attr('style', 'background:green; color: white');
                 return 1;
             }
         }
 
-        $('#show-password').click(function(){
+        $('#show-password').click(function () {
             $(this).is(':checked') ? $('input[name=NewPassword],input[name=NewPasswordRepeat]').attr('type', 'text') : $('input[name=NewPassword],input[name=NewPasswordRepeat]').attr('type', 'password');
         });
 
         check = 0;
-        if($('input[name=NewPassword]').length){
+        if ($('input[name=NewPassword]').length) {
             $("input[name=NewPasswordRepeat]").keyup(checkPasswordMatch);
-            $('#editPassword').submit(function(){
+            $('#editPassword').submit(function () {
                 check = checkPasswordMatch();
-                if( check !== 1 ) {
+                if (check !== 1) {
                     alert('Yeni şifreleriniz eşleşmiyor!');
                     return false;
                 }
@@ -690,7 +694,6 @@
 
     });
 </script>
-
 
 </body>
 

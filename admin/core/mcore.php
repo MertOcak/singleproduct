@@ -4,10 +4,9 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$host = 'localhost';
-$db = 'singleproduct';
-$user = 'root';
-$pass = 'root';
+include_once ($_SERVER['DOCUMENT_ROOT'] . '/admin/config/config.php');
+
+
 $charset = 'utf8';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -225,6 +224,14 @@ if (!isset($_POST['action']) && isset($_POST['NewPassword']) && isset($_POST['Us
     $_POST = array();
     header("location: /admin/pages/transactions/users/edit/1/Failed");
 
+}
+
+/*Banners*/
+
+if (!isset($_POST['action']) && isset($_POST['LogoText1']) && isset($_POST['LogoText2']) && isset($_POST['SloganText1']) && isset($_POST['SloganText2']) && isset($_POST['SloganText3'])) {
+    $sql = "UPDATE banners SET LogoText1 = ?, LogoText2 = ?, SloganText1 = ?, SloganText2 = ?, SloganText3 = ? WHERE id = 1";
+    $pdo->prepare($sql)->execute([$_POST['LogoText1'], $_POST['LogoText2'], $_POST['SloganText1'], $_POST['SloganText2'], $_POST['SloganText3']]);
+    header("location: /admin/pages/transactions/banners/edit/1/");
 }
 
 

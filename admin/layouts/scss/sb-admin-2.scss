@@ -40,6 +40,11 @@
   vertical-align: middle;
 }
 
+button:focus {
+  outline:0 !important;
+  box-shadow: none !important;
+}
+
 .selectColumn {
   text-align: center;
   vertical-align: middle;

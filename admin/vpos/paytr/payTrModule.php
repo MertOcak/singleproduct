@@ -3,11 +3,33 @@
 // Tek Ürün Satış Yazılımı PayTR Online Ödeme Alma Modülü
 //
 session_start();
+
+include_once ($_SERVER['DOCUMENT_ROOT'] . '/admin/config/config.php');
+
+
+$charset = 'utf8';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES => false,
+];
+try {
+    $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+    throw new \PDOException($e->getMessage(), (int)$e->getCode());
+}
+
+$ayarlar = $pdo->query("SELECT * FROM vposes WHERE id=2")->fetch();
+
+
+
 if(isset($_SESSION['SiparisNo'])){
 
-    $merchant_id	='140193'; // Size Verilen Merchant Id
-    $merchant_key	='RwrzLazcPs6844N6'; // Size Verilen Merchant Key
-    $merchant_salt	='nC8aj3SpyKJrUnYr'; // Size Verilen Merchant Salt
+    $merchant_id	= $ayarlar['MerchantId']; // Size Verilen Merchant Id
+    $merchant_key	= $ayarlar['MerchantKey']; // Size Verilen Merchant Key
+    $merchant_salt	= $ayarlar['MerchantSalt']; // Size Verilen Merchant Salt
 
     $user_ip		=	$_SERVER['REMOTE_ADDR'];
     $merchant_oid	=	$_SESSION['SiparisNo'];

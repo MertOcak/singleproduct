@@ -206,7 +206,7 @@
 
                     <h6 class="collapse-header">Üst Kısım Alanları:</h6>
 
-                    <a class="collapse-item" href="#">Banner</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/banners/edit/1">Banner</a>
                     <h6 class="collapse-header">Orta Kısım Alanları:</h6>
 
                     <a class="collapse-item" href="#">Özellikler</a>

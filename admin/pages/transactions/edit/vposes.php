@@ -109,6 +109,16 @@
                     <div class="card-body">
                         <table class="table">
                             <tr class="border border-bottom-light border-right-light">
+                                <td>Bildirim Url <code class="small">PayTR mağaza paneline yazılacak</code></td>
+                                <td>
+                                    <input disabled
+                                           name=""
+                                           value="https://<?php echo $_SERVER['SERVER_NAME']. '/success.php';?>"
+                                           type="text"
+                                           class="form-control w-40 d-inline-block">
+                                </td>
+                            </tr>
+                            <tr class="border border-bottom-light border-right-light">
                                 <td>Merchant Id</td>
                                 <td>
                                     <input

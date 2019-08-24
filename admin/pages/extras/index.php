@@ -11,9 +11,20 @@ include "../../layouts/header.php";
 <div class="container-fluid">
 
 
-    <!-- Content Row -->
-    <div class="row">
+    <!--Statistics-->
+    <div class="row col-12">
+        <button id="statistics-toggle" class="btn btn-primary text-white mb-2">
+            İstatistikleri <?php if (isset($_COOKIE['statistics-state']) && $_COOKIE['statistics-state'] === "hidden") {
+                echo 'Göster';
+            } else {
+                echo 'Gizle';
+            } ?></button>
 
+    </div>
+    <!-- Content Row -->
+    <div class="row statistics" <?php if (isset($_COOKIE['statistics-state']) && $_COOKIE['statistics-state'] === "hidden") {
+        echo 'style="display:none;"';
+    } ?>>
         <!-- Pending Requests Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
@@ -125,6 +136,7 @@ include "../../layouts/header.php";
 
 
     </div>
+    <!-- /Statistics-->
 
     <!-- Content Row -->
 
@@ -137,7 +149,8 @@ include "../../layouts/header.php";
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Ekstra Ücretler <a href="/admin/pages/transactions/extras/add"><input type="button" value="Yeni Ekle"></a></h6>
+            <h6 class="m-0 font-weight-bold text-primary">Ekstra Ücretler <a
+                        href="/admin/pages/transactions/extras/add"><input type="button" value="Yeni Ekle"></a></h6>
             <div style="position: absolute; top:10px; right: 10px;" class="float-right">
                 <a id="raporAl" href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i> Rapor Al</a>
@@ -171,7 +184,7 @@ include "../../layouts/header.php";
                     $stmt = $pdo->query('SELECT * FROM extras WHERE Active= 1');
                     while ($row = $stmt->fetch()) {
                         $activeStatus = ($row['Status'] === 1) ? 'Aktif' : 'Pasif';
-                        echo "<tr style='font-size: 13px' class='text-center'><th class='selectColumn'><input class='deleteRecords' name=\"checkbox[]\" type=\"checkbox\" value=\"".$row['id']."\"></th><th>".$row['id']."</th><th class='text-center'>".$row['Name']."</th><th>".$row['Price']." ₺</th><th>" . $activeStatus. "</th><th><a href='/admin/pages/transactions/extras/edit/".$row['id']."'><button class='btn btn-circle btn-warning'><i class='fa fa-edit'></i></button></a><button data-id='".$row['id']."' class='btn btn-circle btn-danger ml-1 deleteThis'><i class='fa fa-trash'></i></button></th></tr>";
+                        echo "<tr style='font-size: 13px' class='text-center'><th class='selectColumn'><input class='deleteRecords' name=\"checkbox[]\" type=\"checkbox\" value=\"" . $row['id'] . "\"></th><th>" . $row['id'] . "</th><th class='text-center'>" . $row['Name'] . "</th><th>" . $row['Price'] . " ₺</th><th>" . $activeStatus . "</th><th><a href='/admin/pages/transactions/extras/edit/" . $row['id'] . "'><button class='btn btn-circle btn-warning'><i class='fa fa-edit'></i></button></a><button data-id='" . $row['id'] . "' class='btn btn-circle btn-danger ml-1 deleteThis'><i class='fa fa-trash'></i></button></th></tr>";
 
                     }
 
