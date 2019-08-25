@@ -20,6 +20,10 @@
 @import "footer.scss";
 @import "dropzone.scss";
 
+*:focus {
+  box-shadow: none !important;
+}
+
 .bg-default {
   color: #000000 !important;
 }

@@ -728,6 +728,10 @@
             })
         }
 
+        if ($('input[type=submit],input[type=button]').length) {
+            $('input[type=submit],input[type=button]').addClass('btn btn-primary btn-lg text-white mb-4 text-uppercase');
+        }
+
 
     });
 </script>
