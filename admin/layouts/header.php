@@ -207,23 +207,25 @@
                     <h6 class="collapse-header">Üst Kısım Alanları:</h6>
 
                     <a class="collapse-item" href="/admin/pages/transactions/banners/edit/1">Banner</a>
-                    <h6 class="collapse-header">Orta Kısım Alanları:</h6>
+                    <h6 class="collapse-header">Sayfalar:</h6>
 
-                    <a class="collapse-item" href="#">Özellikler</a>
-                    <a class="collapse-item" href="#">Fotoğraflar</a>
-                    <a class="collapse-item" href="#">Videolar</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/pages/edit/1">Şerit Slogan</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/pages/edit/2">Nedir?</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/pages/edit/3">Ne işe yarar?</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/pages/edit/4">Fiyatlar</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/videos/edit/1">Video</a>
 
-                    <h6 class="collapse-header">Alt Kısım Alanları:</h6>
+                    <!--<h6 class="collapse-header">Alt Kısım Alanları:</h6>
 
                     <a class="collapse-item" href="#">Yorumlar</a>
                     <a class="collapse-item" href="#">İletişim</a>
-                    <a class="collapse-item" href="#">Sipariş Sorgulama Ekranı</a>
+                    <a class="collapse-item" href="#">Sipariş Sorgulama Ekranı</a>-->
 
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Sözleşmeler:</h6>
-                    <a class="collapse-item" href="#">Mesafeli Satış Sözleşmesi</a>
-                    <a class="collapse-item" href="#">Gizlilik Sözleşmesi</a>
-                    <a class="collapse-item" href="#">İptal ve İade Koşulları</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/agreements/edit/1">Mesafeli Satış Sözleşmesi</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/agreements/edit/1/Gizlilik">Gizlilik Sözleşmesi</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/agreements/edit/1/Iptal">İptal ve İade Koşulları</a>
                 </div>
             </div>
         </li>

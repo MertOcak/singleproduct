@@ -234,6 +234,48 @@ if (!isset($_POST['action']) && isset($_POST['LogoText1']) && isset($_POST['Logo
     header("location: /admin/pages/transactions/banners/edit/1/");
 }
 
+/*Agreements*/
+
+if (!isset($_POST['action']) && isset($_POST['Mss'])) {
+    $sql = "UPDATE agreements SET Mss = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['Mss'], $_GET['id']]);
+    header("location: /admin/pages/transactions/agreements/edit/1/");
+
+}
+
+
+if (!isset($_POST['action']) && isset($_POST['Gs'])) {
+    $sql = "UPDATE agreements SET  Gs = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['Gs'], $_GET['id']]);
+    header("location: /admin/pages/transactions/agreements/edit/1/");
+
+}
+
+
+if (!isset($_POST['action']) &&  isset($_POST['Iade'])) {
+    $sql = "UPDATE agreements SET  Iade = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['Iade'], $_GET['id']]);
+    header("location: /admin/pages/transactions/agreements/edit/1/");
+
+}
+
+/*Pages*/
+
+if (!isset($_POST['action']) && isset($_POST['Name']) && isset($_POST['Title']) && isset($_POST['Subtitle']) && isset($_POST['Content'])) {
+    $sql = "UPDATE pages SET Name = ?, Title = ?, Subtitle = ?, Content = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Title'], $_POST['Subtitle'], $_POST['Content'], $_GET['id']]);
+    header("Location: ".$_SERVER['HTTP_REFERER']);
+}
+
+if (!isset($_POST['action']) && !isset($_POST['Name']) && isset($_POST['Title']) && isset($_POST['Subtitle'])) {
+    $sql = "UPDATE pages SET Title = ?, Subtitle = ? WHERE id = 1";
+    $pdo->prepare($sql)->execute([ $_POST['Title'], $_POST['Subtitle']]);
+    header("Location: ".$_SERVER['HTTP_REFERER']);
+}
+
+
+
+
 
 /*if( isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']) && isset($_POST['Account'])  && isset($_POST['Status']) ) {
     $sql = "INSERT INTO bankaccounts SET Name = ?, Account = ?, Status = ?";

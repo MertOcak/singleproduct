@@ -76,6 +76,7 @@
 <!--<script src="/admin/layouts/js/demo/chart-area-demo.js"></script>
 <script src="/admin/layouts/js/demo/chart-pie-demo.js"></script>-->
 <script src="/admin/layouts/js/dropzone.js"></script>
+<script src="/node_modules/@ckeditor/ckeditor/ckeditor.js"></script>
 
 <script>
 
@@ -401,7 +402,29 @@
                             });
                         }
 
+                        if ($('#ckeditor').length) {
 
+                            CKEDITOR.replace('ckeditor', {
+                                language: 'tr'
+                            });
+
+                        }
+
+                        if ($('#ckeditor2').length) {
+
+                            CKEDITOR.replace('ckeditor2', {
+                                language: 'tr'
+                            });
+
+                        }
+
+                        if ($('#ckeditor3').length) {
+
+                            CKEDITOR.replace('ckeditor3', {
+                                language: 'tr'
+                            });
+
+                        }
                     }
                 });
             }
@@ -659,6 +682,19 @@
                     echo "activateTab('banner-resim');";
                     break;
 
+
+                case "Gizlilik";
+                    echo "activateTab('gizlilik-sozlesmesi');";
+                    break;
+
+                case "Iptal";
+                    echo "activateTab('iade-sozlesmesi');";
+                    break;
+
+                case "Videos";
+                    echo "activateTab('video-thumb');";
+                    break;
+
             }
         }
         ?>
@@ -691,6 +727,7 @@
                 }
             })
         }
+
 
     });
 </script>

@@ -7,7 +7,7 @@
 
     <?php
 
-    $sql = 'SELECT * FROM banners  WHERE id =' . $_GET['id'];
+    $sql = 'SELECT * FROM agreements  WHERE id = 1';
 
 
     /*        $sql = "SELECT * FROM " . $_GET['module'] . " WHERE Id = " . $_GET['id'];*/
@@ -33,8 +33,12 @@
                 <div class="card-body p-0 ">
                     <table class="table text-center">
                         <tr>
-                            <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder">Banner Düzenle</td>
-                            <td class="bg-gradient-dark-2 text-white dividerBorder">Banner Ayalarınızı Bu Bölümden Yapabilirsiniz</td>
+                            <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder">Sözleşme
+                                Düzenle
+                            </td>
+                            <td class="bg-gradient-dark-2 text-white dividerBorder">Sözleşme Ayarlarınızı Bu Bölümden
+                                Yapabilirsiniz
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -42,132 +46,154 @@
         </div>
     </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            Banner Ayarları
-                        </div>
+    <div class="row mb-4 d-none">
+        <div class="col-4">
+            <a href="/admin/pages/transactions/agreements/edit/1" class="btn btn-primary text-white"> Mesafeli Satış Sözleşmesi</a>
+            <a href="/admin/pages/transactions/agreements/edit/1/Gizlilik" class="btn btn-primary text-white"> Gizlilik Sözleşmesi</a>
+            <a href="/admin/pages/transactions/agreements/edit/1/Iptal" class="btn btn-primary text-white"> İptal ve İade Koşulları</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <form action="" method="post">
+            <div class="card">
+<!--                <div class="card-header">
+                    Sözleşme Ayarları
+                </div>-->
+
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <!--Mesafeli Satış Sözleşmesi-->
+                        <!--İlk Tab-->
+                        <?php // if(!isset($_GET['upload'])) { ?>
 
 
-                        <nav>
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <!--Profile-->
-                                <!--İlk Tab-->
-                                <a class="nav-item nav-link active" id="profile-tab" data-toggle="tab"
-                                   href="#banner-yazilar" role="tab" aria-controls="banner-yazilar" aria-selected="true">Banner Yazılar</a>
-                                <!--Password-->
-                                <a class="nav-item nav-link" id="password-tab" data-toggle="tab"
-                                   href="#banner-resim" role="tab" aria-controls="banner-resim"
-                                   aria-selected="false">Banner Resimler</a>
-                            </div>
-                        </nav>
+                        <a class="nav-item nav-link active" id="mesafeli-tab" data-toggle="tab"
+                           href="#mesafeli" role="tab" aria-controls="mesafeli"
+                           aria-selected="true">Mesafeli Satış Sözleşmesi</a>
+
+                        <?php // } ?>
 
 
-                        <div class="tab-content mt-2" id="nav-tabContent">
+                        <?php // if(isset($_GET['upload']) && $_GET['upload'] === 'Gizlilik') { ?>
 
-                            <!--Banner Yazılar-->
-                            <div class="tab-pane fade show active" id="banner-yazilar" role="tabpanel"
-                                 aria-labelledby="banner-yazilar-tab">
-                                <!--Content-->
-                                <div class="card-body">
-                                    <form action="" method="post">
-                                    <table class="table">
-                                        <tr class="border border-bottom-light border-right-light">
-                                            <td>Marka Adı Logo</td>
-                                            <td>
-                                                <input
-                                                        name="LogoText1"
-                                                        v-model="order.LogoText1" type="text"
-                                                        class="form-control w-40 d-inline-block">
-                                            </td>
-                                        </tr>
-                                        <tr class="border border-bottom-light border-right-light">
-                                            <td>Marka Slogan Logo</td>
-                                            <td>
-                                                <input
-                                                        name="LogoText2"
-                                                        v-model="order.LogoText2" type="text"
-                                                        class="form-control w-40 d-inline-block">
-                                            </td>
-                                        </tr>
-                                        <tr class="border border-bottom-light border-right-light">
-                                            <td>Marka Adı Banner</td>
-                                            <td>
-                                                <input
-                                                        name="SloganText1"
-                                                        v-model="order.SloganText1" type="text"
-                                                        class="form-control w-40 d-inline-block">
-                                            </td>
-                                        </tr>
-                                        <tr class="border border-bottom-light border-right-light">
-                                            <td>Slogan 1 Banner</td>
-                                            <td>
-                                                <input
-                                                        name="SloganText2"
-                                                        v-model="order.SloganText2" type="text"
-                                                        class="form-control w-40 d-inline-block">
-                                            </td>
-                                        </tr>
-                                        <tr class="border border-bottom-light border-right-light">
-                                            <td>Slogan 2 Banner</td>
-                                            <td>
-                                                <input
-                                                        name="SloganText3"
-                                                        v-model="order.SloganText3" type="text"
-                                                        class="form-control w-40 d-inline-block">
-                                            </td>
-                                        </tr>
-                                        <tr class="text-right">
-                                            <input type="submit" value="Kaydet">
-                                        </tr>
-                                    </table>
-                                    </form>
+                        <!--Gizlilik Sözleşmesi-->
+                        <a class="nav-item nav-link" id="gizlilik-tab" data-toggle="tab"
+                           href="#gizlilik-sozlesmesi" role="tab" aria-controls="gizlilik-sozlesmesi"
+                           aria-selected="false">Gizlilik Sözleşmesi</a>
 
-                                </div>
+                        <?php // } ?>
 
 
-                            </div>
+                        <?php // if(isset($_GET['upload']) && $_GET['upload'] === 'Iptal') { ?>
 
-                            <!--Banner Resim-->
-                            <div class="tab-pane fade" id="banner-resim" role="tabpanel"
-                                 aria-labelledby="banner-resim-tab">
-                                <!--Content-->
-                                <div class="card-body">
-                                    <table class="table">
-                                        <tr class="border border-bottom-light border-right-light">
-                                            <td>Banner Resmi</td>
-                                            <td>
-                                                <img width="100" src="<?php echo $imagePath; ?>" alt="">
-                                            </td>
-                                            <td>
-                                                <form id="Image" enctype="multipart/form-data" method="post" action="/admin/pages/upload/upload.php">
-                                                    <input name="photoCatName" type="hidden" value="banners">
-                                                    <input type="file" name="file" accept="image/x-png,image/gif,image/jpeg">
-                                                    <input type="submit" onclick="document.getElementById('Image').submit();" value="Resim Yükle">
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    </table>
+                        <!--İptal ve İade Koşulları-->
+                        <a class="nav-item nav-link" id="iade-tab" data-toggle="tab"
+                           href="#iade-sozlesmesi" role="tab" aria-controls="iade-sozlesmesi"
+                           aria-selected="false">İptal ve İade Koşulları</a>
+
+                        <?php // } ?>
+
+                    </div>
+                </nav>
 
 
-                                </div>
+                <div class="tab-content mt-2" id="nav-tabContent">
 
+                <?php // if(!isset($_GET['upload'])) { ?>
+                    <!-- Mesafeli Satış Sözleşmesi-->
+                    <div class="tab-pane fade show active" id="mesafeli" role="tabpanel"
+                         aria-labelledby="mesafeli-tab">
+                        <!--Content-->
+                        <div class="card-body">
+                           <!-- <form action="" method="post">-->
+                                <table class="table">
+                                    <tr class="text-right">
+                                        <input type="submit" value="Kaydet">
+                                    </tr>
+                                    <tr class="border border-bottom-light border-right-light">
+                                            <textarea id="ckeditor"
+                                                      name="Mss"
+                                                      v-model="order.Mss"
+                                                      class="form-control w-40 d-none"></textarea>
+                                    </tr>
 
-                            </div>
-
+                                </table>
+                  <!--          </form>-->
 
                         </div>
-
-
 
 
                     </div>
-            </div>
 
+                <?php // } ?>
+
+                    <?php // if(isset($_GET['upload']) && $_GET['upload'] === 'Gizlilik') { ?>
+
+                    <!-- Gizlilik Sözleşmesi -->
+                    <div class="tab-pane fade" id="gizlilik-sozlesmesi" role="tabpanel"
+                         aria-labelledby="gizlilik-sozlesmesi-tab">
+                        <!--Content-->
+                        <div class="card-body">
+<!--                            <form action="" method="post">
+-->                                <table class="table">
+                                    <tr class="text-right">
+                                        <input type="submit" value="Kaydet">
+                                    </tr>
+                                    <tr class="border border-bottom-light border-right-light">
+                                         <textarea id="ckeditor2"
+                                                   name="Gs"
+                                                   v-model="order.Gs"
+                                                   class="form-control w-40 d-none"></textarea>
+                                    </tr>
+
+                                </table>
+                         <!--   </form>-->
+
+                        </div>
+
+
+                    </div>
+                    <?php // } ?>
+
+                    <?php // if(isset($_GET['upload']) && $_GET['upload'] === 'Iptal') { ?>
+
+                    <!-- İptal ve İade Koşulları -->
+                    <div class="tab-pane fade" id="iade-sozlesmesi" role="tabpanel"
+                         aria-labelledby="iade-tab">
+                        <!--Content-->
+                        <div class="card-body">
+                            <!--<form action="" method="post">-->
+                                <table class="table">
+                                    <tr class="text-right">
+                                        <input type="submit" value="Kaydet">
+                                    </tr>
+                                    <tr class="border border-bottom-light border-right-light">
+                                        <textarea id="ckeditor3"
+                                               name="Iade"
+                                               v-model="order.Iade"
+                                                  class="form-control w-40 d-none"></textarea>
+                                    </tr>
+
+                                </table>
+                          <!--  </form>-->
+
+                        </div>
+
+
+                    </div>
+                    <?php // } ?>
+                </div>
+
+
+            </div>
+            </form>
         </div>
+
+    </div>
 </div>
 
 <script>
-    activeList = [{ "id": "1", "name": "Aktif"},{ "id": "0", "name": "Pasif"}];
+    activeList = [{"id": "1", "name": "Aktif"}, {"id": "0", "name": "Pasif"}];
 </script>

@@ -24,6 +24,8 @@ try {
 $banner = $pdo->query("SELECT * FROM banners WHERE id=1")->fetch();
 $bannerImage = $pdo->query("SELECT Path FROM photos WHERE Family = 'banners'")->fetch();
 $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch();
+$fiyatlar = $pdo->query("SELECT * FROM pages WHERE id = 4")->fetch();
+$serit = $pdo->query("SELECT * FROM pages WHERE id = 1")->fetch();
 
 ?>
 
@@ -42,25 +44,25 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch();
     <link rel="stylesheet" href="assets/css/tekurunplus.css">
     <style>
         .theme-color-bg {
-            background: #<?php echo $settings['ThemeColor']; ?> !important;
-            border-color: #<?php echo $settings['ThemeColor']; ?> !important;
+            background: #<?=$settings['ThemeColor']; ?> !important;
+            border-color: #<?=$settings['ThemeColor']; ?> !important;
         }
 
         .theme-color-only-border {
-            border-color: #<?php echo $settings['ThemeColor']; ?> !important;
+            border-color: #<?=$settings['ThemeColor']; ?> !important;
         }
 
         .theme-color-text {
-            color: #<?php echo $settings['ThemeColor']; ?> !important;
-            border-color: #<?php echo $settings['ThemeColor']; ?> !important;
+            color: #<?=$settings['ThemeColor']; ?> !important;
+            border-color: #<?=$settings['ThemeColor']; ?> !important;
         }
 
         .text-color {
-            color: #<?php echo $settings['TextColor']; ?> !important;
+            color: #<?=$settings['TextColor']; ?> !important;
         }
 
         body .container input:checked ~ .checkmark {
-            background-color: #<?php echo $settings['ThemeColor']; ?> !important;
+            background-color: #<?=$settings['ThemeColor']; ?> !important;
         }
     </style>
 </head>
@@ -71,8 +73,8 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch();
         <div class="row">
             <div class="col-7 col-md-4 logo-wrapper">
                 <div id="logo">
-                    <div class="brand-name theme-color-text"><?php echo $banner['LogoText1']; ?></div>
-                    <div class="description text-color"><?php echo $banner['LogoText2']; ?></div>
+                    <div class="brand-name theme-color-text"><?=$banner['LogoText1']; ?></div>
+                    <div class="description text-color"><?=$banner['LogoText2']; ?></div>
                 </div>
             </div>
             <div class="col-5 col-md-8">
@@ -94,15 +96,15 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch();
 
     <section id="banner">
         <div id="banner-top" class="row">
-            <div class="alt-banner d-block d-lg-none text-color"><?php echo $banner['SloganText3']; ?></div>
+            <div class="alt-banner d-block d-lg-none text-color"><?=$banner['SloganText3']; ?></div>
 
             <div class="bannerImageHolder col-12 d-md-block col-lg-6 text-right"><img class="img-fluid"
-                                                                                      src="<?php echo $bannerImage['Path']; ?>"/>
+                                                                                      src="<?=$bannerImage['Path']; ?>"/>
             </div>
             <div class="col-12 col-lg-6 second-area">
-                <div class="brand-banner  d-none d-lg-block theme-color-text"><?php echo $banner['SloganText1']; ?></div>
-                <div class="desc-banner  d-none d-lg-block text-color"><?php echo $banner['SloganText2']; ?></div>
-                <div class="alt-banner d-none d-lg-block text-color"><?php echo $banner['SloganText3']; ?></div>
+                <div class="brand-banner  d-none d-lg-block theme-color-text"><?=$banner['SloganText1']; ?></div>
+                <div class="desc-banner  d-none d-lg-block text-color"><?=$banner['SloganText2']; ?></div>
+                <div class="alt-banner d-none d-lg-block text-color"><?=$banner['SloganText3']; ?></div>
                 <div class="buttons">
                     <div class="btn-tekurunplus-outline theme-color-text">
                         İncele
@@ -118,9 +120,9 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch();
 </div>
 <section class="divider first text-center theme-color-bg">
 
-    <h1>Yeni içeriğiyle raflarda !</h1>
+    <h1><?=$serit['Title']; ?></h1>
 
-    <h2>Siz hala denemediniz mi?</h2>
+    <h2><?=$serit['Subtitle']; ?></h2>
 
 </section>
 <div class="main-wrapper">
@@ -153,9 +155,9 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch();
 </div>
 <section class="divider regular text-center theme-color-bg">
 
-    <h1>Yeni içeriğiyle raflarda !</h1>
+    <h1><?=$serit['Title']; ?></h1>
 
-    <h2>Siz hala denemediniz mi?</h2>
+    <h2><?=$serit['Subtitle']; ?></h2>
 
 </section>
 <div class="main-wrapper">
@@ -192,19 +194,24 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch();
 </div>
 <section class="divider regular text-center theme-color-bg">
 
-    <h1>Yeni içeriğiyle raflarda !</h1>
+    <h1><?=$serit['Title']; ?></h1>
 
-    <h2>Siz hala denemediniz mi?</h2>
+    <h2><?=$serit['Subtitle']; ?></h2>
 
 </section>
 <div class="main-wrapper">
     <div id="content-3">
-        <h1 class="theme-color-text">Fiyatlar</h1>
-        <h2 class="text-color">Yeni içerik, yeni fiyat!</h2>
+        <h1 class="theme-color-text"><?=$fiyatlar['Title']; ?></h1>
+        <h2 class="text-color"><?=$fiyatlar['Subtitle']; ?></h2>
  <!--       <div class="col-12 ml-auto mr-auto mt-4 product-image">
             <img class="img-fluid m-auto" src="assets/img/tekurunAsset 9.png"/>
         </div>-->
         <div class="row mt-4">
+
+            <!--Fiyatlar-->
+
+            <?=$fiyatlar['Content']; ?>
+
             <div class="text-center price">
                 <div class="row">
                     <div class="col-12">
@@ -259,9 +266,9 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch();
 </div>
 <section class="divider regular text-center theme-color-bg">
 
-    <h1>Yeni içeriğiyle raflarda !</h1>
+    <h1><?=$serit['Title']; ?></h1>
 
-    <h2>Siz hala denemediniz mi?</h2>
+    <h2><?=$serit['Subtitle']; ?></h2>
 
 </section>
 <div class="main-wrapper">
@@ -387,7 +394,7 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch();
                     <div style="clear:both;"></div>
                 </form>
             </div>
-            <div class="col-hidden col-lg-5 formImage" style="background-image: url(<?php echo $bannerImage['Path']; ?>)">
+            <div class="col-hidden col-lg-5 formImage" style="background-image: url(<?=$bannerImage['Path']; ?>)">
             </div>
         </div>
 

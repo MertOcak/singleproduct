@@ -29,7 +29,7 @@
                 <div class="card-body p-0 ">
                     <table class="table text-center">
                         <tr>
-                            <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder">Iyzico Sanal Pos Ekle</td>
+                            <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder"><?php echo (isset($_GET['id']) && $_GET['id'] ==1 ) ?  "Iyzico" :  "PayTR" ;?> Sanal Pos Ekle</td>
                             <td class="bg-gradient-dark-2 text-white dividerBorder">Bu Bölümden Iyzico Sanal Pos Ayarlarınızı Yapabilirsiniz</b></td>
                         </tr>
                     </table>

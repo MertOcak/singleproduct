@@ -34,7 +34,7 @@
                     <table class="table text-center">
                         <tr>
                             <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder">Banner Düzenle</td>
-                            <td class="bg-gradient-dark-2 text-white dividerBorder">Banner Ayalarınızı Bu Bölümden Yapabilirsiniz</td>
+                            <td class="bg-gradient-dark-2 text-white dividerBorder">Banner Ayarlarınızı Bu Bölümden Yapabilirsiniz</td>
                         </tr>
                     </table>
                 </div>

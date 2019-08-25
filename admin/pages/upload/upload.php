@@ -69,9 +69,8 @@ if (!empty($_FILES) && isset($_POST['photoCatName'])) {
 
     $sql = "UPDATE photos SET id = ?, Family = ?, Path = ?, Active = ? WHERE Family = ?";
     $pdo->prepare($sql)->execute([0, $_POST['photoCatName'], $path, 1, $_POST['photoCatName']]);
+
     header('Location: /admin/pages/transactions/'.$_POST['photoCatName'].'/edit/1/'.ucfirst($_POST['photoCatName']));
-
-
 
 
 }
