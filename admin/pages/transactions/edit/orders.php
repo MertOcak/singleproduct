@@ -25,15 +25,16 @@
 
     <div class="row">
         <div class="col-md-12 mb-2">
-            <div class="card">
-                <div class="card-body">
+            <div class="card bg-transparent border-0">
+                <div class="card-body p-0 ">
                     <table class="table text-center">
                         <tr>
-                            <td class="bg-gradient-dark text-white dividerBorder">Sipariş Numarası: <b> {{ order.orderId
+                            <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder">Sipariş Detayları</td>
+                            <td class="bg-gradient-dark-2 text-white dividerBorder">Sipariş Numarası: <b> {{ order.orderId
                                     }}</b></td>
-                            <td class="bg-gradient-dark text-white dividerBorder">Sipariş Tarihi: <b> {{ order.CreatedAt
+                            <td class="bg-gradient-dark-2 text-white dividerBorder">Sipariş Tarihi: <b> {{ order.CreatedAt
                                     }}</b></td>
-                            <td class="bg-gradient-dark text-white ">Sipariş Durumu: <b> {{ order.StatusName }}</b></td>
+                            <td class="bg-gradient-dark-2 text-white ">Sipariş Durumu: <b> {{ order.StatusName }}</b></td>
                         </tr>
                     </table>
                 </div>

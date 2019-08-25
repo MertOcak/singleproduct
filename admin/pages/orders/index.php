@@ -144,7 +144,7 @@ include "../../layouts/header.php";
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Tüm Siparişler</h6>
-            <div style="position: absolute; top:10px; right: 10px;" class="float-right">
+            <div id="buttons" style="position: absolute; top:10px; right: 10px;" class="float-right">
                 <a id="raporAl" href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i> Rapor Al</a>
                 <a id="pdf" href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i

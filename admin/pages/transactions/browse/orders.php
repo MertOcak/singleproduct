@@ -42,21 +42,10 @@
         </div>
     </div>
 
-
- <!--   <div class="row">
-        <div class="col-md-12 mb-2">
-            <div class="card">
-                <div class="card-header bg-white text-primary">
-                    <b> SİPARİŞ NUMARASI: {{ order.orderId }}</b>
-                </div>
-            </div>
-        </div>
-    </div>-->
-
     <form id="editOrder">
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <div class="card">
                     <div style="background: #4e73df;" class="card-header text-white">
                         Sipariş Detayları
@@ -109,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6 mb-4">
+            <div class="col-12 col-md-6 mb-4">
                 <div class="card">
                     <div style="background: #4e73df;" class="card-header text-white">
                         Müşteri Bilgileri

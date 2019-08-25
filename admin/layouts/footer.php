@@ -56,9 +56,23 @@
 <!-- Custom scripts for all pages-->
 <script src="/admin/layouts/js/sb-admin-2.min.js"></script>
 
+<link rel="stylesheet" href="/admin/layouts/vendor/Responsive-2.2.2/css/responsive.jqueryui.min.css">
+<link rel="stylesheet" href="/admin/layouts/vendor/Responsive-2.2.2/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="/admin/layouts/vendor/Responsive-2.2.2/css/responsive.bootstrap.min.css">
+<link rel="stylesheet" href="/admin/layouts/vendor/Responsive-2.2.2/css/responsive.dataTables.min.css">
+<link rel="stylesheet" href="/admin/layouts/vendor/Responsive-2.2.2/css/responsive.foundation.min.css">
+<link rel="stylesheet" href="/admin/layouts/vendor/Responsive-2.2.2/css/responsive.semanticui.min.css">
 <!-- Page level plugins -->
 <script src="/admin/layouts/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="/admin/layouts/vendor/Responsive-2.2.2/js/dataTables.responsive.min.js"></script>
+<script src="/admin/layouts/vendor/Responsive-2.2.2/js/responsive.bootstrap.min.js"></script>
+<script src="/admin/layouts/vendor/Responsive-2.2.2/js/responsive.bootstrap4.min.js"></script>
+<script src="/admin/layouts/vendor/Responsive-2.2.2/js/responsive.dataTables.js"></script>
+<script src="/admin/layouts/vendor/Responsive-2.2.2/js/responsive.foundation.min.js"></script>
+<script src="/admin/layouts/vendor/Responsive-2.2.2/js/responsive.jqueryui.min.js"></script>
+<script src="/admin/layouts/vendor/Responsive-2.2.2/js/responsive.semanticui.min.js"></script>
 <script src="/admin/layouts/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="//cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
@@ -69,6 +83,9 @@
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.min.js"></script>
 <script src="/admin/layouts/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+
+
 <!-- Page level plugins -->
 <!--<script src="/admin/layouts/vendor/chart.js/Chart.min.js"></script>
 -->
@@ -463,6 +480,8 @@
         $('#dataTable').DataTable({
             dom: 'Blfrtip',
 
+            responsive: true,
+
             buttons: [
                 {
                     extend: 'copy',
@@ -727,11 +746,6 @@
                 }
             })
         }
-
-        if ($('input[type=submit],input[type=button]').length) {
-            $('input[type=submit],input[type=button]').addClass('btn btn-primary btn-lg text-white mb-4 text-uppercase');
-        }
-
 
     });
 </script>
