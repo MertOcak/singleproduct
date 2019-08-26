@@ -47,7 +47,7 @@ foreach($resk as $outputk){
 $token = session_id();
 
 
-if ($_POST && ($token === $_POST['token']) && isset($_POST['FirstName']) && isset($_POST['LastName']) && isset($_POST['Mail']) && isset($_POST['Phone']) && isset($_POST['Address']) && isset($_POST['Product']) && isset($_POST['PaymentMethodId']) && isset($_POST['agreement']) && $_POST['agreement'] === "checked") {
+if ($_POST && ($token === $_POST['token']) && !empty($_POST['FirstName']) && !empty($_POST['LastName']) && !empty($_POST['Mail']) && !empty($_POST['Phone']) && !empty($_POST['Address']) && !empty($_POST['Product']) && !empty($_POST['PaymentMethodId']) && !empty($_POST['agreement']) && $_POST['agreement'] === "checked") {
 
     $_SESSION['Name'] = $_POST['FirstName'] . " " . $_POST['LastName'];
     $_SESSION['Mail'] = $_POST['Mail'];

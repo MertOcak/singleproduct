@@ -28,9 +28,10 @@ $fiyatlar = $pdo->query("SELECT * FROM pages WHERE id = 4")->fetch();
 $serit = $pdo->query("SELECT * FROM pages WHERE id = 1")->fetch();
 $nedir = $pdo->query("SELECT * FROM pages WHERE id = 2")->fetch();
 $neiseyarar = $pdo->query("SELECT * FROM pages WHERE id = 3")->fetch();
+$products = $pdo->query("SELECT * FROM products WHERE Active = 1 AND Status = 1 ORDER BY id ASC")->fetchAll();
+$paymentMethods = $pdo->query("SELECT * FROM paymentmethod WHERE Active = 1 AND Status = 1 ORDER BY id ASC")->fetchAll();
 
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -46,25 +47,25 @@ $neiseyarar = $pdo->query("SELECT * FROM pages WHERE id = 3")->fetch();
     <link rel="stylesheet" href="assets/css/tekurunplus.css">
     <style>
         .theme-color-bg {
-            background: # <?=$settings['ThemeColor']; ?> !important;
-            border-color: # <?=$settings['ThemeColor']; ?> !important;
+            background: #<?=$settings['ThemeColor']; ?> !important;
+            border-color: #<?=$settings['ThemeColor']; ?> !important;
         }
 
         .theme-color-only-border {
-            border-color: # <?=$settings['ThemeColor']; ?> !important;
+            border-color: #<?=$settings['ThemeColor']; ?> !important;
         }
 
         .theme-color-text {
-            color: # <?=$settings['ThemeColor']; ?> !important;
-            border-color: # <?=$settings['ThemeColor']; ?> !important;
+            color: #<?=$settings['ThemeColor']; ?> !important;
+            border-color: #<?=$settings['ThemeColor']; ?> !important;
         }
 
         .text-color {
-            color: # <?=$settings['TextColor']; ?> !important;
+            color: #<?=$settings['TextColor']; ?> !important;
         }
 
         body .container input:checked ~ .checkmark {
-            background-color: # <?=$settings['ThemeColor']; ?> !important;
+            background-color: #<?=$settings['ThemeColor']; ?> !important;
         }
     </style>
 </head>
@@ -313,14 +314,22 @@ $neiseyarar = $pdo->query("SELECT * FROM pages WHERE id = 3")->fetch();
                             <div class="col-12 col-md-6">
                                 <label class="theme-color-text" for="Name">Ürün Seçiniz</label>
                                 <select class="form-control theme-color-only-border" id="Product" name="Product">
-                                    <option value="1">1 adet Nutiva kokonat yağı</option>
+                                    <?php
+                                    foreach($products as $products_) {
+                                        echo '<option value="'.$products_['Id'].'">'.$products_['Name'].'</option>';
+                                    }
+                                    ?>
                                 </select>
                             </div>
 
                             <div class="col-12 col-md-6">
                                 <label class="theme-color-text" for="PaymentId">Ödeme Şekli Seçiniz</label>
                                 <select class="form-control theme-color-only-border" id="PaymentMethodId" name="PaymentMethodId">
-                                    <option value="1">Online Ödeme</option>
+                                    <?php
+                                    foreach($paymentMethods as $paymentMethods_) {
+                                        echo '<option value="'.$paymentMethods_['id'].'">'.$paymentMethods_['PaymentMethodName'].'</option>';
+                                    }
+                                    ?>
                                 </select>
                             </div>
                         </div>
