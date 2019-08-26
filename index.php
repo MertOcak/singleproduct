@@ -30,6 +30,7 @@ $nedir = $pdo->query("SELECT * FROM pages WHERE id = 2")->fetch();
 $neiseyarar = $pdo->query("SELECT * FROM pages WHERE id = 3")->fetch();
 $products = $pdo->query("SELECT * FROM products WHERE Active = 1 AND Status = 1 ORDER BY id ASC")->fetchAll();
 $paymentMethods = $pdo->query("SELECT * FROM paymentmethod WHERE Active = 1 AND Status = 1 ORDER BY id ASC")->fetchAll();
+$pages = $pdo->query("SELECT * FROM pages WHERE Active = 1")->fetchAll();
 
 ?>
 <!doctype html>
@@ -126,36 +127,76 @@ $paymentMethods = $pdo->query("SELECT * FROM paymentmethod WHERE Active = 1 AND 
             </div>
         </section>
     </div>
-    <section class="divider first text-center theme-color-bg">
+<!--    <section class="divider first text-center theme-color-bg">
 
-        <h1><?= $serit['Title']; ?></h1>
+        <h1><?/*= $serit['Title']; */?></h1>
 
-        <h2><?= $serit['Subtitle']; ?></h2>
+        <h2><?/*= $serit['Subtitle']; */?></h2>
 
     </section>
     <div class="main-wrapper">
         <div id="content-1">
-            <h1 class="theme-color-text"><?= $nedir['Title']; ?></h1>
-            <h2 class="text-color"><?= $nedir['Subtitle']; ?></h2>
-            <?= $nedir['Content']; ?>
+            <h1 class="theme-color-text"><?/*= $nedir['Title']; */?></h1>
+            <h2 class="text-color"><?/*= $nedir['Subtitle']; */?></h2>
+            <?/*= $nedir['Content']; */?>
         </div>
-    </div>
-    <section class="divider regular text-center theme-color-bg">
+    </div>-->
+<!--    <section class="divider regular text-center theme-color-bg">
 
-        <h1><?= $serit['Title']; ?></h1>
+        <h1><?/*= $serit['Title']; */?></h1>
 
-        <h2><?= $serit['Subtitle']; ?></h2>
+        <h2><?/*= $serit['Subtitle']; */?></h2>
 
     </section>
     <div class="main-wrapper">
         <div id="content-2">
-            <h1 class="theme-color-text"><?= $neiseyarar['Title']; ?></h1>
-            <h2 class="text-color"><?= $neiseyarar['Subtitle']; ?></h2>
+            <h1 class="theme-color-text"><?/*= $neiseyarar['Title']; */?></h1>
+            <h2 class="text-color"><?/*= $neiseyarar['Subtitle']; */?></h2>
 
-            <?= $neiseyarar['Content']; ?>
+            <?/*= $neiseyarar['Content']; */?>
 
         </div>
-    </div>
+    </div>-->
+
+    <?php
+
+    $i = 0;
+    $class = "";
+    foreach ($pages as $pages_) {
+
+       if($pages_['id'] !== 1) {
+
+           if($i === 0) {
+               $class = "first";
+           } else {
+               $class="regular";
+           }
+
+           echo ' <section class="divider '.$class.' text-center theme-color-bg">
+
+        <h1>'.$serit['Title'].'</h1>
+
+        <h2>'.$serit['Subtitle'].'</h2>
+
+    </section>';
+
+
+           echo ' <div class="main-wrapper">
+        <div id="content-2">
+            <h1 class="theme-color-text">'.$pages_['Title'].'</h1>
+            <h2 class="text-color">'.$pages_['Subtitle'].'</h2>
+
+            '.$pages_['Content'].'
+
+        </div>
+    </div>';
+           $i = $i + 1;
+       }
+
+    }
+
+    ?>
+
     <section class="divider regular text-center theme-color-bg">
 
         <h1><?= $serit['Title']; ?></h1>
@@ -174,7 +215,7 @@ $paymentMethods = $pdo->query("SELECT * FROM paymentmethod WHERE Active = 1 AND 
 
                 <!--Fiyatlar-->
 
-                <?= $fiyatlar['Content']; ?>
+              <!--  --><?/*= $fiyatlar['Content']; */?>
 
                 <div class="text-center price">
                     <div class="row">
