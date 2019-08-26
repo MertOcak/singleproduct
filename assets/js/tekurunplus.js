@@ -11,4 +11,8 @@ $('document').ready(function(){
             control = 1;
         }
     })
+
+    $('.divider').eq(0).removeClass('regular').addClass('first');
+    $('#content img').removeAttr('style').addClass('img-fluid');
+
 })

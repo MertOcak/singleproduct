@@ -30,7 +30,7 @@ $nedir = $pdo->query("SELECT * FROM pages WHERE id = 2")->fetch();
 $neiseyarar = $pdo->query("SELECT * FROM pages WHERE id = 3")->fetch();
 $products = $pdo->query("SELECT * FROM products WHERE Active = 1 AND Status = 1 ORDER BY id ASC")->fetchAll();
 $paymentMethods = $pdo->query("SELECT * FROM paymentmethod WHERE Active = 1 AND Status = 1 ORDER BY id ASC")->fetchAll();
-$pages = $pdo->query("SELECT * FROM pages WHERE Active = 1")->fetchAll();
+$pages = $pdo->query("SELECT * FROM pages WHERE Active = 1 AND Status = 1")->fetchAll();
 
 ?>
 <!doctype html>
@@ -42,11 +42,12 @@ $pages = $pdo->query("SELECT * FROM pages WHERE Active = 1")->fetchAll();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <title>Document</title>
+    <script language="javascript" type="text/javascript" src="/admin/layouts/vendor/jquery/jquery.min.js"></script>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-grid.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-reboot.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet"></link>
-    <link rel="stylesheet" href="assets/css/tekurunplus.css">
+    <link rel="stylesheet" href="assets/css/tekurunplus.css?v=1.0.0">
     <style>
         .theme-color-bg {
             background: #<?=$settings['ThemeColor']; ?> !important;
@@ -88,9 +89,15 @@ $pages = $pdo->query("SELECT * FROM pages WHERE Active = 1")->fetchAll();
                 <div class="col-5 col-md-8">
                     <div id="menu">
                         <a class="theme-color-text" href="#">Anasayfa</a> <span class="theme-color-text"> / </span>
-                        <a class="theme-color-text" href="#"><?= $nedir['Name']; ?></a> <span class="theme-color-text"> / </span>
-                        <a class="theme-color-text" href="#"><?= $neiseyarar['Name']; ?></a> <span
-                                class="theme-color-text"> / </span>
+                   <?php
+                   foreach ($pages as $pages_) {
+                      if($pages_['id'] !== 1) {
+                          echo '     <a class="theme-color-text" href="#">'.$pages_['Name'].'</a> <span class="theme-color-text"> / </span>';
+                      }
+
+                   }
+
+                   ?>
                         <a class="theme-color-text" href="#">Fiyatlar</a>
                     </div>
                     <div id="hamburger">
@@ -182,7 +189,7 @@ $pages = $pdo->query("SELECT * FROM pages WHERE Active = 1")->fetchAll();
 
 
            echo ' <div class="main-wrapper">
-        <div id="content-2">
+        <div id="content">
             <h1 class="theme-color-text">'.$pages_['Title'].'</h1>
             <h2 class="text-color">'.$pages_['Subtitle'].'</h2>
 
@@ -466,6 +473,6 @@ $pages = $pdo->query("SELECT * FROM pages WHERE Active = 1")->fetchAll();
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="/admin/layouts/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script src="assets/js/tekurunplus.js"></script>
+<script src="assets/js/tekurunplus.js?v=1.0.0"></script>
 </body>
 </html>

@@ -186,19 +186,19 @@ body, html {
   font-weight: bold !important;
 }
 
-#content-2 {
+#content {
   max-width: 800px;
   margin: auto;
   text-align: center;
 }
-#content-2 h1 {
+#content h1 {
   font-size: 48.5px;
   color: #64393e;
   padding-top: 36px;
   z-index: 2;
   position: relative;
 }
-#content-2 h2 {
+#content h2 {
   font-family: "Poppins", sans-serif;
   font-size: 38px;
   padding-top: 0px;
@@ -207,7 +207,7 @@ body, html {
   z-index: 2;
   position: relative;
 }
-#content-2 .product-image img {
+#content .product-image img {
   margin-top: -35px;
   z-index: 1;
   position: relative;
@@ -215,13 +215,13 @@ body, html {
   width: 100%;
   margin-bottom: 20px;
 }
-#content-2 .text {
+#content .text {
   font-size: 20px;
   line-height: 30px;
   max-width: 1200px;
   margin: auto;
 }
-#content-2 .text span {
+#content .text span {
   font-weight: bold !important;
 }
 

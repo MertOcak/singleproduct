@@ -264,7 +264,7 @@ if (!isset($_POST['action']) &&  isset($_POST['Iade'])) {
 if (!isset($_POST['action']) && isset($_POST['Name']) && isset($_POST['Title']) && isset($_POST['Subtitle']) && isset($_POST['Content']) && isset($_POST['Status'])) {
     $sql = "UPDATE pages SET Name = ?, Title = ?, Subtitle = ?, Content = ?, Status = ? WHERE id = ?";
     $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Title'], $_POST['Subtitle'], $_POST['Content'], $_POST['Status'] , $_GET['id']]);
-    header("Location: ".$_SERVER['HTTP_REFERER']);
+    header("location: /admin/pages/pages");
 }
 
 if (!isset($_POST['action']) && !isset($_POST['Name']) && isset($_POST['Title']) && isset($_POST['Subtitle'])) {
