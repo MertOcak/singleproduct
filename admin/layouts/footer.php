@@ -185,6 +185,46 @@
         }
 
 
+        if ($("#search").length) {
+            $("#search").validate({
+                rules: {
+                    orderId: {
+                        required: true,
+                        number:true
+                    },
+                },
+                messages: {
+                    orderId: {
+                        required: "",
+                        number: ""
+                    },
+                },
+                errorPlacement: function (error, element) {
+                    return true;
+                }
+            });
+        }
+        if ($("#searchMobile").length) {
+            $("#searchMobile").validate({
+                rules: {
+                    orderId: {
+                        required: true,
+                        number:true
+                    },
+                },
+                messages: {
+                    orderId: {
+                        required: "",
+                        number: ""
+                    },
+                },
+                errorPlacement: function (error, element) {
+                    return true;
+                }
+            });
+        }
+
+
         if ($('#orders').length) {
             if (typeof order != 'undefined') {
 
@@ -204,6 +244,7 @@
                              }
                          });*/
                         // validate signup form on keyup and submit
+
 
                         if ($("#addBankAccounts").length) {
                             $("#addBankAccounts").validate({

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +7,57 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="format-detection" content="telephone=no">
-    <title>SB Admin 2 - Dashboard</title>
+    <?php
+
+    $aylar = array(
+
+        1 => "Ocak",
+
+        2 => "Şubat",
+
+        3 => "Mart",
+
+        4 => "Nisan",
+
+        5 => "Mayıs",
+
+        6 => "Haziran",
+
+        7 => "Temmuz",
+
+        8 => "Ağustos",
+
+        9 => "Eylül",
+
+        10 => "Ekim",
+
+        11 => "Kasım",
+
+        12 => "Aralık"
+
+    );
+    $gunler = array(
+
+        0 => "Pazar",
+
+        1 => "Pazartesi",
+
+        2 => "Salı",
+
+        3 => "Çarşamba",
+
+        4 => "Perşembe",
+
+        5 => "Cuma",
+
+        6 => "Cumartesi"
+
+    );
+
+    $today = date('d') . " " . $aylar[date("n")] . " " . date('Y');
+
+    ?>
+    <title>Tek Ürün 2 - Yönetim Paneli - Hoşgeldiniz - <?php echo $today; ?></title>
     <!-- Custom fonts for this template-->
     <link href="/admin/layouts/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -186,7 +235,6 @@
         </li>
 
 
-
         <!-- Divider -->
         <hr class="sidebar-divider">
 
@@ -224,9 +272,12 @@
 
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Sözleşmeler:</h6>
-                    <a class="collapse-item" href="/admin/pages/transactions/agreements/edit/1">Mesafeli Satış Sözleşmesi</a>
-                    <a class="collapse-item" href="/admin/pages/transactions/agreements/edit/1/Gizlilik">Gizlilik Sözleşmesi</a>
-                    <a class="collapse-item" href="/admin/pages/transactions/agreements/edit/1/Iptal">İptal ve İade Koşulları</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/agreements/edit/1">Mesafeli Satış
+                        Sözleşmesi</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/agreements/edit/1/Gizlilik">Gizlilik
+                        Sözleşmesi</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/agreements/edit/1/Iptal">İptal ve İade
+                        Koşulları</a>
                 </div>
             </div>
         </li>
@@ -257,8 +308,10 @@
 
                     <h6 class="collapse-header">Seo Ayarları:</h6>
 
-                    <a class="collapse-item" href="/admin/pages/transactions/settings/edit/1/GoogleAnalytics">Google Analytics</a>
-                    <a class="collapse-item" href="/admin/pages/transactions/settings/edit/1/SeoSettings">Meta Etiketleri</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/settings/edit/1/GoogleAnalytics">Google
+                        Analytics</a>
+                    <a class="collapse-item" href="/admin/pages/transactions/settings/edit/1/SeoSettings">Meta
+                        Etiketleri</a>
 
 
                     <h6 class="collapse-header">Eklenti Ayarları:</h6>
@@ -327,13 +380,13 @@
                 </button>
 
                 <!-- Topbar Search -->
-                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <form id="search" action="/admin/pages/search/search.php" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small"
+                        <input type="text" name="orderId" class="form-control bg-light border-0 small"
                                placeholder="Hızlı Ara | Sipariş numarası"
                                aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
+                            <button class="btn btn-primary" type="submit">
                                 <i class="fas fa-search fa-sm"></i>
                             </button>
                         </div>
@@ -352,13 +405,13 @@
                         <!-- Dropdown - Messages -->
                         <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                              aria-labelledby="searchDropdown">
-                            <form class="form-inline mr-auto w-100 navbar-search">
+                            <form id="searchMobile" action="/admin/pages/search/search.php" method="post" class="form-inline mr-auto w-100 navbar-search">
                                 <div class="input-group">
-                                    <input type="text" class="form-control bg-light border-0 small"
-                                           placeholder="Search for..." aria-label="Search"
+                                    <input name="orderId" type="text" class="form-control bg-light border-0 small"
+                                           placeholder="Hızlı Ara | Sipariş numarası" aria-label="Search"
                                            aria-describedby="basic-addon2">
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button">
+                                        <button class="btn btn-primary" type="submit">
                                             <i class="fas fa-search fa-sm"></i>
                                         </button>
                                     </div>
@@ -505,21 +558,34 @@
                     <div class="topbar-divider d-none d-sm-block"></div>
 
                     <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow d-none d-lg-block">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small disableSelection">
+                                <?php
+                                echo $today;
+                                ?>
+                            </span>
+                        </a>
+                    </li>
+
+                    <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                                 <?php
                                 $adminName = $pdo->query("SELECT FirstName, LastName FROM users WHERE id=1")->fetch();
-                                echo $adminName['FirstName']." ".$adminName['LastName'];
+                                echo $adminName['FirstName'] . " " . $adminName['LastName'];
                                 ?>
                             </span>
-                            <!--                            <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-                            -->                        </a>
+                            <div class="img-profile d-lg-none" style="border-radius: 50%; background: #4e73df"></div>
+                                                 </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
-                            <a class="dropdown-item" target="_blank" href="http://<?php echo $_SERVER['SERVER_NAME']; ?>">
+                            <a class="dropdown-item" target="_blank"
+                               href="http://<?php echo $_SERVER['SERVER_NAME']; ?>">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Site Önizlemesi
                             </a>
@@ -538,6 +604,8 @@
                             </a>
                         </div>
                     </li>
+
+
 
                 </ul>
 

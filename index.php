@@ -44,6 +44,7 @@ $paymentMethods = $pdo->query("SELECT * FROM paymentmethod WHERE Active = 1 AND 
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-grid.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-reboot.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet"></link>
     <link rel="stylesheet" href="assets/css/tekurunplus.css">
     <style>
         .theme-color-bg {
@@ -267,7 +268,7 @@ $paymentMethods = $pdo->query("SELECT * FROM paymentmethod WHERE Active = 1 AND 
         <div id="content-5">
             <div class="row">
                 <div class="col-12 col-lg-7 ml-auto mr-auto form">
-                    <form id="orderForm" action="take_order.php" method="post">
+                    <form id="orderForm" action="orderController.php" method="post">
                         <input name="token" type="hidden" value="<?=session_id()?>">
                         <input name="Amount" type="hidden" value="2">
                         <div class="col-12 text-center d-block d-md-none mt-5">
@@ -422,6 +423,8 @@ $paymentMethods = $pdo->query("SELECT * FROM paymentmethod WHERE Active = 1 AND 
 } ?>
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+<script src="/admin/layouts/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="assets/js/tekurunplus.js"></script>
 </body>
 </html>

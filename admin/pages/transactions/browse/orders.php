@@ -123,7 +123,7 @@
                             </tr>
                             <tr class="border">
                                 <td class="dividerBorder">Eklediğiniz Notlar</td>
-                                <td style="background: lightyellow; color: black;"><b> {{ order.Note }}</b></td>
+                                <td style="background: lightyellow; color: black;"><b v-if="order.Note"> {{ order.Note }}</b><b v-else> Not eklenmemiş</b></td>
                             </tr>
                             <tr>
                                 <a :href="'/admin/pages/transactions/orders/edit/' + order.orderId">
