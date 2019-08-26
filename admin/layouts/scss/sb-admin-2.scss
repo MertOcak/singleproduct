@@ -204,7 +204,12 @@ th a {
 }
 
 
-@media (min-width: 0) and (max-width: 1100px) {
+@media (min-width: 0px) and (max-width: 1100px) {
+
+  .container-fluid {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
 
 select {
   display: block;
@@ -226,7 +231,7 @@ select {
 
   .dataTables_length {
     position:relative;
-    margin-bottom: 10px;
+    margin-top: 10px;
   }
 
   #buttons {

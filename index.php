@@ -266,7 +266,9 @@ $neiseyarar = $pdo->query("SELECT * FROM pages WHERE id = 3")->fetch();
         <div id="content-5">
             <div class="row">
                 <div class="col-12 col-lg-7 ml-auto mr-auto form">
-                    <form id="orderForm" action="" method="post">
+                    <form id="orderForm" action="take_order.php" method="post">
+                        <input name="token" type="hidden" value="<?=session_id()?>">
+                        <input name="Amount" type="hidden" value="2">
                         <div class="col-12 text-center d-block d-md-none mt-5">
                             <img class="m-auto formProductImage" src="assets/img/urunAsset 8.png" width="90"/>
                         </div>
@@ -282,7 +284,7 @@ $neiseyarar = $pdo->query("SELECT * FROM pages WHERE id = 3")->fetch();
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="theme-color-text" for="Soyad">Soyad</label>
-                                <input type="text" class="form-control theme-color-only-border" id="Soyad" name="Soyad"
+                                <input type="text" class="form-control theme-color-only-border" id="LastName" name="LastName"
                                        autocomplete="off">
                             </div>
                         </div>
@@ -298,7 +300,7 @@ $neiseyarar = $pdo->query("SELECT * FROM pages WHERE id = 3")->fetch();
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="theme-color-text" for="telefon-numaranız">Telefon Numarası</label>
-                                <input type="text" class="form-control theme-color-only-border" id="telefon-numaranız"
+                                <input type="text" class="form-control theme-color-only-border" id="Phone"
                                        name="Phone"
                                        autocomplete="off">
                             </div>
@@ -310,14 +312,14 @@ $neiseyarar = $pdo->query("SELECT * FROM pages WHERE id = 3")->fetch();
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="theme-color-text" for="Name">Ürün Seçiniz</label>
-                                <select class="form-control theme-color-only-border" id="Name" name="Name">
+                                <select class="form-control theme-color-only-border" id="Product" name="Product">
                                     <option value="1">1 adet Nutiva kokonat yağı</option>
                                 </select>
                             </div>
 
                             <div class="col-12 col-md-6">
                                 <label class="theme-color-text" for="PaymentId">Ödeme Şekli Seçiniz</label>
-                                <select class="form-control theme-color-only-border" id="PaymentId" name="PaymentId">
+                                <select class="form-control theme-color-only-border" id="PaymentMethodId" name="PaymentMethodId">
                                     <option value="1">Online Ödeme</option>
                                 </select>
                             </div>
@@ -341,7 +343,7 @@ $neiseyarar = $pdo->query("SELECT * FROM pages WHERE id = 3")->fetch();
                                     <label class="container form-check-label mb-3 theme-color-text"><span>Mesafeli satış sözleşmesi</span>'ni
                                         okudum, kabul ediyorum.
 
-                                        <input type="checkbox">
+                                        <input name="agreement" value="checked" type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
