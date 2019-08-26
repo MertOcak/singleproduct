@@ -85,7 +85,7 @@
     } ?>" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/layouts/index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/pages/orders">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>

@@ -788,6 +788,11 @@
             })
         }
 
+            if ($(window).width() < 900) {
+                $(".navbar-nav").addClass('toggled');
+                $("#page-top").addClass('sidebar-toggled');
+            }
+
     });
 </script>
 
