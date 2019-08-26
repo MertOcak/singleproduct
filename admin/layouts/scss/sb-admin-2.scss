@@ -21,7 +21,7 @@
   box-shadow: none !important;
 }
 
-table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child:before, table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child:before {
   top: 9px;
   left: 4px;
   height: 14px;
@@ -192,15 +192,25 @@ th a {
   border-right: 1px solid #f2f2f2 !important;
 }
 
-.dtr-data a{
-  font-weight:bold;
+.dtr-data a {
+  font-weight: bold;
   color: #858796;
-&:hover {
-  color: red !important;
-  text-decoration: none !important;
+
+  &:hover {
+    color: red !important;
+    text-decoration: none !important;
+
+  }
 
 }
 
+button.btn-circle.btn-danger, button.btn-circle.btn-primary, button.btn-circle.btn-warning {
+  margin-top: 3px;
+}
+
+button.btn-circle.btn-danger {
+  margin-right: 1px !important;
+  margin-top: 3px;
 }
 
 
@@ -211,26 +221,27 @@ th a {
     padding-right: 10px !important;
   }
 
-select {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-}
 
-   tr td:not(.table-responsive tr td) {
-  display: block !important;
-  width: 100% !important;
-  text-align:center !important;
+  select {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
 
-}
+  tr td:not(.table-responsive tr td) {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+
+  }
 
 
   .multipleDelete {
-    margin-bottom:10px;
+    margin-bottom: 10px;
   }
 
   .dataTables_length {
-    position:relative;
+    position: relative;
     margin-top: 10px;
   }
 

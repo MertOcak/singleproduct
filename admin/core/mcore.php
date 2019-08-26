@@ -261,9 +261,9 @@ if (!isset($_POST['action']) &&  isset($_POST['Iade'])) {
 
 /*Pages*/
 
-if (!isset($_POST['action']) && isset($_POST['Name']) && isset($_POST['Title']) && isset($_POST['Subtitle']) && isset($_POST['Content'])) {
-    $sql = "UPDATE pages SET Name = ?, Title = ?, Subtitle = ?, Content = ? WHERE id = ?";
-    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Title'], $_POST['Subtitle'], $_POST['Content'], $_GET['id']]);
+if (!isset($_POST['action']) && isset($_POST['Name']) && isset($_POST['Title']) && isset($_POST['Subtitle']) && isset($_POST['Content']) && isset($_POST['Status'])) {
+    $sql = "UPDATE pages SET Name = ?, Title = ?, Subtitle = ?, Content = ?, Status = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Title'], $_POST['Subtitle'], $_POST['Content'], $_POST['Status'] , $_GET['id']]);
     header("Location: ".$_SERVER['HTTP_REFERER']);
 }
 
@@ -271,6 +271,30 @@ if (!isset($_POST['action']) && !isset($_POST['Name']) && isset($_POST['Title'])
     $sql = "UPDATE pages SET Title = ?, Subtitle = ? WHERE id = 1";
     $pdo->prepare($sql)->execute([ $_POST['Title'], $_POST['Subtitle']]);
     header("Location: ".$_SERVER['HTTP_REFERER']);
+}
+
+if (isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Name']) && isset($_POST['Title']) && isset($_POST['Subtitle'])  && isset($_POST['Content'])  && isset($_POST['Status'])) {
+    $sql = "INSERT INTO pages SET Name = ?, Title = ?, Subtitle = ?, Content = ?, Status = ?";
+    $pdo->prepare($sql)->execute([$_POST['Name'], $_POST['Title'], $_POST['Subtitle'], $_POST['Content'], $_POST['Status']]);
+    header("location: /admin/pages/pages");
+}
+
+/*Prices Module*/
+
+if (!isset($_POST['action']) && isset($_POST['Title']) && isset($_POST['Price']) && isset($_POST['Status'])) {
+    $sql = "UPDATE prices SET Title = ?, Price = ?, Status = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute([$_POST['Title'], $_POST['Price'], $_POST['Status'], $_GET['id']]);
+    header("Location: ".$_SERVER['HTTP_REFERER']);
+}
+
+
+if (isset($_POST['action']) && $_POST['action'] == "add" && isset($_POST['Title']) && isset($_POST['Price']) && isset($_POST['Status'])  ) {
+    $sql = "INSERT INTO prices SET Title = ?, Price = ?, Status = ?";
+    $pdo->prepare($sql)->execute([$_POST['Title'], $_POST['Price'], $_POST['Status']]);
+    $priceId = $pdo->lastInsertId();
+    $sql = "INSERT INTO photos SET id = ?, Family = ?, Active = ? ";
+    $pdo->prepare($sql)->execute([0, $priceId, 1]);
+    header("location: /admin/pages/prices");
 }
 
 

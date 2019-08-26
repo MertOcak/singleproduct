@@ -7,7 +7,7 @@
 
     <?php
 
-    $sql = 'SELECT * FROM products WHERE id =' . $_GET['id'];
+    $sql = 'SELECT * FROM prices  WHERE id =' . $_GET['id'];
 
 
     /*        $sql = "SELECT * FROM " . $_GET['module'] . " WHERE Id = " . $_GET['id'];*/
@@ -17,11 +17,9 @@
         print_r($row);
     }*/
 
-    $sql = 'SELECT * FROM photos WHERE id =' . $_GET['id'];
 
-
-    /*        $sql = "SELECT * FROM " . $_GET['module'] . " WHERE Id = " . $_GET['id'];*/
-    $photos = $pdo->query($sql);
+    $image = $pdo->query("SELECT Path FROM photos WHERE Family = ".$_GET['id'])->fetch();
+    $imagePath = $image['Path'];
 
     ?>
 
@@ -35,50 +33,57 @@
                 <div class="card-body p-0 ">
                     <table class="table text-center">
                         <tr>
-                            <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder">Ürün Düzenle</td>
-                            <td class="bg-gradient-dark-2 text-white dividerBorder">Ürün Numarası: <b> {{ order.Id
-                                    }}</b></td>
-
+                            <td style="background: rgb(78, 115, 223);" class="text-white dividerBorder">Fiyatlar Modülü Düzenle</td>
+                            <td class="bg-gradient-dark-2 text-white dividerBorder">Fiyatlar Modüllerinizi Bu Bölümden Düzenleyebilirsiniz</td>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+
         <div class="row">
             <div class="col-md-12">
-                <!------->
                     <div class="card">
+                        <div class="card-header">
+                            Fiyat Modülü Ayarları
+                        </div>
+
+
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <!--Tema Rengi-->
+                                <!--Profile-->
                                 <!--İlk Tab-->
-                                <!--Google Analytics-->
-                                <a class="nav-item nav-link active" id="product-info-tab" data-toggle="tab" href="#product-info" role="tab" aria-controls="product-info" aria-selected="true">Ürün Bilgileri</a>
-                                <a class="nav-item nav-link" id="product-images-tab" data-toggle="tab" href="#product-images" role="tab" aria-controls="product-images" aria-selected="false">Ürün Fotoğrafları</a>
-
+                                <a class="nav-item nav-link active" id="yazilar-tab" data-toggle="tab"
+                                   href="#fiyatlar-yazilar" role="tab" aria-controls="fiyatlar-yazilar" aria-selected="true">Modül İçeriği</a>
+                                <!--Password-->
+                                <a class="nav-item nav-link" id="resim-tab" data-toggle="tab"
+                                   href="#fiyatlar-resim" role="tab" aria-controls="fiyatlar-resim"
+                                   aria-selected="false">Modül Resimler</a>
                             </div>
                         </nav>
+
+
                         <div class="tab-content mt-2" id="nav-tabContent">
 
-                            <!--Ürün Bilgileri-->
-                            <div class="tab-pane fade show active" id="product-info" role="tabpanel" aria-labelledby="product-info-tab">
+                            <!--Banner Yazılar-->
+                            <div class="tab-pane fade show active" id="fiyatlar-yazilar" role="tabpanel"
+                                 aria-labelledby="fiyatlar-yazilar-tab">
                                 <!--Content-->
-                                <form id="editProducts" action="" method="post">
                                 <div class="card-body">
+                                    <form action="" method="post">
                                     <table class="table">
                                         <tr class="border border-bottom-light border-right-light">
-                                            <td>Ürün Adı</td>
+                                            <td>Modül Başlığı</td>
                                             <td>
-                                                <input name="Name"
-                                                       v-model="order.Name"
-                                                       type="text"
-                                                       class="form-control w-40 d-inline-block"
-                                                >
+                                                <input
+                                                        name="Title"
+                                                        v-model="order.Title" type="text"
+                                                        class="form-control w-40 d-inline-block">
                                             </td>
                                         </tr>
                                         <tr class="border border-bottom-light border-right-light">
-                                            <td>Ürün Birim Fiyatı (₺)</td>
+                                            <td>Fiyat (₺)</td>
                                             <td>
                                                 <input
                                                         name="Price"
@@ -87,67 +92,57 @@
                                             </td>
                                         </tr>
                                         <tr class="border border-bottom-light">
-                                            <td>Ürün Aktiflik Durumu</td>
-                                            <td><select name="Active" v-model="order.Active"/>
+                                            <td>Aktiflik Durumu</td>
+                                            <td><select name="Status" v-model="order.Status"/>
                                                 <option v-for = "code in activeList" :value="code.id" >{{code.name}}</option>
                                                 <select> <small class="ml-2"> <span style="color: green;">Aktif</span> = Sipariş formunda listelenir, <span style="color: red;">Pasif</span> = Sipariş formunda listelenmez</small>
                                             </td>
-                                        </tr>
-                                        <tr class="border border-bottom-light">
-                                            <td>Stok Miktarı</td>
-                                            <td><input name="Stock" v-model="order.Stock" type="text" class="form-control"></td>
                                         </tr>
                                         <tr class="text-right">
                                             <input type="submit" value="Kaydet">
                                         </tr>
                                     </table>
-
+                                    </form>
 
                                 </div>
-                                </form>
+
+
                             </div>
 
-
-                            <!--Ürün Fotoğrafları-->
-                            <div class="tab-pane fade" id="product-images" role="tabpanel" aria-labelledby="product-images-tab">
+                            <!--Banner Resim-->
+                            <div class="tab-pane fade" id="fiyatlar-resim" role="tabpanel"
+                                 aria-labelledby="fiyatlar-resim-tab">
                                 <!--Content-->
-
                                 <div class="card-body">
                                     <table class="table">
                                         <tr class="border border-bottom-light border-right-light">
-
+                                            <td>Banner Resmi</td>
                                             <td>
-                                                <form method="post" action="/admin/pages/upload/upload.php"
-                                                      class="dropzone"
-                                                      id="uploadImage">
-                                                    <input name="productPhotoId" v-model="order.Id" type="hidden" >
+                                                <img width="100" src="<?php echo $imagePath; ?>" alt="">
+                                            </td>
+                                            <td>
+                                                <form id="Image" enctype="multipart/form-data" method="post" action="/admin/pages/upload/upload.php">
+                                                    <input name="photoPrice" type="hidden" value="<?=$_GET['id']?>">
+                                                    <input type="file" name="file" accept="image/x-png,image/gif,image/jpeg">
+                                                    <input type="submit" onclick="document.getElementById('Image').submit();" value="Resim Yükle">
                                                 </form>
                                             </td>
                                         </tr>
                                     </table>
 
-                                    <tr class="border border-bottom-light border-right-light">
 
-
-                                        <?php
-                                        foreach ($photos as $photo) {
-                                            print "<img width='100' style='margin-right:20px' src='".$photo["Path"]."'>";
-                                        }
-                                        ?>
-
-
-                                    </tr>
                                 </div>
 
 
                             </div>
+
+
                         </div>
 
 
 
+
                     </div>
-
-
             </div>
 
         </div>

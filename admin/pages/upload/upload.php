@@ -75,3 +75,26 @@ if (!empty($_FILES) && isset($_POST['photoCatName'])) {
 
 }
 
+if (!empty($_FILES) && isset($_POST['photoPrice'])) {
+
+
+    $result = explode('.',str_replace(' ', '', basename($_FILES['file']['name'])));
+    $up = $result[0].date('dmY').'_'.time().'.'.end($result);
+    $tempFile = $_FILES['file']['tmp_name'];          //3
+
+    $targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;  //4
+
+    $targetFile =  $targetPath. $up;  //5
+
+    $path ='/admin/pages/upload/photos/'. $up;
+
+    move_uploaded_file($tempFile,$targetFile); //6
+
+    $sql = "UPDATE photos SET id = ?, Path = ?, Active = ? WHERE Family = ?";
+    $pdo->prepare($sql)->execute([0, $path, 1, $_POST['photoPrice']]);
+
+    header('Location: /admin/pages/transactions/prices/edit/'.$_POST['photoPrice'].'/Photos');
+
+
+}
+

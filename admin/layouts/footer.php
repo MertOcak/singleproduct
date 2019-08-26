@@ -183,8 +183,6 @@
                 }
             });
         }
-
-
         if ($("#search").length) {
             $("#search").validate({
                 rules: {
@@ -244,6 +242,43 @@
                              }
                          });*/
                         // validate signup form on keyup and submit
+                        if ($("#addPage").length) {
+                            $("#addPage").validate({
+                                rules: {
+                                    Name: "required",
+                                    Title: "required",
+                                },
+                                messages: {
+                                    Name: "",
+                                    Title: "",
+                                },
+                                errorPlacement: function (error, element) {
+                                    return true;
+                                }
+                            });
+                        }
+
+                        if ($("#addPrice").length) {
+                            $("#addPrice").validate({
+                                rules: {
+                                    Title: "required",
+                                    Price: {
+                                        required:true,
+                                        number:true
+                                    },
+                                },
+                                messages: {
+                                    Title: "",
+                                    Price: {
+                                        required:"",
+                                        number:""
+                                    },
+                                },
+                                errorPlacement: function (error, element) {
+                                    return true;
+                                }
+                            });
+                        }
 
 
                         if ($("#addBankAccounts").length) {
@@ -753,6 +788,10 @@
 
                 case "Videos";
                     echo "activateTab('video-thumb');";
+                    break;
+
+                case "Photos";
+                    echo "activateTab('fiyatlar-resim');";
                     break;
 
             }
