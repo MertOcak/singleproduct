@@ -1,30 +1,4 @@
 <div id="orders" class="container-fluid">
-
-    <!--   <div class="col-md-1">
-            <h1><?php /*echo $_GET['id'] */ ?></h1>
-        </div>-->
-
-
-    <?php
-
-/*    $sql = 'SELECT * FROM products  WHERE id =' . $_GET['id'];*/
-
-
-    /*        $sql = "SELECT * FROM " . $_GET['module'] . " WHERE Id = " . $_GET['id'];*/
-/*    $stmt = $pdo->query($sql);
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);*/
-    /*while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        print_r($row);
-    }*/
-
-    ?>
-
-    <script>
-/*
-        var order = <?php  echo json_encode($row) ?>
-*/
-    </script>
-
     <div class="row">
         <div class="col-md-12 mb-2">
             <div class="card bg-transparent border-0">
