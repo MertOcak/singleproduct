@@ -309,9 +309,9 @@ body, html {
     color: $themeColor;
     background: #f2f2f2;
     border-radius: 42px;
-    width: calc(33.3% - 40px);
+    /*width: calc(33.3% - 40px);
     margin-right: 20px;
-    float: left;
+    float: left;*/
     height: 655px;
     cursor: pointer;
 
@@ -368,7 +368,9 @@ body, html {
     }
 
     &:first-of-type {
+      /*
       margin-left: 40px;
+      */
     }
 
     span {
@@ -706,6 +708,28 @@ body {
   }
 }
 
+.modal-dialog {
+  max-width: 800px;
+  margin: 30px auto;
+}
+
+
+
+.modal-body {
+  position:relative;
+  padding:0px;
+}
+.close {
+  position:absolute;
+  right:-30px;
+  top:0;
+  z-index:999;
+  font-size:2rem;
+  font-weight: normal;
+  color:#fff;
+  opacity:1;
+}
+
 
 @media(min-width:0) and (max-width:480px) {
   .logo-wrapper {
@@ -749,9 +773,9 @@ body {
     color: $themeColor;
     background: #f2f2f2;
     border-radius: 42px;
-    width: calc(70%) !important;
+    /*width: calc(70%) !important;
     margin: auto !important;
-    float: none !important;
+    float: none !important;*/
     height: 655px;
     cursor: pointer;
     margin-bottom: 90px !important;

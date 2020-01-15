@@ -257,9 +257,9 @@ body, html {
   color: #64393e;
   background: #f2f2f2;
   border-radius: 42px;
-  width: calc(33.3% - 40px);
+  /*width: calc(33.3% - 40px);
   margin-right: 20px;
-  float: left;
+  float: left;*/
   height: 655px;
   cursor: pointer;
 }
@@ -295,7 +295,9 @@ body, html {
   margin-top: 30px !important;
 }
 #content-3 .price:first-of-type {
+  /*
   margin-left: 40px;
+  */
 }
 #content-3 .price span {
   margin-top: -40px;
@@ -595,6 +597,27 @@ body .container .checkmark:after {
   transform: rotate(45deg);
 }
 
+.modal-dialog {
+  max-width: 800px;
+  margin: 30px auto;
+}
+
+.modal-body {
+  position: relative;
+  padding: 0px;
+}
+
+.close {
+  position: absolute;
+  right: -30px;
+  top: 0;
+  z-index: 999;
+  font-size: 2rem;
+  font-weight: normal;
+  color: #fff;
+  opacity: 1;
+}
+
 @media (min-width: 0) and (max-width: 480px) {
   .logo-wrapper {
     padding-left: 0;
@@ -635,9 +658,9 @@ body .container .checkmark:after {
     color: #64393e;
     background: #f2f2f2;
     border-radius: 42px;
-    width: calc(70%) !important;
+    /*width: calc(70%) !important;
     margin: auto !important;
-    float: none !important;
+    float: none !important;*/
     height: 655px;
     cursor: pointer;
     margin-bottom: 90px !important;

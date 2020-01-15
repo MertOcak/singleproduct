@@ -24,7 +24,9 @@ try {
 $banner = $pdo->query("SELECT * FROM banners WHERE id=1")->fetch();
 $bannerImage = $pdo->query("SELECT Path FROM photos WHERE Family = 'banners'")->fetch();
 $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch();
+$video = $pdo->query("SELECT * FROM videos WHERE id = 1")->fetch();
 $fiyatlar = $pdo->query("SELECT * FROM pages WHERE id = 4")->fetch();
+$fiyatmodul = $pdo->query("SELECT * FROM prices WHERE Active = 1 AND Status = 1 ORDER BY id ASC")->fetchAll();
 $serit = $pdo->query("SELECT * FROM pages WHERE id = 1")->fetch();
 $nedir = $pdo->query("SELECT * FROM pages WHERE id = 2")->fetch();
 $neiseyarar = $pdo->query("SELECT * FROM pages WHERE id = 3")->fetch();
@@ -92,7 +94,7 @@ $pages = $pdo->query("SELECT * FROM pages WHERE Active = 1 AND Status = 1")->fet
                    <?php
                    foreach ($pages as $pages_) {
                       if($pages_['id'] !== 1) {
-                          echo '     <a class="theme-color-text" href="#">'.$pages_['Name'].'</a> <span class="theme-color-text"> / </span>';
+                          echo '     <a class="theme-color-text main-menu" data-menu="'.$pages_['Title'].'" href="#">'.$pages_['Name'].'</a> <span class="theme-color-text"> / </span>';
                       }
 
                    }
@@ -189,7 +191,7 @@ $pages = $pdo->query("SELECT * FROM pages WHERE Active = 1 AND Status = 1")->fet
 
 
            echo ' <div class="main-wrapper">
-        <div id="content">
+        <div id="content" data-name="$pages_[\'Title\']">
             <h1 class="theme-color-text">'.$pages_['Title'].'</h1>
             <h2 class="text-color">'.$pages_['Subtitle'].'</h2>
 
@@ -220,27 +222,30 @@ $pages = $pdo->query("SELECT * FROM pages WHERE Active = 1 AND Status = 1")->fet
                    </div>-->
             <div class="row mt-4">
 
-                <!--Fiyatlar-->
 
-              <!--  --><?/*= $fiyatlar['Content']; */?>
-
-                <div class="text-center price">
-                    <div class="row">
-                        <div class="col-12">
+                <?php
+                foreach ($fiyatmodul as $fiyatmodul_) {
+                    echo"                <div class=\"text-center price col-md-4\">
+                        <div class=\"col-12\">
                             <div>
-                                <img class="down" src="assets/img/urunAsset 12.png" width="100"/></div>
-                            <div class="amount theme-color-text">1 ADET</div>
-                            <div class="col-12 pricePhoto text-center">
+                                <img class=\"down\" src=\"assets/img/urunAsset 12.png\" width=\"100\"/></div>
+                            <div class=\"amount theme-color-text\">".$fiyatmodul_['Title']."</div>
+                            <div class=\"col-12 pricePhoto text-center\">
 
-                                <img class="img-fluid" src="assets/img/urunAsset 8.png"/></div>
-                            <div class="priceTag theme-color-text">59₺</div>
+                                <img class=\"img-fluid\" src=\"assets/img/urunAsset 8.png\"/></div>
+                            <div class=\"priceTag theme-color-text\">".$fiyatmodul_['Price']."₺</div>
                         </div>
-                        <div class="col-12">
-                            <div id="buy-now" class="btn-tekurunplus m-auto priceBuy theme-color-bg">Satın Al</div>
+                        <div class=\"col-12\">
+                            <div id=\"buy-now\" class=\"btn-tekurunplus m-auto priceBuy theme-color-bg\">Satın Al</div>
                         </div>
                     </div>
-                </div>
-                <div class="text-center price">
+";
+                }
+                ?>
+
+
+
+         <!--       <div class="text-center price">
                     <div class="row">
                         <div class="col-12">
                             <div>
@@ -271,7 +276,7 @@ $pages = $pdo->query("SELECT * FROM pages WHERE Active = 1 AND Status = 1")->fet
                             <div id="buy-now" class="btn-tekurunplus m-auto priceBuy theme-color-bg">Satın Al</div>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
             </div>
         </div>
@@ -284,7 +289,7 @@ $pages = $pdo->query("SELECT * FROM pages WHERE Active = 1 AND Status = 1")->fet
 
     </section>
     <div class="main-wrapper">
-        <div id="content-4">
+        <div id="content-4" data-toggle="modal" data-src="https://www.youtube.com/embed/<?=$video['Url']; ?>" data-target="#myModal">
             <div class="col-12 ml-auto mr-auto video">
                 <img class="img-fluid m-auto" src="assets/img/tekurun-Asset 3.png"/>
             </div>
@@ -466,13 +471,37 @@ $pages = $pdo->query("SELECT * FROM pages WHERE Active = 1 AND Status = 1")->fet
             <a href="#">Fiyatlar</a>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+
+                <div class="modal-body">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <!-- 16:9 aspect ratio -->
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 <?php } else {
     echo '<div class="col-12 text-center mt-5">Sitemiz güncelleniyor. Lütfen daha sonra tekrar deneyiniz.</div>';
 } ?>
-<script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="/admin/layouts/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="node_modules/jquery-validation/dist/jquery.validate.js"></script>
+<script src="node_modules/jquery.scrollto/jquery.scrollTo.min.js"></script>
 <script src="assets/js/tekurunplus.js?v=1.0.0"></script>
 </body>
 </html>
